@@ -1,0 +1,181 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@custom-variant dark (&:is(.dark *));
+
+/* Minimal — Inter, transparent, no borders, no caps */
+:root {
+  --apple-blue: #0071e3;
+  --apple-blue-hover: #0077ed;
+  --apple-bg: #fbfbfd;
+  --apple-surface: #ffffff;
+  --apple-text: #1d1d1f;
+  --apple-text-secondary: #515154;
+  --apple-muted: #6e6e73;
+  --apple-muted-2: #86868b;
+  --apple-hover: #f5f5f7;
+
+  --background: var(--apple-bg);
+  --foreground: var(--apple-text);
+  --hig-surface: var(--apple-surface);
+  --hig-sidebar-bg: var(--apple-bg);
+
+  /* legacy token bridge — maps old HIG/brand/system names to apple palette */
+  --system-50: #fbfbfd;
+  --system-100: #f5f5f7;
+  --system-200: #e8e8ed;
+  --system-300: #d2d2d7;
+  --system-400: #6e6e73;
+  --system-500: #515154;
+  --brand-100: #e8f0fe;
+  --brand-200: #a8c8ff;
+  --brand-300: var(--apple-blue);
+  --brand-400: #0062cc;
+  --hig-border: rgba(0, 0, 0, 0.08);
+  --hig-border-strong: rgba(0, 0, 0, 0.12);
+}
+
+.dark {
+  --apple-bg: #000000;
+  --apple-surface: #1d1d1f;
+  --apple-text: #f5f5f7;
+  --apple-text-secondary: #a1a1a6;
+  --apple-muted: #86868b;
+  --apple-muted-2: #6e6e73;
+  --apple-hover: #1d1d1f;
+
+  --background: var(--apple-bg);
+  --foreground: var(--apple-text);
+  --hig-surface: var(--apple-surface);
+  --hig-sidebar-bg: var(--apple-bg);
+
+  --system-50: #1c1c1e;
+  --system-100: #2c2c2e;
+  --system-200: #3a3a3c;
+  --system-300: #48484a;
+  --system-400: #98989d;
+  --system-500: #a1a1a6;
+  --brand-100: rgba(0, 113, 227, 0.16);
+  --brand-200: rgba(0, 113, 227, 0.35);
+  --brand-300: #0a84ff;
+  --brand-400: #409cff;
+  --hig-border: rgba(255, 255, 255, 0.1);
+  --hig-border-strong: rgba(255, 255, 255, 0.16);
+}
+
+@theme inline {
+  --color-apple-blue: var(--apple-blue);
+  --color-apple-bg: var(--apple-bg);
+  --color-apple-surface: var(--apple-surface);
+  --color-apple-text: var(--apple-text);
+  --color-apple-muted: var(--apple-muted);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  /* bridged tokens for existing components (Callout, TOC, PlatformPicker, mdx) */
+  --color-system-50: var(--system-50);
+  --color-system-100: var(--system-100);
+  --color-system-200: var(--system-200);
+  --color-system-300: var(--system-300);
+  --color-system-400: var(--system-400);
+  --color-system-500: var(--system-500);
+  --color-brand-100: var(--brand-100);
+  --color-brand-200: var(--brand-200);
+  --color-brand-300: var(--brand-300);
+  --color-brand-400: var(--brand-400);
+  --color-hig-border: var(--hig-border);
+  --color-hig-surface: var(--hig-surface);
+  --font-sans: var(--font-inter);
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  color-scheme: light dark;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Arabic — IBM Plex Sans Arabic only for RTL/Arabic */
+[dir="rtl"],
+[lang="ar"],
+.font-arabic {
+  font-family: var(--font-plex-arabic), "IBM Plex Sans Arabic", Tahoma, sans-serif;
+}
+
+button,
+a {
+  cursor: pointer;
+}
+
+*:focus-visible {
+  outline: 2px solid var(--apple-blue);
+  outline-offset: 2px;
+}
+
+::selection {
+  background: rgba(0, 113, 227, 0.18);
+  color: var(--apple-text);
+}
+.dark ::selection {
+  background: rgba(10, 132, 255, 0.32);
+  color: #f5f5f7;
+}
+
+.prose {
+  --tw-prose-body: var(--apple-text);
+  --tw-prose-headings: var(--apple-text);
+  --tw-prose-links: var(--apple-blue);
+  --tw-prose-code: var(--apple-text);
+  --tw-prose-quote-borders: var(--hig-border);
+  --tw-prose-pre-bg: var(--system-100);
+  --tw-prose-pre-code: var(--apple-text);
+  font-size: 14px;
+  line-height: 1.6;
+}
+.prose :where(code):not(:where([class~="not-prose"] *))::before,
+.prose :where(code):not(:where([class~="not-prose"] *))::after {
+  content: none;
+}
+.dark .prose {
+  --tw-prose-body: #f5f5f7;
+  --tw-prose-headings: #f5f5f7;
+  --tw-prose-links: #409cff;
+  --tw-prose-code: #f5f5f7;
+  --tw-prose-quote-borders: var(--hig-border);
+  --tw-prose-pre-bg: var(--system-100);
+  --tw-prose-pre-code: #f5f5f7;
+  --tw-prose-invert-body: #f5f5f7;
+  --tw-prose-invert-headings: #f5f5f7;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: #d2d2d7;
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #3a3a3c;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+.dark ::-webkit-scrollbar-track {
+  background: transparent;
+}
