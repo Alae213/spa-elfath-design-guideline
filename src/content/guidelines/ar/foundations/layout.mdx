@@ -1,0 +1,115 @@
+﻿---
+title: "التخطيط"
+description: "الحاوية ونقاط التوقف وهوية الطوب — عرض كامل والمقياس الكامل وفجوة صفر ونصف قطر صفر"
+category: "Foundation"
+order: 15
+icon: "Layout01Icon"
+rtl: true
+---
+
+التخطيط مخطط أرضية المصنع: لكل كتلة مكان ثابت والجدران تلامس الجدران ولا شيء يطفو. النظام أدناه نظام الموقع نفسه — عمود القراءة الضيق في هذا الدليل ليس المرجع.
+
+<SectionHeading id="container" number="01" title="الحاوية والهوامش — Container & Gutters" />
+
+بدون سقف. كل قسم يمتد من حافة إلى حافة — من أول بكسل إلى آخر بكسل. الخلفيات والحدود والوسائط دائمًا بملء النزف؛ والانحسار الوحيد هو الهامش كحشوة داخلية:
+
+<LayoutDemo variant="container" label="عقد الحاوية" note="الأقسام بعرض w-full من حافة إلى حافة. لا max-width. المحتوى يتنفس داخل هوامش px-6 وpx-8 من lg فصاعدًا — كحشوة داخلية لا ككبسولة ممركزة." />
+
+<DoDontGrid
+  doItems={[
+    "عرض w-full على كل قسم — من حافة إلى حافة، من بداية إلى نهاية.",
+    "هوامش px-6 على الجوال وpx-8 من lg فصاعدًا كحشوة داخلية.",
+    "الخلفية والحدود والوسائط دائمًا بملء النزف.",
+  ]}
+  dontItems={[
+    "كبسولة ممركزة بسقف max-width (1440 أو 1280) تترك فراغًا جانبيًا.",
+    "محتوى يلامس حافة العرض الخام بلا حشوة هامش.",
+    "هوامش تتغير بتغير القسم بدل أن تتغير بتغير نقطة التوقف.",
+  ]}
+/>
+
+<SectionHeading id="breakpoints" number="02" title="نقاط التوقف — Breakpoints" />
+
+الجوال أولًا عبر المقياس الكامل وبمفتاح معماري واحد. التكديس تحت lg والصف عند lg فأعلى — الـsm يضبط الخط والتباعد والـxl فأعلى يحمل الخط ببساطة:
+
+<LayoutDemo variant="breakpoints" label="المقياس والمفتاح" note="الـsm يضبط والـlg يعيد الهيكلة. العمارة المكتبية تنهار إلى شرائح تكميلية على الجوال — لا مكتب مصغّر أبدًا." />
+
+<div className="not-prose mt-3 border-y border-[var(--hig-border)] py-3">
+
+<p className="text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">صمّم صغيرًا أولًا.</span> كل تكوين يبدأ كومة أحادية العمود ثم يستحق صفّه عند lg. التخطيط الذي يعمل عريضًا فقط غير مكتمل.</p>
+
+<p className="mt-3 text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">طابِق مفتاح الشيفرة.</span> السلوك التفاعلي ينقلب عند خط lg نفسه — <span className="font-mono">matchMedia("(max-width: 1024px)")</span> — فلا يختلف مكتب التحويم عن جوال اللمس حول أي تخطيط هما فيه.</p>
+
+</div>
+
+<DoDontGrid
+  doItems={[
+    "قاعدة جوال أحادية العمود لكل تكوين.",
+    "انقلاب التكديس إلى الصف عند lg كمفتاح أساسي.",
+    "انهيار طوب المكتب إلى شرائح تكميلية رفيعة على الجوال.",
+  ]}
+  dontItems={[
+    "تكوينات المكتب أولًا المضغوطة لتناسب الهواتف.",
+    "استثناءات نقاط وسطى تعيش في صفحة واحدة فقط.",
+    "إخفاء المحتوى على الجوال بدل إعادة تكديسه.",
+  ]}
+/>
+
+<SectionHeading id="hero" number="03" title="هوية الطوب ونظام Masonry — Bricks & Masonry" />
+
+الطوب ليس معالجة للبطل فقط — هو نظام أقسام. كل قسم في الموقع إما **طوب Bricks** (كتل متلاصقة ووصلات شعرية وفجوة صفر ونصف قطر صفر) أو **Masonry** (ماسونري كثيف بأربعة أعمدة بلا فجوات). التعيين عشوائي لكل قسم ويتناوب نزولًا في الصفحة، فتُقرأ الصفحة كأرضية مصنع: تقطيعات غير متوقعة ونفس الوصلة الصناعية. الحدود لا تُرسَم بل ظلال داخلية من نصف بكسل:
+
+<LayoutDemo variant="bricks" label="خريطة الطوب — تُستخدم في أي قسم" note="وصلات متلاصقة ووصلات 0.5px داخلية وعروض طوب ثابتة على المكتب؛ وشرائح تكميلية على الجوال. أي قسم قد يكون طوبًا أو Masonry — اختيار عشوائي. الشبكة تبقى LTR والمحتوى داخلها ينقلب." />
+
+<div className="not-prose mt-4 border-y border-[var(--hig-border)] py-4">
+
+<p className="text-[13px] leading-6 text-[var(--apple-text)]">الوصلة كما هي مشحونة في <span className="font-mono">AboutHero</span> — كل طوبة تحملها ولا شيء آخر يرسم خطًا:</p>
+
+<pre className="mt-3 overflow-x-auto border border-[var(--hig-border)] bg-[var(--system-100)] p-3 text-left font-mono text-[11px] leading-5 text-[var(--apple-text)]" dir="ltr">
+{`box-shadow: inset 0 0 0 0.5px rgba(0, 0, 0, 0.25);`}
+</pre>
+
+<p className="mt-3 text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">وصلة واحدة ولغتان.</span> سواء ظهر القسم كطوب أو كـ Masonry فهو متلاصق وحاد وبلا فجوة. اللغتان تنهاران إلى شرائح تكميلية على الجوال؛ ولا تخترع أي منهما لغة ثالثة. وزّع عشوائيًا لكل قسم — لا تثبت «البطل = طوب والباقي = Masonry».</p>
+
+</div>
+
+<SectionHeading id="cinematic" number="03.1" title="الوسائط السينمائية والدرجة الشاملة للفيديو" />
+
+الوسائط السينمائية بملء النزف من بطل الرئيسية ليست حصرية للبطل — كل فيديو في الموقع يحمل نفس المعالجة: تغطية بملء النزف وملصق تحته ونفس الدرجة فوقه. الدرجة أدناه تعيش على كل الفيديوهات لا على البطل وحده؛ والنص الأبيض لا يسكن إلا منطقتها الداكنة:
+
+<LayoutDemo variant="hero" label="كل فيديو — تشغيل حقيقي بدرجة شاملة" note="عنصر <video> حقيقي (بعيد وملصق وحلقة صامتة) بنفس درجة § الصور. وسائط بملء النزف والتسمية داخل الدرجة." />
+
+<div className="not-prose mt-4 border-y border-[var(--hig-border)] py-4">
+
+<p className="text-[13px] leading-6 text-[var(--apple-text)]">الدرجة الدقيقة كما هي مشحونة على كل فيديو — انسخها ولا تقاربها (انظر أيضًا <span className="font-mono">§ الصور — Text on Image</span>):</p>
+
+<pre className="mt-3 overflow-x-auto border border-[var(--hig-border)] bg-[var(--system-100)] p-3 text-left font-mono text-[11px] leading-5 text-[var(--apple-text)]" dir="ltr">
+{`background: linear-gradient(180deg,
+  rgba(0, 0, 0, 0.5) 0%,
+  rgba(0, 0, 0, 0.35) 55%,
+  rgba(0, 0, 0, 0.65) 100%);`}
+</pre>
+
+<p className="mt-3 text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">عقد الفيديو (كل فيديو):</span> ملف بعيد فقط وملصق مطلوب و<span className="font-mono">autoPlay loop muted playsInline</span>. الملصق هو بديل تقليل الحركة وبدون JS. لا تُسجل ملفات فيديو أبدًا في المستودع.</p>
+
+<pre className="mt-3 overflow-x-auto border border-[var(--hig-border)] bg-[var(--system-100)] p-3 text-left font-mono text-[11px] leading-5 text-[var(--apple-text)]" dir="ltr">
+{`<video autoPlay loop muted playsInline poster={poster}>
+  <source src={remoteUrl} type="video/mp4" />
+</video>
+<div className="absolute inset-0" style={{ background: VIDEO_GRADE }} />`}
+</pre>
+
+</div>
+
+<DoDontGrid
+  doItems={[
+    "فجوة 0 بين الكتل الملتحمة ونصف قطر 0px على كل كتلة — في الطوب وMasonry معًا.",
+    "وصلات 0.5px داخلية بدل حدود مرسومة.",
+    "نفس درجة الفيديو ونفس عقد الفيديو على كل فيديو، بطلًا كان أم لا.",
+  ]}
+  dontItems={[
+    "هوامش بين الطوب أو عناصر Masonry «للتهوية» — الهواء يسكن الهوامش لا الوصلات.",
+    "بطاقات مدوّرة داخل الشبكة المعمارية.",
+    "درجات لكل فيديو أو أسقف لكل قسم مخترَعة لصفحة واحدة.",
+  ]}
+/>

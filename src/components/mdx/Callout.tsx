@@ -8,7 +8,7 @@ export function Callout({ variant = "info", title, children }: { variant?: "info
   }[variant];
 
   return (
-    <div className={`rounded-lg border-l-4 pl-4 pr-4 py-3 my-6 ${styles}`}>
+    <div className={`rounded-lg border-s-4 ps-4 pe-4 py-3 my-6 ${styles}`}>
       {title ? <p className="text-sm font-semibold text-foreground mb-1">{title}</p> : null}
       <div className="text-sm leading-relaxed text-system-400 [&_a]:text-brand-300 [&_a]:underline [&_a]:underline-offset-4 dark:text-system-400 [&_a]:dark:text-brand-400">{children}</div>
     </div>

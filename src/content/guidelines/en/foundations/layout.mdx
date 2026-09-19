@@ -1,0 +1,114 @@
+---
+title: "Layout"
+description: "Container, breakpoints, and the bricks identity — full-width, full scale, zero gap zero radius"
+category: "Foundation"
+order: 15
+icon: "Layout01Icon"
+---
+
+Layout is the factory floor plan: every block has a fixed place, walls touch walls, and nothing floats. The system below is the website's own — this guide's narrow reading column is not the reference.
+
+<SectionHeading id="container" number="01" title="Container & Gutters" />
+
+No cap. Every section runs edge to edge — viewport start to viewport end. Backgrounds, borders, and media are always full-bleed; the only inset is the gutter as inner padding:
+
+<LayoutDemo variant="container" label="The container contract" note="Sections are w-full edge-to-edge. No max-width. Content breathes inside px-6 gutters, px-8 from lg up — applied as inner padding, not as a centered capsule." />
+
+<DoDontGrid
+  doItems={[
+    "w-full on every section — edge to edge, start to end.",
+    "px-6 gutters on mobile, px-8 from lg upward as inner padding.",
+    "Background, borders, and media always full-bleed.",
+  ]}
+  dontItems={[
+    "A centered max-width capsule (1440, 1280, 1200) that leaves side whitespace.",
+    "Content or cards touching the raw viewport edge with no gutter padding.",
+    "Gutters that change per section instead of per breakpoint.",
+  ]}
+/>
+
+<SectionHeading id="breakpoints" number="02" title="Breakpoints" />
+
+Mobile-first across the full scale, with one architectural switch. Stack below lg, row at lg and above — sm tunes type and spacing, xl and up simply hold the line:
+
+<LayoutDemo variant="breakpoints" label="The scale and the switch" note="sm tunes, lg restructures. Desktop-only architecture collapses to accent strips on mobile — never a shrunken desktop." />
+
+<div className="not-prose mt-3 border-y border-[var(--hig-border)] py-3">
+
+<p className="text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">Design small first.</span> Every composition starts as the single-column stack, then earns its row at lg. A layout that only works wide is unfinished.</p>
+
+<p className="mt-3 text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">Match the code switch.</span> Interactive behavior flips at the same lg line — <span className="font-mono">matchMedia("(max-width: 1024px)")</span> — so hover-driven desktop and tap-driven mobile never disagree about which layout they are in.</p>
+
+</div>
+
+<DoDontGrid
+  doItems={[
+    "Single-column mobile base for every composition.",
+    "The stack-to-row flip at lg as the primary switch.",
+    "Desktop bricks collapsing to thin accent strips on mobile.",
+  ]}
+  dontItems={[
+    "Desktop-first compositions squeezed to fit phones.",
+    "Mid-breakpoint snowflakes that exist on one page only.",
+    "Hiding content on mobile instead of restacking it.",
+  ]}
+/>
+
+<SectionHeading id="hero" number="03" title="Bricks Identity & Masonry System" />
+
+Bricks are not a hero-only treatment — they are a section system. Every section on the site is either **Bricks** (flush blocks, hairline joints, zero gap zero radius) or **Masonry** (dense 4-column masonry, no gaps). The assignment is random per section and alternates down the page, so the page reads as a factory floor: unpredictable cuts, same industrial joint. Borders are never drawn; they are inset shadows of half a pixel:
+
+<LayoutDemo variant="bricks" label="The bricks map — used in any section" note="Flush joins, 0.5px inset joints, fixed brick widths on desktop; thin accent strips on mobile. Any section may be Bricks or Masonry — chosen at random. Grid stays LTR, content inside flips." />
+
+<div className="not-prose mt-4 border-y border-[var(--hig-border)] py-4">
+
+<p className="text-[13px] leading-6 text-[var(--apple-text)]">The joint, as shipped in <span className="font-mono">AboutHero</span> — every brick carries it, nothing else draws a line:</p>
+
+<pre className="mt-3 overflow-x-auto border border-[var(--hig-border)] bg-[var(--system-100)] p-3 text-left font-mono text-[11px] leading-5 text-[var(--apple-text)]" dir="ltr">
+{`box-shadow: inset 0 0 0 0.5px rgba(0, 0, 0, 0.25);`}
+</pre>
+
+<p className="mt-3 text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">One joint, two languages.</span> Whether a section renders as Bricks or as Masonry, it is flush, sharp, and gapless. Both languages collapse to accent strips on mobile; neither invents a third language. Randomize per section — never lock “hero = bricks, rest = masonry.”</p>
+
+</div>
+
+<SectionHeading id="cinematic" number="03.1" title="Cinematic Media & Universal Video Grade" />
+
+The cinematic full-bleed media from the home hero is not hero-exclusive — every video on the site carries the same treatment: full-bleed cover, poster underneath, same grade on top. The grade below lives on all videos, not just the hero; white text sits only inside its dark zone:
+
+<LayoutDemo variant="hero" label="Every video — real playback with universal grade" note="Real <video> (remote, poster, muted loop) with the exact grade from § Images. Full-bleed media, caption inside the grade." />
+
+<div className="not-prose mt-4 border-y border-[var(--hig-border)] py-4">
+
+<p className="text-[13px] leading-6 text-[var(--apple-text)]">The exact grade, as shipped on every video — copy it, don’t approximate it (see also <span className="font-mono">§ Images — Text on Image</span>):</p>
+
+<pre className="mt-3 overflow-x-auto border border-[var(--hig-border)] bg-[var(--system-100)] p-3 text-left font-mono text-[11px] leading-5 text-[var(--apple-text)]" dir="ltr">
+{`background: linear-gradient(180deg,
+  rgba(0, 0, 0, 0.5) 0%,
+  rgba(0, 0, 0, 0.35) 55%,
+  rgba(0, 0, 0, 0.65) 100%);`}
+</pre>
+
+<p className="mt-3 text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">The video contract (every video):</span> remote file only, poster required, <span className="font-mono">autoPlay loop muted playsInline</span>. Poster doubles as the reduced-motion and no-JS fallback. Never commit video files to the repo.</p>
+
+<pre className="mt-3 overflow-x-auto border border-[var(--hig-border)] bg-[var(--system-100)] p-3 text-left font-mono text-[11px] leading-5 text-[var(--apple-text)]" dir="ltr">
+{`<video autoPlay loop muted playsInline poster={poster}>
+  <source src={remoteUrl} type="video/mp4" />
+</video>
+<div className="absolute inset-0" style={{ background: VIDEO_GRADE }} />`}
+</pre>
+
+</div>
+
+<DoDontGrid
+  doItems={[
+    "0 gap between joined blocks, 0px radius on every block — in Bricks and Masonry alike.",
+    "Inset 0.5px joints instead of drawn borders.",
+    "Same video grade and same video contract on every video, hero or not.",
+  ]}
+  dontItems={[
+    "Gutters between bricks or masonry items “for air” — air lives in gutters, not joints.",
+    "Rounded cards inside the architectural grid.",
+    "Per-video grades or per-section caps invented for one page.",
+  ]}
+/>

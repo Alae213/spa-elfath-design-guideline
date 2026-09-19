@@ -1,0 +1,292 @@
+﻿---
+title: "Icônes"
+description: "Un seul set, un seul langage de construction : HugeIcons en 16/20/24 — graisse, couleur et règles d'usage"
+category: "Foundation"
+order: 13
+icon: "Layers01Icon"
+---
+
+Une icône est un mot d'un vocabulaire partagé, pas une décoration. Chaque glyphe de ce guide vient d'un seul set, dessiné sur la même grille, avec la même graisse — pour qu'un engrenage de réglages ne semble jamais emprunté à un autre produit.
+
+<SectionHeading id="set" number="01" title="Le set approuvé" />
+
+Le set approuvé est HugeIcons (gratuit) : des glyphes au trait sur une grille de 24 pixels, dessinés pour les interfaces. Les dix-sept ci-dessous sont le set en usage dans ce guide — chacun marque sa section, et aucun autre glyphe ne peut porter ces sens :
+
+<IconGrid>
+
+<IconCell name="Idea01Icon" usage="Démarrage — principes de design." />
+<IconCell name="AccessibilityIcon" usage="Fondations — accessibilité." />
+<IconCell name="PaintBoardIcon" usage="Fondations — identité visuelle." />
+<IconCell name="ColorsIcon" usage="Fondations — couleurs." />
+<IconCell name="Layers01Icon" usage="Fondations — icônes (cette page)." />
+<IconCell name="Image01Icon" usage="Fondations — images." />
+<IconCell name="Layout01Icon" usage="Fondations — mise en page." />
+<IconCell name="RightToLeftListTriangleIcon" usage="Fondations — droite-à-gauche." />
+<IconCell name="TextFontIcon" usage="Fondations — typographie." />
+<IconCell name="Touch01Icon" usage="Composants — boutons." />
+<IconCell name="InputTextIcon" usage="Composants — champs." />
+<IconCell name="ToggleOnIcon" usage="Composants — contrôles de sélection." />
+<IconCell name="ChatFeedbackIcon" usage="Composants — retour utilisateur." />
+<IconCell name="GroupLayersIcon" usage="Composants — surcouches." />
+<IconCell name="Cards01Icon" usage="Composants — cartes." />
+<IconCell name="Database01Icon" usage="Composants — données." />
+<IconCell name="PlayCircleIcon" usage="Composants — médias." />
+
+</IconGrid>
+
+<div className="not-prose mt-3 border-y border-[var(--hig-border)] py-3">
+
+<p className="text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">Un seul set, sans mélange.</span> Les nouvelles icônes produit viennent de <span className="font-mono">HugeIcons</span> (<span className="font-mono">@hugeicons/core-free-icons</span> + <span className="font-mono">@hugeicons/react</span>) — jamais d'une seconde bibliothèque, jamais dessinées à la main sur le moment pour suivre une humeur.</p>
+
+<p className="mt-3 text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">Un sens par glyphe.</span> Un glyphe qui marque une section garde ce sens partout. Réassigner un glyphe utilisé à un sens nouveau casse la reconnaissance plus vite que toute refonte.</p>
+
+</div>
+
+<SectionHeading id="sizes" number="02" title="Tailles et graisse" />
+
+Trois tailles couvrent tous les contextes. Le glyphe lui-même ne change jamais — seul le conteneur dans lequel il est livré :
+
+<IconGrid>
+
+<IconCell name="Touch01Icon" size={16} usage="16 — en ligne avec le texte et les lignes de tableau." />
+<IconCell name="Touch01Icon" size={20} usage="20 — le défaut pour boutons et navigation." />
+<IconCell name="Touch01Icon" size={24} usage="24 — moments de mise en avant et états vides." />
+
+</IconGrid>
+
+<div className="not-prose mt-3 border-y border-[var(--hig-border)] py-3">
+
+<p className="text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">Graisse 1.5, toujours.</span> Chaque glyphe est rendu en <span className="font-mono">strokeWidth 1.5</span> sur sa grille de 24 pixels — la graisse qui se lit à 16 et reste légère à 24.</p>
+
+<p className="mt-3 text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">12 est un séparateur, pas une taille.</span> La seule exception concerne les séparateurs denses en ligne comme les chevrons de fil d'Ariane à 12 — jamais un glyphe interactif, jamais un porteur de sens.</p>
+
+<p className="mt-3 text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">Le 44 appartient au parent.</span> Les glyphes restent à 16/20/24 ; le minimum tactile de 44×44 vit sur le bouton ou la ligne qui les porte.</p>
+
+</div>
+
+<SectionHeading id="color" number="03" title="Couleur et contexte" />
+
+Les icônes n'ont pas de couleur propre. Chaque glyphe est rendu en <span className="font-mono">currentColor</span> et hérite de la couleur de texte de son contexte — le même glyphe ci-dessous, trois contextes, zéro recoloration :
+
+<IconGrid>
+
+<IconCell name="ColorsIcon" usage="Texte par défaut — le glyphe prend la couleur du corps." />
+
+<div className="text-[var(--apple-muted)]">
+
+<IconCell name="ColorsIcon" usage="Texte atténué — le glyphe s'apaise avec sa ligne." />
+
+</div>
+
+<IconCell name="ChatFeedbackIcon" boxStyle={{ backgroundColor: "rgba(163,192,223,0.30)" }} usage="Sur teinte de marque — toujours hérité, jamais peint en dur." />
+
+</IconGrid>
+
+<div className="not-prose mt-3 border-y border-[var(--hig-border)] py-3">
+
+<p className="text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">Hériter, ne pas peindre.</span> Figer un bleu dans un glyphe le cloue à un seul fond ; l'héritage laisse la même icône fonctionner sur blanc, sur teinte et en mode sombre sans variante.</p>
+
+</div>
+
+<DoDontGrid
+  doItems={[
+    "currentColor partout — le contexte décide.",
+    "Laisser les lignes atténuées apaiser leurs propres glyphes.",
+    "Tester le glyphe sur chaque fond sur lequel il est livré.",
+  ]}
+  dontItems={[
+    "Figer #1D65AF dans un glyphe « parce que c'est la marque ».",
+    "Une couleur différente pour le même glyphe à deux endroits.",
+    "Remplissages, dégradés ou ombres dans un glyphe au trait.",
+  ]}
+/>
+
+<SectionHeading id="usage" number="04" title="Règles d'usage" />
+
+Un glyphe sans libellé est une devinette. La navigation et les actions associent l'icône à un mot visible ; le rare bouton icône seule porte son sens dans le code à la place :
+
+<div className="not-prose mt-4 border border-[var(--hig-border)] p-4">
+
+<div className="flex items-center gap-4">
+
+<div className="flex h-11 w-11 items-center justify-center border border-[var(--hig-border)]" aria-hidden="true">
+
+<IconCell name="Idea01Icon" bare={true} />
+
+</div>
+
+<div>
+
+<p className="text-[13px] font-semibold text-[var(--apple-text)]">Boutons icône seule</p>
+
+<p className="mt-1 font-mono text-[11px] leading-5 text-[var(--apple-muted)]" dir="ltr">aria-hidden="true" on the svg · aria-label="Search" on the button</p>
+
+</div>
+
+</div>
+
+</div>
+
+<DoDontGrid
+  doItems={[
+    "Icône + libellé visible pour la navigation et les actions.",
+    "aria-hidden sur le glyphe, nom accessible sur le contrôle.",
+    "Le minimum de 44×44 sur le parent tactile, pas sur le glyphe.",
+  ]}
+  dontItems={[
+    "Une icône seule pour une action critique sans nom dans le code.",
+    "Les emoji comme icônes — 🚨 n'est pas un glyphe et ne passe pas à l'échelle.",
+    "Deux bibliothèques sur un même écran, aussi semblables soient-elles.",
+  ]}
+/>
+
+<SectionHeading id="misuse" number="05" title="Usages incorrects" />
+
+Les erreurs ci-dessous sont refusées en revue. Un glyphe au trait est un dessin fixe sur une grille fixe ; toute déformation en fait un autre dessin :
+
+<div className="not-prose mt-4 grid gap-4 md:grid-cols-2">
+
+<div className="border border-[var(--hig-border)]">
+
+<div className="flex items-center gap-2 border-b border-[var(--hig-border)] px-3 py-2.5">
+
+<span className="flex h-5 w-5 items-center justify-center rounded-full bg-red-600 text-[11px] font-bold text-white">✕</span>
+<span className="text-[13px] font-semibold text-[var(--apple-text)]">Étiré et écrasé</span>
+
+</div>
+
+<div className="flex h-24 items-center justify-center overflow-hidden px-6">
+
+<IconCell name="Touch01Icon" size={24} iconStyle={{ transform: "scaleX(1.6)" }} bare={true} />
+
+</div>
+
+<p className="px-3 py-2 text-[12px] leading-5 text-[var(--apple-muted)]">Changer le rapport largeur/hauteur — faux même quand un espace supplie d'être rempli.</p>
+
+</div>
+
+<div className="border border-[var(--hig-border)]">
+
+<div className="flex items-center gap-2 border-b border-[var(--hig-border)] px-3 py-2.5">
+
+<span className="flex h-5 w-5 items-center justify-center rounded-full bg-red-600 text-[11px] font-bold text-white">✕</span>
+<span className="text-[13px] font-semibold text-[var(--apple-text)]">Couleur de marque figée</span>
+
+</div>
+
+<div className="flex h-24 items-center justify-center overflow-hidden px-6 text-[#1D65AF]">
+
+<IconCell name="Touch01Icon" size={24} bare={true} />
+
+</div>
+
+<p className="px-3 py-2 text-[12px] leading-5 text-[var(--apple-muted)]">Figer le bleu dans le glyphe au lieu d'hériter la couleur du contexte.</p>
+
+</div>
+
+<div className="border border-[var(--hig-border)]">
+
+<div className="flex items-center gap-2 border-b border-[var(--hig-border)] px-3 py-2.5">
+
+<span className="flex h-5 w-5 items-center justify-center rounded-full bg-red-600 text-[11px] font-bold text-white">✕</span>
+<span className="text-[13px] font-semibold text-[var(--apple-text)]">Sous l'échelle</span>
+
+</div>
+
+<div className="flex h-24 items-center justify-center overflow-hidden px-6">
+
+<IconCell name="Touch01Icon" size={10} bare={true} />
+
+</div>
+
+<p className="px-3 py-2 text-[12px] leading-5 text-[var(--apple-muted)]">10 pixels écrasent la graisse 1.5 en bouillie — 16 est le plancher du sens.</p>
+
+</div>
+
+<div className="border border-[var(--hig-border)]">
+
+<div className="flex items-center gap-2 border-b border-[var(--hig-border)] px-3 py-2.5">
+
+<span className="flex h-5 w-5 items-center justify-center rounded-full bg-red-600 text-[11px] font-bold text-white">✕</span>
+<span className="text-[13px] font-semibold text-[var(--apple-text)]">Emoji comme icône</span>
+
+</div>
+
+<div className="flex h-24 items-center justify-center overflow-hidden px-6">
+
+<span className="text-[24px]" aria-hidden="true">🚨</span>
+
+</div>
+
+<p className="px-3 py-2 text-[12px] leading-5 text-[var(--apple-muted)]">Les emoji sont rendus par plateforme, sans langage de trait, et échouent en petite taille.</p>
+
+</div>
+
+</div>
+
+<DoDontGrid
+  doItems={[
+    "Le glyphe tel que livré : proportions, graisse et taille de l'échelle.",
+    "Un seul set sur tout le produit — HugeIcons, currentColor, 1.5.",
+  ]}
+  dontItems={[
+    "Étirer, repeindre, rapetisser ou substituer un emoji.",
+    "Redessiner un glyphe livré « un peu mieux » à la main.",
+  ]}
+/>
+
+<SectionHeading id="mirroring" number="06" title="Miroir" />
+
+La direction se miroir ; tout le reste reste fixe. Un glyphe qui pointe avec le flux de lecture bascule en arabe — un glyphe qui dépeint le monde, la marque ou le temps, jamais :
+
+<div className="not-prose mt-4 grid gap-4 md:grid-cols-2">
+
+<div className="border border-[var(--hig-border)]">
+
+<div className="flex items-center justify-between border-b border-[var(--hig-border)] px-4 py-2.5">
+
+<span className="text-[13px] font-semibold text-[var(--apple-text)]">Inverser</span>
+<span className="font-mono text-[11px] text-[var(--apple-muted)]">directionnel seul</span>
+
+</div>
+
+<div className="flex items-center justify-center gap-6 px-4 py-8" dir="ltr">
+
+<IconCell name="RightToLeftListTriangleIcon" bare={true} />
+
+<span className="font-mono text-[11px] text-[var(--apple-muted)]" dir="ltr">+ rtl: variant</span>
+
+</div>
+
+<p className="px-4 py-3 text-[12px] leading-5 text-[var(--apple-muted)]">Chevrons retour, marques de direction du texte, mouvement avant/arrière — miroirs avec le flux.</p>
+
+</div>
+
+<div className="border border-[var(--hig-border)]">
+
+<div className="flex items-center justify-between border-b border-[var(--hig-border)] px-4 py-2.5">
+
+<span className="text-[13px] font-semibold text-[var(--apple-text)]">Jamais inverser</span>
+<span className="font-mono text-[11px] text-[var(--apple-muted)]">fixe toujours</span>
+
+</div>
+
+<div className="flex items-center justify-center gap-6 px-4 py-8">
+
+<IconCell name="Touch01Icon" bare={true} />
+
+<span className="font-mono text-[11px] text-[var(--apple-muted)]" dir="ltr">logo · clock · ✓</span>
+
+</div>
+
+<p className="px-4 py-3 text-[12px] leading-5 text-[var(--apple-muted)]">Logos, marques universelles, horloges, objets réels — identiques dans toutes les directions.</p>
+
+</div>
+
+</div>
+
+<div className="not-prose mt-4 border-y border-[var(--hig-border)] py-4">
+
+<p className="text-[13px] leading-6 text-[var(--apple-text)]">La loi miroir complète vit en § Droite à gauche — inverser contre jamais-inverser. La règle du glyphe en une ligne : miroir du mouvement et de la direction, jamais de l'identité et du temps.</p>
+
+</div>

@@ -1,0 +1,117 @@
+﻿---
+title: "Boutons"
+description: "Primaire, secondaire, fantôme — mot à mot depuis la production, plus le destructif inventé et les règles d'icônes"
+category: "Core UI"
+order: 20
+icon: "Touch01Icon"
+---
+
+Les boutons sont la seule voix qui demande quelque chose. Trois variantes sont livrées en production — chaque classe ci-dessous est mot à mot depuis `Button.tsx` — et cette page ajoute les deux règles que la production n'a jamais écrites : un traitement destructif et les icônes dans les boutons. Les lignes marquées inventées sont des ajouts du guide pour les projets futurs ; tout le reste est livré aujourd'hui.
+
+<SectionHeading id="variants" number="01" title="Variantes" />
+
+Un rôle chacun. Le primaire conclut — CTA héros, envoi du formulaire de devis. Le secondaire propose — l'alternative à côté du primaire. Le fantôme se retire — actions discrètes dans les mises en page denses. Les trois partagent la base : `inline-flex items-center justify-center tracking-wide transition-colors duration-150`, angles nets, voix Plex :
+
+<ButtonDemo variant="variants" label="Les trois livrées, plus celle qu'on ajoute" tAction="Demander un devis" tDelete="Supprimer l'enregistrement" tAdd="Ajouter" tags={["primaire · plein · gras", "secondaire · contour · semi-gras", "fantôme · texte seul · semi-gras", "destructif · contour rouge INVENTÉ"]} note="Primaire, secondaire, fantôme : Button.tsx mot à mot. Destructif : INVENTÉ — contour rouge reflétant la logique du secondaire, rouge erreur #BE123C depuis la sémantique couleur." />
+
+<div className="not-prose mt-3 border-y border-[var(--hig-border)] py-3">
+
+<p className="text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">Le primaire est singulier.</span> Un primaire par vue — la seule chose que la page veut. Un second primaire est une seconde promesse ; rétrogradez-le en secondaire.</p>
+
+<p className="mt-3 text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">Le destructif est toujours le contour rouge — jamais de rouge plein par défaut.</span> La destruction doit sembler réversible jusqu'à l'engagement : contour au repos, remplissage plein au survol seulement. Le destructif ne partage jamais une ligne avec le primaire ; il se tient à part, dernier, seul.</p>
+
+</div>
+
+<DoDontGrid
+  doItems={[
+    "Primaire pour l'unique action de conclusion par vue.",
+    "Secondaire pour l'alternative sûre à côté.",
+    "Contour destructif pour les actes irréversibles — à part, dernier.",
+  ]}
+  dontItems={[
+    "Deux primaires en concurrence dans une vue.",
+    "Fantôme comme seule action d'une page — il n'a aucune présence.",
+    "Boutons rouges pleins comme état de repos.",
+  ]}
+/>
+
+<SectionHeading id="sizes" number="02" title="Tailles" />
+
+Trois hauteurs livrées — `sm h-8 px-4 text-xs`, `md h-10 px-5 text-sm`, `lg h-12 px-7 text-base` — et `md` est le défaut sur lequel le composant lui-même retombe. Les compagnons carrés icône-seule sont inventés, un carré par hauteur :
+
+<ButtonDemo variant="sizes" label="Hauteurs en taille réelle" tAction="Demander un devis" tAdd="Ajouter" tags={["sm · h-8 · px-4 · xs", "md · h-10 · px-5 · sm — défaut", "lg · h-12 · px-7 · base — héros + formulaire", "icône-seule · carré 32/40/48 · INVENTÉ"]} note="sm / md / lg : Button.tsx mot à mot, rendus à hauteur réelle. Carrés 32/40/48 : compagnons INVENTÉS — mêmes hauteurs, zéro padding horizontal, glyphe 20px." />
+
+<div className="not-prose mt-3 border-y border-[var(--hig-border)] py-3">
+
+<p className="text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">Le lg se mérite, il ne décore pas.</span> Promesses héros et envois de formulaires prennent `lg` ; tout ce qui est inline — lignes de tableau, pieds de carte, barres de nav — reste `md` ou `sm`. Un grand bouton ne décore jamais, il conclut.</p>
+
+<p className="mt-3 text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">Le tactile ne descend jamais sous 32.</span> Les 32px de `sm` sont le plancher — en dessous, ce n'est plus un bouton mais un lien. Les carrés icône-seule gardent toute la zone de frappe 32/40/48 ; le glyphe rétrécit, la cible jamais.</p>
+
+</div>
+
+<DoDontGrid
+  doItems={[
+    "md partout sauf si l'action conclut la page.",
+    "lg pour CTA héros et envois de formulaires uniquement.",
+    "Carrés icône-seule à pleine hauteur — glyphe 20px dedans.",
+  ]}
+  dontItems={[
+    "Boutons sm pour les actions principales de page.",
+    "Hauteurs entre barreaux (36px, 44px « c'est mieux »).",
+    "Boutons icône-seule sous 32px.",
+  ]}
+/>
+
+<SectionHeading id="states" number="03" title="États" />
+
+Quatre états, sans surprises. Le survol éclaircit le primaire vers brand-200 ; désactivé verrouille à `opacity-40` avec `cursor-not-allowed` ; le focus-visible dessine l'anneau global — `2px solid brand-300` avec offset `2px`, direct depuis `globals.css` :
+
+<ButtonDemo variant="states" label="Un bouton, quatre moments" tAction="Demander un devis" tags={["repos", "survol · brand-200 #69A2E5 (primaire)", "désactivé · opacity-40 · not-allowed", "focus-visible · 2px brand + offset 2px"]} note="Survol, désactivé et focus sont en direct — naviguez au clavier entre les spécimens. La ligne focus fige l'anneau pour référence." />
+
+<div className="not-prose mt-3 border-y border-[var(--hig-border)] py-3">
+
+<p className="text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">Désactivé s'explique.</span> Un bouton désactivé ne se tient jamais seul — il garde son libellé visible à 40 % et la copie autour dit pourquoi et ce qui débloque. Ni infobulles-excuses, ni disparition.</p>
+
+<p className="mt-3 text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">Le focus ne se retire jamais.</span> L'anneau 2px avec offset 2px est le curseur de l'utilisateur clavier — le restyler est permis, le retirer ne l'est pas. Chaque variante, fantôme et destructif inclus, prend le même anneau.</p>
+
+</div>
+
+<DoDontGrid
+  doItems={[
+    "Survols qui annoncent le clic — plus clair, jamais plus sombre, pour le primaire.",
+    "Désactivé à opacity-40 avec la raison dans la copie proche.",
+    "L'anneau 2px + 2px sur chaque variante.",
+  ]}
+  dontItems={[
+    "Boutons désactivés sans explication nulle part.",
+    "outline-none sans anneau de remplacement.",
+    "Spinners de chargement dans le bouton — voir Feedback.",
+  ]}
+/>
+
+<SectionHeading id="icons" number="04" title="Icônes dans les boutons" />
+
+La production ne livre aucune règle d'icônes — cette section est donc inventée entière, depuis les fondations icônes et RTL. Les icônes d'attaque agissent (`Add01` + « Demander un devis ») ; les directionnelles de fuite bougent (« En savoir plus » + flèche) ; les carrés se tiennent seuls. Un glyphe par bouton, toujours 20px, toujours `strokeWidth 1.5`, toujours `currentColor` :
+
+<ButtonDemo variant="icons" label="Glyphes avec passeports" tAction="Demander un devis" tMore="En savoir plus" tags={["attaque · non-directionnelle reste", "fuite · directionnelle · LTR", "RTL · directionnelles reflétées · fonctionnelles fixes"]} note="Section INVENTÉE. Les glyphes directionnels se reflètent en RTL ; le plus reste en place. La bande RTL montre les deux règles en direct." />
+
+<div className="not-prose mt-3 border-y border-[var(--hig-border)] py-3">
+
+<p className="text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">Le directionnel se reflète, le fonctionnel reste.</span> Flèches, chevrons et glyphes « suite » se retournent en RTL — ils pointent où va le lecteur. Plus, téléchargement, fermeture et glyphes de statut ne se retournent jamais — ils signifient, ils ne pointent pas.</p>
+
+<p className="mt-3 text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">L'icône-seule est un dernier recours avec un libellé de premier ordre.</span> Un bouton carré porte toujours un `aria-label` dans la langue du lecteur — le glyphe se voit, le libellé se dit. Deux icônes dans un bouton, c'est une phrase ; réécrivez le libellé plutôt.</p>
+
+</div>
+
+<DoDontGrid
+  doItems={[
+    "Un HugeIcon 20px par bouton, en currentColor.",
+    "Refléter les glyphes directionnels en RTL ; figer les fonctionnels.",
+    "aria-label sur chaque carré icône-seule.",
+  ]}
+  dontItems={[
+    "Deux glyphes dans un bouton.",
+    "Icônes plus/téléchargement/fermeture reflétées.",
+    "Carrés icône-seule sans nom accessible.",
+  ]}
+/>

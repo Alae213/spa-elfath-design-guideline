@@ -1,0 +1,153 @@
+﻿---
+title: "Images"
+description: "Photographie d'usine réelle uniquement — traitements, règles vidéo, texte sur image et performance"
+category: "Foundation"
+order: 14
+icon: "Image01Icon"
+---
+
+La photographie est une preuve. El Fath vend de vraies usines, de vraies lignes, une vraie production — chaque photo doit donc être un vrai site El Fath. Une image qui pourrait être n'importe quelle usine n'importe où ne dit rien de ce groupe.
+
+<SectionHeading id="real-only" number="01" title="Photos réelles uniquement" />
+
+Seules les photographies prises sur les sites El Fath sont livrées dans les interfaces El Fath. Banques d'images, scènes générées par IA et rendus présentés comme des photographies sont interdits — un lecteur qui reconnaît une photo de stock cesse de croire la légende à côté :
+
+<DoDontGrid
+  doItems={[
+    "Sols d'usine, lignes et production réels — photographiés sur site.",
+    "Vrai personnel sur vrais sites plutôt que modèles engagés.",
+    "Rendus et schémas étiquetés comme rendus et schémas.",
+  ]}
+  dontItems={[
+    "Photographies de stock, aussi industrielles soient-elles.",
+    "Scènes générées par IA présentées comme des lieux.",
+    "Un site quasi-concurrent présenté comme le nôtre.",
+  ]}
+/>
+
+<div className="not-prose mt-3 border-y border-[var(--hig-border)] py-3">
+
+<p className="text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">Le texte alternatif vit à côté.</span> Ce qu'une photo doit dire à un lecteur d'écran relève de l'accessibilité § Images et texte alternatif — cette page gouverne quelles photos existent et comment elles sont traitées.</p>
+
+</div>
+
+<SectionHeading id="treatments" number="02" title="Traitements et recadrages" />
+
+Trois formats approuvés couvrent tous les contextes. Angles vifs toujours — l'identité industrielle n'a aucun rayon, ni ses photographies. Remplissage par couverture, jamais d'étirement :
+
+<ImageGrid>
+
+<ImageDemo label="Héros — couverture plein-bleed" ratio="21 / 9" ratioTag="21:9" note="Couverture plein-viewport sur le héros d'accueil ; point focal tenu à l'écart de la zone de légende." />
+
+<ImageDemo label="Carte — sections et listings" ratio="16 / 9" ratioTag="16:9" note="Cartes de secteurs, lignes d'actualités, tuiles produits ; un seul ratio pour aligner les grilles." />
+
+<ImageDemo label="Vignette — détail carré" ratio="1 / 1" ratioTag="1:1" note="Visuels produit, encarts de détail et cellules de tableaux denses." />
+
+</ImageGrid>
+
+<DoDontGrid
+  doItems={[
+    "Remplissage object-fit cover avec ratio verrouillé par format.",
+    "Direction du point focal par breakpoint, pas selon l'humeur.",
+    "Rayon 0px sur toute surface photographique.",
+  ]}
+  dontItems={[
+    "Étirer ou écraser pour « faire tenir » dans le format.",
+    "Filtres, duotones ou vignetages lourds sur des sites réels.",
+    "Cartes photo arrondies empruntées à une autre marque.",
+  ]}
+/>
+
+<SectionHeading id="video" number="03" title="Règles vidéo" />
+
+Le héros d'accueil est une vidéo d'ambiance, pas une décoration avec bouton lecture. Fichier distant, affiche toujours, muet par construction :
+
+<ImageGrid>
+
+<ImageDemo label="Vidéo d'ambiance du héros" ratio="21 / 9" ratioTag="21:9" video={true} note="Ressource distante, affiche en dessous, boucle muette — atmosphère, jamais le message." />
+
+</ImageGrid>
+
+<div className="not-prose mt-4 border-y border-[var(--hig-border)] py-4">
+
+<p className="text-[13px] leading-6 text-[var(--apple-text)]">Le contrat, tel que livré dans <span className="font-mono">HomeHero</span> :</p>
+
+<pre className="mt-3 overflow-x-auto border border-[var(--hig-border)] bg-[var(--system-100)] p-3 text-left font-mono text-[11px] leading-5 text-[var(--apple-text)]" dir="ltr">
+{`<video autoPlay loop muted playsInline poster={poster}>
+  <source src={remoteUrl} type="video/mp4" />
+</video>`}
+</pre>
+
+<p className="mt-3 text-[12px] leading-5 text-[var(--apple-muted)]">Ressource distante sur l'hôte autorisé · l'affiche sert aussi de repli sans mouvement et sans JS · jamais de fichiers vidéo commités dans le dépôt.</p>
+
+</div>
+
+<DoDontGrid
+  doItems={[
+    "Fichiers distants uniquement ; affiches obligatoires sur chaque vidéo.",
+    "Lecture auto muette en boucle intégrée — muet par construction.",
+    "Respect de prefers-reduced-motion : affiche fixe, aucun mouvement.",
+  ]}
+  dontItems={[
+    "Commiter des fichiers vidéo dans le dépôt.",
+    "Du son sur une vidéo d'ambiance, jamais.",
+    "Une information portée par la seule vidéo sans alternative texte.",
+  ]}
+/>
+
+<SectionHeading id="text-on-image" number="04" title="Texte sur image" />
+
+Le texte blanc ne repose sur des photographies que via l'étalonnage de production ci-dessous — un voile noir, jamais bleu. L'étalonnage garantit le plancher de contraste ; les seuils s'appliquent toujours et restent testés :
+
+<ImageGrid>
+
+<ImageDemo label="Zone de légende étalonnée" ratio="21 / 9" ratioTag="21:9" overlay={true} caption="Vraies lignes, vraie production — depuis 1984" note="L'étalonnage héros exact avec un titre blanc ; le plancher sur lequel chaque légende se tient." />
+
+</ImageGrid>
+
+<div className="not-prose mt-4 border-y border-[var(--hig-border)] py-4">
+
+<p className="text-[13px] leading-6 text-[var(--apple-text)]">L'étalonnage exact, tel que livré dans <span className="font-mono">HomeHero</span> — copiez-le, ne l'approximez pas :</p>
+
+<pre className="mt-3 overflow-x-auto border border-[var(--hig-border)] bg-[var(--system-100)] p-3 text-left font-mono text-[11px] leading-5 text-[var(--apple-text)]" dir="ltr">
+{`background: linear-gradient(180deg,
+  rgba(0, 0, 0, 0.5) 0%,
+  rgba(0, 0, 0, 0.35) 55%,
+  rgba(0, 0, 0, 0.65) 100%);`}
+</pre>
+
+<p className="mt-3 text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">Les seuils de contraste tiennent aussi sur photos.</span> Le corps garde 4.5:1, le grand texte 3:1 (WCAG AA) — mesurés sur la zone la plus claire touchée par le texte, pas la plus sombre.</p>
+
+<p className="mt-3 text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">Le logo ne repose jamais sur une photo.</span> Le placement du wordmark suit § Identité visuelle : couleurs officielles sur fond blanc — une photographie n'est jamais ce fond.</p>
+
+</div>
+
+<DoDontGrid
+  doItems={[
+    "L'étalonnage exact ci-dessus pour chaque moment texte-sur-photo.",
+    "Titres blancs ; contraste testé par légende et par photo.",
+    "Point focal tenu à l'écart de la zone de légende.",
+  ]}
+  dontItems={[
+    "Voiles teintés bleus ou lavis de marque sur la photographie.",
+    "Photos brutes non étalonnées avec du corps par-dessus.",
+    "Logo, graphique ou champ de formulaire posé sur une photo.",
+  ]}
+/>
+
+<SectionHeading id="performance" number="05" title="Règles de performance" />
+
+Un héros qui arrive tard est une première impression vide. Les images sont livrées, pas seulement posées :
+
+<DoDontGrid
+  doItems={[
+    "next/image partout : avif/webp, tailles explicites, paresseux sous la ligne de flottaison.",
+    "Priorité à l'image héros/LCP — la première peinture, c'est la marque.",
+    "Imagerie distante uniquement depuis des hôtes autorisés (framerusercontent.com).",
+  ]}
+  dontItems={[
+    "Téléversements bruts multi-mégaoctets servis tels quels.",
+    "Chargement paresseux du héros LCP pour « économiser la bande ».",
+    "Nouveaux hôtes distants sans les ajouter à next.config.",
+  ]}
+/>

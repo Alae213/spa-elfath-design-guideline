@@ -1,0 +1,114 @@
+﻿---
+title: "Mise en page"
+description: "Conteneur, breakpoints et identité briques — pleine largeur, échelle complète, zéro gouttière zéro rayon"
+category: "Foundation"
+order: 15
+icon: "Layout01Icon"
+---
+
+La mise en page est le plan de sol de l'usine : chaque bloc a une place fixe, les murs touchent les murs, et rien ne flotte. Le système ci-dessous est celui du site lui-même — l'étroite colonne de lecture de ce guide n'est pas la référence.
+
+<SectionHeading id="container" number="01" title="Conteneur et gouttières" />
+
+Pas de cap. Chaque section va de bord à bord — du premier pixel au dernier. Fonds, bordures et médias sont toujours plein-bleed ; seul le retrait est la gouttière en padding interne :
+
+<LayoutDemo variant="container" label="Le contrat du conteneur" note="Sections en w-full de bord à bord. Pas de max-width. Le contenu respire dans des gouttières px-6, px-8 dès lg — en padding interne, pas en capsule centrée." />
+
+<DoDontGrid
+  doItems={[
+    "w-full sur chaque section — de bord à bord, du début à la fin.",
+    "Gouttières px-6 sur mobile, px-8 dès lg en padding interne.",
+    "Fond, bordures et médias toujours plein-bleed.",
+  ]}
+  dontItems={[
+    "Une capsule centrée max-width (1440, 1280) qui laisse des marges latérales.",
+    "Contenu touchant le bord brut du viewport sans padding de gouttière.",
+    "Des gouttières qui changent par section au lieu de par breakpoint.",
+  ]}
+/>
+
+<SectionHeading id="breakpoints" number="02" title="Breakpoints" />
+
+Mobile-first sur toute l'échelle, avec un seul interrupteur architectural. Empilement sous lg, rangée à lg et au-delà — sm règle la typo et l'espacement, xl et au-delà tiennent simplement la ligne :
+
+<LayoutDemo variant="breakpoints" label="L'échelle et l'interrupteur" note="sm règle, lg restructure. L'architecture desktop s'effondre en bandes d'accent sur mobile — jamais un desktop rétréci." />
+
+<div className="not-prose mt-3 border-y border-[var(--hig-border)] py-3">
+
+<p className="text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">Concevoir petit d'abord.</span> Chaque composition naît comme pile à une colonne, puis gagne sa rangée à lg. Une mise en page qui ne fonctionne qu'en large est inachevée.</p>
+
+<p className="mt-3 text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">Suivre l'interrupteur du code.</span> Le comportement interactif bascule sur la même ligne lg — <span className="font-mono">matchMedia("(max-width: 1024px)")</span> — pour que desktop au survol et mobile au tactile ne se disputent jamais la mise en page où ils sont.</p>
+
+</div>
+
+<DoDontGrid
+  doItems={[
+    "Base mobile à une colonne pour chaque composition.",
+    "Le basculement pile-vers-rangée à lg comme interrupteur principal.",
+    "Briques desktop effondrées en fines bandes d'accent sur mobile.",
+  ]}
+  dontItems={[
+    "Compositions desktop-first compressées pour tenir dans les téléphones.",
+    "Exceptions de breakpoints médians qui n'existent que sur une page.",
+    "Masquer du contenu sur mobile au lieu de le réempiler.",
+  ]}
+/>
+
+<SectionHeading id="hero" number="03" title="Identité briques et système Masonry" />
+
+Les briques ne sont pas un traitement réservé au héros — c'est un système de sections. Chaque section du site est soit **Briques** (blocs jointifs, joints capillaires, gouttière zéro, rayon zéro) soit **Masonry** (masonry dense 4 colonnes, sans espacement). L'affectation est aléatoire par section et alterne le long de la page, pour une lecture d'usine : découpes imprévisibles, même joint industriel. Les bordures ne sont pas dessinées ; ce sont des ombres inset d'un demi-pixel :
+
+<LayoutDemo variant="bricks" label="La carte des briques — utilisable dans toute section" note="Joints jointifs, joints inset 0.5px, largeurs de briques fixes sur desktop ; bandes d'accent sur mobile. Toute section peut être Briques ou Masonry — choix aléatoire. La grille reste LTR, le contenu dedans bascule." />
+
+<div className="not-prose mt-4 border-y border-[var(--hig-border)] py-4">
+
+<p className="text-[13px] leading-6 text-[var(--apple-text)]">Le joint, tel que livré dans <span className="font-mono">AboutHero</span> — chaque brique le porte, rien d'autre ne trace de ligne :</p>
+
+<pre className="mt-3 overflow-x-auto border border-[var(--hig-border)] bg-[var(--system-100)] p-3 text-left font-mono text-[11px] leading-5 text-[var(--apple-text)]" dir="ltr">
+{`box-shadow: inset 0 0 0 0.5px rgba(0, 0, 0, 0.25);`}
+</pre>
+
+<p className="mt-3 text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">Un joint, deux langages.</span> Qu'une section s'affiche en Briques ou en Masonry, elle est jointive, nette et sans gouttière. Les deux langages s'effondrent en bandes d'accent sur mobile ; aucun n'invente un troisième langage. Randomisez par section — ne figez jamais « héros = briques, reste = masonry ».</p>
+
+</div>
+
+<SectionHeading id="cinematic" number="03.1" title="Média cinématique et grade vidéo universel" />
+
+Le média plein-bleed cinématique du héros d'accueil n'est pas exclusif au héros — chaque vidéo du site porte le même traitement : cover plein-bleed, poster dessous, même grade par dessus. Le grade ci-dessous vit sur toutes les vidéos, pas seulement le héros ; le texte blanc n'habite que sa zone sombre :
+
+<LayoutDemo variant="hero" label="Chaque vidéo — lecture réelle avec grade universel" note="Vraie <video> (distante, poster, boucle muette) avec le grade exact de § Images. Média plein-bleed, légende dans le grade." />
+
+<div className="not-prose mt-4 border-y border-[var(--hig-border)] py-4">
+
+<p className="text-[13px] leading-6 text-[var(--apple-text)]">Le grade exact, tel que livré sur chaque vidéo — copiez-le, ne l'approximez pas (voir aussi <span className="font-mono">§ Images — Text on Image</span>) :</p>
+
+<pre className="mt-3 overflow-x-auto border border-[var(--hig-border)] bg-[var(--system-100)] p-3 text-left font-mono text-[11px] leading-5 text-[var(--apple-text)]" dir="ltr">
+{`background: linear-gradient(180deg,
+  rgba(0, 0, 0, 0.5) 0%,
+  rgba(0, 0, 0, 0.35) 55%,
+  rgba(0, 0, 0, 0.65) 100%);`}
+</pre>
+
+<p className="mt-3 text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">Le contrat vidéo (chaque vidéo) :</span> fichier distant uniquement, poster requis, <span className="font-mono">autoPlay loop muted playsInline</span>. Le poster sert de fallback reduced-motion et no-JS. Ne jamais committer de vidéos dans le repo.</p>
+
+<pre className="mt-3 overflow-x-auto border border-[var(--hig-border)] bg-[var(--system-100)] p-3 text-left font-mono text-[11px] leading-5 text-[var(--apple-text)]" dir="ltr">
+{`<video autoPlay loop muted playsInline poster={poster}>
+  <source src={remoteUrl} type="video/mp4" />
+</video>
+<div className="absolute inset-0" style={{ background: VIDEO_GRADE }} />`}
+</pre>
+
+</div>
+
+<DoDontGrid
+  doItems={[
+    "Gouttière 0 entre blocs joints, rayon 0px sur chaque bloc — en Briques comme en Masonry.",
+    "Joints inset 0.5px au lieu de bordures dessinées.",
+    "Même grade vidéo et même contrat vidéo sur chaque vidéo, héros ou non.",
+  ]}
+  dontItems={[
+    "Des gouttières entre briques ou items masonry « pour aérer » — l'air vit dans les gouttières, pas dans les joints.",
+    "Des cartes arrondies dans la grille architecturale.",
+    "Des grades par vidéo ou des caps par section inventés pour une seule page.",
+  ]}
+/>

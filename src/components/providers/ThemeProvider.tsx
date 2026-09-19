@@ -54,6 +54,9 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     const initial: Theme = stored ?? DEFAULT_THEME;
     // eslint-disable-next-line react-hooks/set-state-in-effect -- hydrate theme from storage on mount
     setThemeState(initial);
+    try {
+      document.cookie = `${STORAGE_KEY}=${initial}; path=/; max-age=31536000; samesite=lax`;
+    } catch {}
 
     const sys = getSystemTheme();
     setSystemTheme(sys);
@@ -93,6 +96,8 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
       localStorage.setItem(STORAGE_KEY, t);
       // clean legacy
       localStorage.removeItem("theme");
+      // mirror to cookie for SSR initial HTML (RootLayout reads cookie to avoid FOUC without inline script)
+      document.cookie = `${STORAGE_KEY}=${t}; path=/; max-age=31536000; samesite=lax`;
     } catch {}
   }, []);
 

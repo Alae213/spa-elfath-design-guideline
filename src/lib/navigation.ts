@@ -17,148 +17,163 @@ import {
   Database01Icon,
   PlayCircleIcon,
 } from "@hugeicons/core-free-icons";
+import type { Dictionary } from "@/i18n";
+
 export type NavItem = {
-  title: string;
+  key: string;
   href: string;
-  description?: string;
   // Hugeicons icon object - IconSvgObject from @hugeicons/core-free-icons
   icon: unknown;
 };
 
 export type NavSection = {
-  title: string;
+  key: string;
   items: NavItem[];
   defaultOpen?: boolean;
 };
 
+export type LocalizedNavItem = NavItem & { title: string; description?: string };
+
+export type LocalizedNavSection = Omit<NavSection, "items"> & { title: string; items: LocalizedNavItem[] };
+
 export const navigation: NavSection[] = [
   {
-    title: "Get Started",
+    key: "get-started",
     defaultOpen: true,
     items: [
       {
-        title: "Design Principles",
+        key: "design-principles",
         href: "/guidelines/get-started/design-principles",
-        description: "Core principles shaping every interface",
         icon: Idea01Icon,
       },
     ],
   },
   {
-    title: "Foundation",
+    key: "foundation",
     defaultOpen: true,
     items: [
       {
-        title: "Accessibility",
+        key: "accessibility",
         href: "/guidelines/foundations/accessibility",
-        description: "Inclusive design for everyone",
         icon: AccessibilityIcon,
       },
       {
-        title: "Branding",
+        key: "branding",
         href: "/guidelines/foundations/branding",
-        description: "Identity, logo and brand usage",
         icon: PaintBoardIcon,
       },
       {
-        title: "Colors",
+        key: "colors",
         href: "/guidelines/foundations/colors",
-        description: "Palette, tokens and usage",
         icon: ColorsIcon,
       },
       {
-        title: "Icons",
+        key: "icons",
         href: "/guidelines/foundations/icons",
-        description: "Hugeicons system and guidance",
         icon: Layers01Icon,
       },
       {
-        title: "Images",
+        key: "images",
         href: "/guidelines/foundations/images",
-        description: "Imagery, illustration and photos",
         icon: Image01Icon,
       },
       {
-        title: "Layout",
+        key: "layout",
         href: "/guidelines/foundations/layout",
-        description: "Grid, spacing and structure",
         icon: Layout01Icon,
       },
       {
-        title: "RTL",
+        key: "rtl",
         href: "/guidelines/foundations/rtl",
-        description: "Right-to-left and bidirectional",
         icon: RightToLeftListTriangleIcon,
       },
       {
-        title: "Typography",
+        key: "typography",
         href: "/guidelines/foundations/typography",
-        description: "Type scale and font system",
         icon: TextFontIcon,
       },
     ],
   },
   {
-    title: "Core UI",
+    key: "core-ui",
     defaultOpen: true,
     items: [
       {
-        title: "Buttons",
+        key: "buttons",
         href: "/guidelines/components/core-ui/buttons",
-        description: "Primary, secondary and ghost",
         icon: Touch01Icon,
       },
       {
-        title: "Inputs",
+        key: "inputs",
         href: "/guidelines/components/core-ui/inputs",
-        description: "Text fields and areas",
         icon: InputTextIcon,
       },
       {
-        title: "Selection Controls",
+        key: "selection-controls",
         href: "/guidelines/components/core-ui/selection-controls",
-        description: "Checkboxes, radios, switches",
         icon: ToggleOnIcon,
       },
       {
-        title: "Feedback",
+        key: "feedback",
         href: "/guidelines/components/core-ui/feedback",
-        description: "Alerts, toasts and progress",
         icon: ChatFeedbackIcon,
       },
       {
-        title: "Overlayers",
+        key: "overlayers",
         href: "/guidelines/components/core-ui/overlayers",
-        description: "Modals, sheets and popovers",
         icon: GroupLayersIcon,
       },
     ],
   },
   {
-    title: "Content Components",
+    key: "content",
     defaultOpen: true,
     items: [
       {
-        title: "Cards",
+        key: "cards",
         href: "/guidelines/components/content/cards",
-        description: "Content containers and previews",
         icon: Cards01Icon,
       },
       {
-        title: "Data",
+        key: "data",
         href: "/guidelines/components/content/data",
-        description: "Tables, lists and data views",
         icon: Database01Icon,
       },
       {
-        title: "Media",
+        key: "media",
         href: "/guidelines/components/content/media",
-        description: "Video, audio and galleries",
         icon: PlayCircleIcon,
       },
     ],
   },
 ];
+
+function localizeItem(item: NavItem, dict: Dictionary): LocalizedNavItem {
+  const entry = dict.nav.items[item.href];
+  return {
+    ...item,
+    title: entry?.title ?? item.key,
+    description: entry?.description,
+  };
+}
+
+export function getNavigation(dict: Dictionary): LocalizedNavSection[] {
+  return navigation.map((section) => ({
+    key: section.key,
+    defaultOpen: section.defaultOpen,
+    title: dict.nav.sections[section.key] ?? section.key,
+    items: section.items.map((item) => localizeItem(item, dict)),
+  }));
+}
+
+export function findNavItemBySlug(slug: string[], dict: Dictionary): LocalizedNavItem | undefined {
+  const href = `/guidelines/${slug.join("/")}`;
+  for (const sec of navigation) {
+    const f = sec.items.find((i) => i.href === href);
+    if (f) return localizeItem(f, dict);
+  }
+  return undefined;
+}
 
 export function getBreadcrumbs(pathname: string): { title: string; href: string }[] {
   const segments = pathname.replace(/^\//, "").split("/").filter(Boolean);
@@ -173,17 +188,4 @@ export function getBreadcrumbs(pathname: string): { title: string; href: string 
     crumbs.push({ title, href: acc });
   }
   return crumbs;
-}
-
-export function findNavItem(href: string): NavItem | undefined {
-  for (const sec of navigation) {
-    const f = sec.items.find((i) => i.href === href);
-    if (f) return f;
-  }
-  return undefined;
-}
-
-export function findNavItemBySlug(slug: string[]): NavItem | undefined {
-  const href = `/guidelines/${slug.join("/")}`;
-  return findNavItem(href);
 }

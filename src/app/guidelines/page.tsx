@@ -1,18 +1,26 @@
 import Link from "next/link";
-import { navigation } from "@/lib/navigation";
+import { cookies } from "next/headers";
+import { getDictionary, resolveLocale } from "@/i18n";
+import { getNavigation } from "@/lib/navigation";
 import { HugeiconsIcon } from "@hugeicons/react";
 
-export default function GuidelinesHome() {
+export default async function GuidelinesHome() {
+  const store = await cookies();
+  const locale = resolveLocale(store.get("sdg-lang")?.value);
+  const dict = getDictionary(locale);
+  const navigation = getNavigation(dict);
+  const dir = locale === "ar" ? "rtl" : "ltr";
+
   return (
     <div className="w-full px-6 py-8">
-      <div className="max-w-[640px]">
-        <h1 className="text-[28px] font-semibold leading-[1.1] text-[var(--apple-text)]">Design Guidelines</h1>
-        <p className="mt-2 text-[14px] leading-[1.5] text-[var(--apple-muted)]">Foundation for SPA El Fath.</p>
+      <div className="max-w-[640px]" dir={dir}>
+        <h1 className="text-[28px] font-semibold leading-[1.1] text-[var(--apple-text)]">{dict.home.heading}</h1>
+        <p className="mt-2 text-[14px] leading-[1.5] text-[var(--apple-muted)]">{dict.home.subheading}</p>
       </div>
 
-      <div className="mt-8 grid gap-3 sm:grid-cols-2">
+      <div className="mt-8 grid gap-3 sm:grid-cols-2" dir={dir}>
         {navigation.map((section) => (
-          <div key={section.title} className="bg-transparent p-4 rounded-lg">
+          <div key={section.key} className="bg-transparent p-4 rounded-lg">
             <div className="flex items-center gap-2">
               <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-[var(--apple-hover)] text-[var(--apple-muted)]">
                 <HugeiconsIcon icon={section.items[0].icon as never} size={14} strokeWidth={1.5} />

@@ -1,0 +1,154 @@
+﻿---
+title: "الصور"
+description: "صور المصانع الحقيقية فقط — المعالجات وقواعد الفيديو والنص على الصورة والأداء"
+category: "Foundation"
+order: 14
+icon: "Image01Icon"
+rtl: true
+---
+
+التصوير دليل. الفتح تبيع مصانع حقيقية وخطوطًا حقيقية وإنتاجًا حقيقيًا — فكل صورة يجب أن تكون موقعًا حقيقيًا للفتح. الصورة التي قد تكون لأي مصنع في أي مكان لا تقول شيئًا عن هذه المجموعة.
+
+<SectionHeading id="real-only" number="01" title="الصور الحقيقية فقط — Real Photos Only" />
+
+فقط الصور الملتقطة في مواقع الفتح تُشحَن في واجهات الفتح. مكتبات الصور الجاهزة والمشاهد المولّدة بالذكاء الاصطناعي والرسوم المقدَّمة كصور فوتوغرافية ممنوعة — القارئ الذي يتعرّف على صورة جاهزة يتوقف عن تصديق التسمية بجانبها:
+
+<DoDontGrid
+  doItems={[
+    "أرضيات المصانع والخطوط والإنتاج الحقيقية — مصوَّرة في الموقع.",
+    "موظفون حقيقيون في مواقع حقيقية بدل عارضين مستأجرين.",
+    "الرسوم والمخططات موسومة كرسوم ومخططات.",
+  ]}
+  dontItems={[
+    "الصور الجاهزة مهما بدت صناعية.",
+    "المشاهد المولّدة بالذكاء الاصطناعي المقدَّمة كأماكن.",
+    "موقع يشبه المنافس يُقدَّم كموقعنا.",
+  ]}
+/>
+
+<div className="not-prose mt-3 border-y border-[var(--hig-border)] py-3">
+
+<p className="text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">النص البديل تحكمه صفحة مجاورة.</span> ما يجب أن تقوله الصورة لقارئ الشاشة تحكمه إمكانية الوصول § الصور والنص البديل — هذه الصفحة تحكم أي الصور موجودة وكيف تُعالَج.</p>
+
+</div>
+
+<SectionHeading id="treatments" number="02" title="المعالجات والقص — Treatments & Crops" />
+
+ثلاثة أحياز معتمدة تغطي كل سياق. زوايا حادة دائمًا — الهوية الصناعية لا انحناء فيها، ولا في صورها. الملء بالتغطية، لا بالمدّ أبدًا:
+
+<ImageGrid>
+
+<ImageDemo label="البطل — تغطية كاملة الحواف" ratio="21 / 9" ratioTag="21:9" note="تغطية كاملة لمنطقة العرض في بطل الرئيسية؛ والنقطة المحورية بعيدة عن منطقة التسمية." />
+
+<ImageDemo label="البطاقة — للأقسام والقوائم" ratio="16 / 9" ratioTag="16:9" note="بطاقات القطاعات وصفوف الأخبار وبلاطات المنتجات؛ نسبة واحدة لتصطف الشبكات." />
+
+<ImageDemo label="المصغّرة — للتفاصيل المربعة" ratio="1 / 1" ratioTag="1:1" note="صور المنتجات والتفاصيل المضمّنة وخلايا الجداول الكثيفة." />
+
+</ImageGrid>
+
+<DoDontGrid
+  doItems={[
+    "ملء object-fit cover مع قفل النسبة لكل حيّز.",
+    "توجيه النقطة المحورية لكل عرض لا لكل مزاج.",
+    "نصف قطر 0px على كل سطح فوتوغرافي.",
+  ]}
+  dontItems={[
+    "المدّ أو السحق «ليناسب» الحيّز.",
+    "الفلاتر أو الثنائيات اللونية أو التظليل الثقيل فوق المواقع الحقيقية.",
+    "بطاقات صور مدوّرة مستعارة من علامة أخرى.",
+  ]}
+/>
+
+<SectionHeading id="video" number="03" title="قواعد الفيديو — Video Rules" />
+
+بطل الرئيسية فيديو محيطي لا زينة بزر تشغيل. ملف بعيد وملصق دائمًا وصامت بالبناء:
+
+<ImageGrid>
+
+<ImageDemo label="فيديو البطل المحيطي" ratio="21 / 9" ratioTag="21:9" video={true} note="أصل بعيد وملصق تحته وحلقة صامتة — أجواء لا رسالة." />
+
+</ImageGrid>
+
+<div className="not-prose mt-4 border-y border-[var(--hig-border)] py-4">
+
+<p className="text-[13px] leading-6 text-[var(--apple-text)]">العقد كما هو مشحون في <span className="font-mono">HomeHero</span>:</p>
+
+<pre className="mt-3 overflow-x-auto border border-[var(--hig-border)] bg-[var(--system-100)] p-3 text-left font-mono text-[11px] leading-5 text-[var(--apple-text)]" dir="ltr">
+{`<video autoPlay loop muted playsInline poster={poster}>
+  <source src={remoteUrl} type="video/mp4" />
+</video>`}
+</pre>
+
+<p className="mt-3 text-[12px] leading-5 text-[var(--apple-muted)]">أصل بعيد على المضيف المعتمد · الملصق بديل مزدوج لغياب الحركة وغياب الجافاسكربت · لا تُحفَظ ملفات الفيديو في المستودع أبدًا.</p>
+
+</div>
+
+<DoDontGrid
+  doItems={[
+    "ملفات بعيدة فقط؛ وملصقات إلزامية على كل فيديو.",
+    "تشغيل تلقائي صامت متكرر مضمّن — صامت بالبناء.",
+    "احترام prefers-reduced-motion: الملصق ثابت ولا حركة.",
+  ]}
+  dontItems={[
+    "حفظ ملفات الفيديو داخل المستودع.",
+    "الصوت في الفيديو المحيطي أبدًا.",
+    "معلومة يحملها الفيديو وحده دون بديل نصي.",
+  ]}
+/>
+
+<SectionHeading id="text-on-image" number="04" title="النص على الصورة — Text on Image" />
+
+النص الأبيض يجلس على الصور فقط عبر الدرجة الإنتاجية أدناه — تراكب أسود لا أزرق أبدًا. الدرجة تضمن أرضية التباين؛ والعتبات تبقى سارية وتُختَبر دومًا:
+
+<ImageGrid>
+
+<ImageDemo label="منطقة التسمية المدرَّجة" ratio="21 / 9" ratioTag="21:9" overlay={true} caption="خطوط حقيقية وإنتاج حقيقي — منذ 1984" note="الدرجة البطولية الدقيقة مع عنوان أبيض؛ الأرضية التي تقف عليها كل تسمية." />
+
+</ImageGrid>
+
+<div className="not-prose mt-4 border-y border-[var(--hig-border)] py-4">
+
+<p className="text-[13px] leading-6 text-[var(--apple-text)]">الدرجة الدقيقة كما هي مشحونة في <span className="font-mono">HomeHero</span> — انسخها ولا تقاربها:</p>
+
+<pre className="mt-3 overflow-x-auto border border-[var(--hig-border)] bg-[var(--system-100)] p-3 text-left font-mono text-[11px] leading-5 text-[var(--apple-text)]" dir="ltr">
+{`background: linear-gradient(180deg,
+  rgba(0, 0, 0, 0.5) 0%,
+  rgba(0, 0, 0, 0.35) 55%,
+  rgba(0, 0, 0, 0.65) 100%);`}
+</pre>
+
+<p className="mt-3 text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">عتبات التباين سارية على الصور أيضًا.</span> نص المتن يحافظ على 4.5:1 والنص الكبير على 3:1 (WCAG AA) — مقاسًا على أفتح بقعة يلمسها النص لا على أغمقها.</p>
+
+<p className="mt-3 text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">الشعار لا يجلس على صورة أبدًا.</span> تموضع الكلمة يتبع § الهوية البصرية: الألوان الرسمية على أرضية بيضاء — والصورة ليست تلك الأرضية أبدًا.</p>
+
+</div>
+
+<DoDontGrid
+  doItems={[
+    "الدرجة الدقيقة أعلاه لكل لحظة نص على صورة.",
+    "عناوين بيضاء؛ والتباين مختبَر لكل تسمية وكل صورة.",
+    "إبقاء النقطة المحورية بعيدة عن منطقة التسمية.",
+  ]}
+  dontItems={[
+    "التراكبات المزرقّة أو الغسلات الرسمية فوق التصوير.",
+    "صور خام غير مدرَّجة ونص متن فوقها.",
+    "الشعار أو رسم بياني أو حقل نموذج فوق صورة.",
+  ]}
+/>
+
+<SectionHeading id="performance" number="05" title="قواعد الأداء — Performance Rules" />
+
+البطل الذي يصل متأخرًا انطباع أول فارغ. الصور تُسلَّم لا توضَع فقط:
+
+<DoDontGrid
+  doItems={[
+    "next/image في كل مكان: avif/webp ومقاسات صريحة وكسل تحت الطيّة.",
+    "الأولوية لصورة البطل/LCP — أول رسم هو الهوية.",
+    "الصور البعيدة فقط من المضيفين المعتمدين (framerusercontent.com).",
+  ]}
+  dontItems={[
+    "رفوعات خام بعدة ميغابايت تُقدَّم كما هي.",
+    "الكسل على بطل LCP «توفيرًا للنطاق».",
+    "مضيفون بعيدون جدد دون إضافتهم إلى next.config.",
+  ]}
+/>

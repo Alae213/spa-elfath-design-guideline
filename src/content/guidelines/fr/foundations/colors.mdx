@@ -1,0 +1,171 @@
+﻿---
+title: "Couleurs"
+description: "La palette El Fath : bleus de marque, gris chauds et accents sémantiques — un système documenté, jamais un choix libre"
+category: "Foundation"
+order: 12
+icon: "ColorsIcon"
+---
+
+La couleur est ce qu'une personne lit le plus vite dans le produit, et elle doit se comporter comme un système, pas comme une décoration. Chaque couleur de cette référence a un nom, un token et un rôle. Une couleur sans rôle n'existe pas.
+
+<SectionHeading id="brand" number="01" title="Palette de marque" />
+
+Quatre bleus fixes portent l'identité. Ce sont les seules couleurs autorisées à dire « El Fath », et leurs valeurs exactes ci-dessous sont contraignantes — ne les ajustez jamais, aussi proche que semble la correspondance ou aussi bien qu'elle paraisse convenir à une campagne :
+
+<div className="not-prose mt-4 grid gap-4 sm:grid-cols-2">
+
+<ColorSwatch name="Bleu primaire" token="--brand-300" hex="#1D65AF" usage="Boutons, liens, focus, états actifs, accents clés." />
+
+<ColorSwatch name="Bleu marine" token="--brand-400" hex="#193B62" usage="Titres sur fond teinté, surfaces sombres, sélection sur blanc." />
+
+<ColorSwatch name="Bleu survol" token="--brand-200" hex="#69A2E5" usage="États de survol et d'appui du bleu primaire." />
+
+<ColorSwatch name="Teinte douce" token="--brand-100" hex="#A3C0DF" usage="Surlignage de sélection, fonds de pastilles et d'encadrés teintés." />
+
+</div>
+
+<div className="not-prose mt-3 border-y border-[var(--hig-border)] py-3">
+
+<p className="text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">Brand-100 est une teinte, pas un aplat.</span> Dans la source de vérité (<span className="font-mono">spa-elfath-website/src/app/globals.css</span>), elle est déclarée en alpha : <span className="font-mono">rgba(163, 192, 223, 0.35)</span>. Superposez-la sur une surface plutôt que d'imprimer une approximation hexadécimale grossière.</p>
+
+<p className="mt-3 text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">Jamais d'approximation.</span> Si — et seulement si — l'hexadécimal exact est indisponible, utilisez l'équivalent hsl de la même valeur ; ajuster la luminosité pour « la faire ressortir » change la marque.</p>
+
+</div>
+
+<DoDontGrid
+  doItems={[
+    "Le #1D65AF primaire exact pour chaque accent interactif.",
+    "L'assombrissement vers #193B62 pour le contraste sur fond teinté.",
+    "La lecture de la teinte telle qu'elle est livrée : rgba(163,192,223,0.35).",
+  ]}
+  dontItems={[
+    "La substitution d'un bleu « plus joli » de la même famille.",
+    "Le mélange des bleus de marque entre eux en nouveaux dégradés.",
+    "L'application de la palette au logo officiel (§ Identité visuelle).",
+  ]}
+/>
+
+<SectionHeading id="neutrals" number="02" title="Gris chauds et neutres" />
+
+Les neutres sont chauds — légèrement beiges, jamais gris froids — et portent la quasi-totalité de la page. Le bleu est l'accent ; ces six paliers sont le corps :
+
+<div className="not-prose mt-4 border-y border-[var(--hig-border)] divide-y divide-[var(--hig-border)]">
+
+<ColorRow token="--system-50" hex="#FAF8F6" label="Fond de page" />
+<ColorRow token="--system-100" hex="#F5F4F3" label="Remplissage subtil de section" />
+<ColorRow token="--system-200" hex="#ECE8E4" label="Bordures et séparateurs" />
+<ColorRow token="--system-300" hex="#D9D9D9" label="Désactivé et espaces réservés" />
+<ColorRow token="--system-400" hex="#737373" label="Texte secondaire" />
+<ColorRow token="--system-500" hex="#1F1F1F" label="Texte principal" />
+
+</div>
+
+<div className="not-prose mt-3 border-y border-[var(--hig-border)] py-3">
+
+<p className="text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">Le gris est le système structurel, le bleu est l'accent.</span> Si un design se lit comme « beaucoup de bleu », la palette est utilisée en décoration — revenez aux gris et laissez le bleu pointer vers ce qui compte.</p>
+
+<p className="mt-3 text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">Chaque palier a un rôle.</span> Les paliers existent pour effacer les bordures, aérer le texte et séparer les surfaces. Deux gris côte à côte indiscernables ont un rôle indéfini.</p>
+
+</div>
+
+<SectionHeading id="semantic" number="03" title="Couleurs sémantiques" />
+
+Les accents sémantiques sont réservés au statut — succès, avertissement et danger. Ils ne sont jamais décoratifs et n'apparaissent jamais sans mot-signal ou icône à côté d'eux :
+
+<div className="not-prose mt-4 grid gap-4 sm:grid-cols-3">
+
+<ColorSwatch name="Succès" token="--color-success" hex="#0A7A42" usage="Enregistré, confirmé, en stock, liste correcte." />
+
+<ColorSwatch name="Avertissement" token="--color-warning" hex="#B45309" usage="En attente d'approbation, stock bas, attention requise." />
+
+<ColorSwatch name="Danger" token="--color-danger" hex="#BE123C" usage="Échec, invalide, supprimé, injoignable." />
+
+</div>
+
+<DoDontGrid
+  doItems={[
+    "Couleur de statut + icône + texte, toujours comme un seul signal.",
+    "Couleurs sémantiques uniquement dans des contextes de statut.",
+    "Vérification du contraste sur fonds teintés avant livraison.",
+  ]}
+  dontItems={[
+    "Le vert par habitude pour « approuvé » quand le système pourrait être rouge.",
+    "La décoration de graphiques en couleurs sémantiques selon l'humeur.",
+    "Le recours à la seule couleur — le rouge/vert n'est pas un message.",
+  ]}
+/>
+
+<SectionHeading id="usage" number="04" title="Table token → usage" />
+
+Un token, un rôle. Le modèle mental : <span className="font-mono">--brand-300</span> est la seule couleur qu'un utilisateur devrait pouvoir nommer, et les gris existent pour que le bleu reste rare :
+
+<div className="not-prose mt-4 border-y border-[var(--hig-border)] divide-y divide-[var(--hig-border)]">
+
+<ColorRow token="--brand-300" hex="#1D65AF" label="Interactif : liens, boutons, contour de focus" />
+<ColorRow token="--brand-400" hex="#193B62" label="Paire de contraste du bleu sur fond teinté" />
+<ColorRow token="--brand-200" hex="#69A2E5" label="État de survol et d'appui du primaire" />
+<ColorRow token="--brand-100" hex="#A3C0DF" label="Sélection et fonds teintés doux" />
+<ColorRow token="--system-50" hex="#FAF8F6" label="Toile — le fond de page" />
+<ColorRow token="--system-500" hex="#1F1F1F" label="Texte principal et avant-plan" />
+<ColorRow token="--system-200" hex="#ECE8E4" label="Bordures et séparateurs structurels" />
+
+</div>
+
+<SectionHeading id="gradients" number="05" title="Dégradés" />
+
+La marque est plate à dessein — industrielle, nette, honnête. Les dégradés qui simulent la profondeur sont le moyen le plus rapide de perdre l'identité, donc la règle est courte : pas de dégradés multi-étapes, pas de fonds en maillage, pas de texte en dégradé.
+
+<div className="not-prose mt-4 grid gap-4 sm:grid-cols-2">
+
+<div className="border border-[var(--hig-border)]">
+
+<div className="flex items-center justify-between border-b border-[var(--hig-border)] px-4 py-2.5">
+
+<span className="text-[13px] font-semibold text-[var(--apple-text)]">Autorisé</span>
+<span className="font-mono text-[11px] text-[var(--apple-muted)]">Voile teinté</span>
+
+</div>
+
+<div className="flex items-center justify-center px-4 py-8" style={{ backgroundColor: "rgba(163,192,223,0.30)" }}>
+
+<span className="text-[13px] font-medium text-[#193B62]">Aplat uni issu de la palette</span>
+
+</div>
+
+<p className="px-4 py-3 text-[12px] leading-5 text-[var(--apple-muted)]">Un seul aplat de teinte de marque sur blanc — toute la « chaleur » qu'on demande à un dégradé, sans l'astuce de profondeur.</p>
+
+</div>
+
+<div className="border border-[var(--hig-border)]">
+
+<div className="flex items-center gap-2 border-b border-[var(--hig-border)] px-3 py-2.5">
+
+<span className="flex h-5 w-5 items-center justify-center rounded-full bg-red-600 text-[11px] font-bold text-white">✕</span>
+<span className="text-[13px] font-semibold text-[var(--apple-text)]">Interdit</span>
+
+</div>
+
+<div className="flex items-center justify-center px-4 py-8" style={{ background: "linear-gradient(120deg,#1D65AF,#69A2E5,#0A7A42)" }}>
+
+<span className="text-[13px] font-medium text-white">Maillage multi-étapes</span>
+
+</div>
+
+<p className="px-4 py-3 text-[12px] leading-5 text-[var(--apple-muted)]">Dégradés multi-étapes, fonds en maillage et flous vitreux sont explicitement hors identité.</p>
+
+</div>
+
+</div>
+
+<DoDontGrid
+  doItems={[
+    "Surfaces unies et aplats issus de la palette.",
+    "Une seule teinte unie de --brand-100 pour la chaleur des héros et cartes.",
+    "Échelle, espacement et typographie pour la hiérarchie au lieu de la profondeur.",
+  ]}
+  dontItems={[
+    "Tout dégradé à deux ou trois étapes entre couleurs de marque.",
+    "Texte en dégradé, fonds en maillage ou taches de couleur floutées.",
+    "L'achat de dégradés « premium » qui imitent d'autres marques.",
+  ]}
+/>

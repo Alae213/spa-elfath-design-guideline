@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
+import type { Locale } from "@/i18n";
 
 export type GuidelineFrontmatter = {
   title: string;
@@ -8,6 +9,7 @@ export type GuidelineFrontmatter = {
   category?: string;
   platforms?: string[];
   order?: number;
+  rtl?: boolean;
 };
 
 export type GuidelineDoc = {
@@ -19,8 +21,13 @@ export type GuidelineDoc = {
 
 const CONTENT_DIR = path.join(process.cwd(), "src/content/guidelines");
 
+function contentDir(locale: Locale): string {
+  return path.join(CONTENT_DIR, locale);
+}
+
 export function getAllSlugs(): string[][] {
-  if (!fs.existsSync(CONTENT_DIR)) return [];
+  const base = contentDir("en");
+  if (!fs.existsSync(base)) return [];
   const slugs: string[][] = [];
   function walk(dir: string, prefix: string[]) {
     const entries = fs.readdirSync(dir, { withFileTypes: true });
@@ -32,12 +39,12 @@ export function getAllSlugs(): string[][] {
       }
     }
   }
-  walk(CONTENT_DIR, []);
+  walk(base, []);
   return slugs;
 }
 
-export function getDocBySlug(slug: string[]): GuidelineDoc | null {
-  const base = path.join(CONTENT_DIR, ...slug);
+export function getDocBySlug(slug: string[], locale: Locale): GuidelineDoc | null {
+  const base = path.join(contentDir(locale), ...slug);
   const mdxPath = `${base}.mdx`;
   const mdPath = `${base}.md`;
   let filePath: string | null = null;
@@ -61,9 +68,9 @@ export function getDocBySlug(slug: string[]): GuidelineDoc | null {
   };
 }
 
-export function getAllDocs(): GuidelineDoc[] {
+export function getAllDocs(locale: Locale): GuidelineDoc[] {
   return getAllSlugs()
-    .map((s) => getDocBySlug(s))
+    .map((s) => getDocBySlug(s, locale))
     .filter((d): d is GuidelineDoc => d !== null)
     .sort((a, b) => (a.frontmatter.order ?? 999) - (b.frontmatter.order ?? 999));
 }

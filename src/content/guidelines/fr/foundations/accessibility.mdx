@@ -1,0 +1,185 @@
+---
+title: "Accessibilité"
+description: "Un guide pour les équipes design et développement — l'accessibilité fait partie de la première décision, pas d'une correction tardive"
+category: "Foundation"
+order: 10
+icon: "AccessibilityIcon"
+---
+
+Une lecture confortable vient de graisses progressives, d'une taille suffisante et d'un espacement réfléchi. Ne jamais se fier à la couleur seule pour distinguer les éléments.
+
+<SectionHeading id="text-weight" number="01" title="Graisses & Typographie" />
+
+<DoDontGrid
+  doItems={[
+    "Hiérarchie de graisses claire : titres 700+, sous-titres 600, corps 400.",
+    "Taille de base ≥ 16px (1rem) ; 15px acceptable avec un interligne 1.4–1.6.",
+    "Contraste par la taille et la graisse ensemble, jamais la couleur seule.",
+    "Longueur de ligne 45–75 caractères et interligne 1.4–1.6.",
+  ]}
+  dontItems={[
+    "Graisses Thin/Light pour le corps ou les boutons — elles fatiguent en petite taille.",
+    "Distinguer un titre ou un texte par la seule couleur, sans différence de taille/graisse.",
+    "Des tailles sous 12px pour un contenu réellement lu.",
+    "Une ligne trop longue sans espacement — elle fatigue l'œil.",
+  ]}
+/>
+
+<div className="mt-4 divide-y divide-[var(--hig-border)] border-y border-[var(--hig-border)]">
+
+<div className="flex items-baseline justify-between py-3">
+
+<span className="text-[22px] font-bold text-[var(--apple-text)]">Titre 700 — 32px</span>
+<span className="font-mono text-[11px] text-[var(--apple-muted)]">Bold</span>
+
+</div>
+
+<div className="flex items-baseline justify-between py-3">
+
+<span className="text-[17px] font-semibold text-[var(--apple-text)]">Sous-titre 600 — 17px</span>
+<span className="font-mono text-[11px] text-[var(--apple-muted)]">Semibold</span>
+
+</div>
+
+<div className="flex items-baseline justify-between py-3">
+
+<span className="text-[14px] leading-7 text-[var(--apple-text)]">Corps 400 — 14–16px / 1.6 — lisible à 200 %</span>
+<span className="font-mono text-[11px] text-[var(--apple-muted)]">Regular</span>
+
+</div>
+
+</div>
+
+<SectionHeading id="color-contrast" number="02" title="Couleur & Contraste" />
+
+La couleur seule ne suffit jamais. Chaque paire texte/fond doit passer un contrôle de contraste documenté.
+
+<ContrastTable />
+
+<SemanticTokens />
+
+<DoDontGrid
+  doItems={[
+    "Tester chaque nouvelle couleur avec WebAIM Contrast Checker et documenter le résultat.",
+    "Utiliser des tokens sémantiques : --color-text-primary / secondary / bg / accent / error / success.",
+    "Erreur/avertissement/succès : couleur + icône + texte ensemble.",
+    "Tenir 4.5:1 pour le texte et 3:1 pour le texte large et les contours.",
+  ]}
+  dontItems={[
+    "Choisir une couleur parce qu'elle « a l'air jolie », sans contrôle.",
+    "Rouge/vert seuls sans symbole — le daltonisme ne les distingue pas.",
+    "Texte clair sur clair ou foncé sur foncé par pure esthétique.",
+    "Des HEX bruts disséminés au lieu d'un système sémantique.",
+  ]}
+/>
+
+<SectionHeading id="spacing-layout" number="03" title="Espacements & Disposition" />
+
+Un système d'espacements unifié crée un rythme visuel et aide les utilisateurs de zoom et les lecteurs âgés.
+
+<SpacingRuler />
+
+<TouchTargetDemo />
+
+<DoDontGrid
+  doItems={[
+    "Système de multiples fixes : 8·16·24·32·48.",
+    "De l'air autour de chaque bloc ; l'entassement complique tout le monde.",
+    "La disposition doit rester lisible à 200 % de zoom.",
+    "Interligne 1.4–1.6 et longueur de ligne confortable.",
+  ]}
+  dontItems={[
+    "Des boutons collés sans séparateur clair.",
+    "Des espacements aléatoires qui cassent le rythme visuel.",
+    "Des boutons de moins de 44px tactiles sur mobile.",
+    "Une disposition qui s'effondre au zoom.",
+  ]}
+/>
+
+<SectionHeading id="images-alt" number="04" title="Images & Texte alternatif" />
+
+Une image qui porte une information sans texte alternatif est une information perdue pour le lecteur d'écran.
+
+<AltChecklist />
+
+<div className="mt-4 border-y border-[var(--hig-border)] py-3">
+
+<p className="font-mono text-[11px] leading-5 text-[var(--apple-muted)]" dir="ltr">alt="Façade de l'usine El Fath acier — Annaba, ligne 2024"</p>
+
+<p className="font-mono text-[11px] leading-5 text-[var(--apple-muted)]" dir="ltr">alt="Graphique de croissance des ventes 2019–2024 — 42%"</p>
+
+<p className="font-mono text-[11px] leading-5 text-[var(--apple-muted)]" dir="ltr">alt="" — décorative uniquement</p>
+
+</div>
+
+<DoDontGrid
+  doItems={[
+    "Un alt descriptif pour chaque image porteuse de sens.",
+    'alt="" vide uniquement pour les images décoratives.',
+    "Fournir une alternative textuelle à la vidéo d'arrière-plan.",
+  ]}
+  dontItems={[
+    "Laisser alt vide pour une image informative.",
+    "Répéter un « image1.jpg » inutile.",
+    "Se fier à l'image seule pour l'information essentielle.",
+  ]}
+/>
+
+<SectionHeading id="motion" number="05" title="Mouvement" />
+
+Le mouvement explique une relation ; il n'orne pas.
+
+<MotionDemo />
+
+<DoDontGrid
+  doItems={[
+    "Un mouvement fonctionnel de 200–300ms qui clarifie une relation.",
+    "Respecter prefers-reduced-motion et proposer un simple fondu.",
+    "Rendre le contenu disponible immédiatement.",
+  ]}
+  dontItems={[
+    "Un mouvement automatique continu sans moyen de l'arrêter.",
+    "Subordonner la lecture à la fin d'une animation.",
+    "Un grand mouvement purement décoratif.",
+  ]}
+/>
+
+<SectionHeading id="forms" number="06" title="Formulaires & Champs" />
+
+Pour le web à venir : applications et tableaux de bord.
+
+<div className="mt-4 border border-[var(--hig-border)] p-4">
+
+<div className="space-y-3">
+
+<div>
+
+<label className="text-[12px] text-[var(--apple-text)]">E-mail</label>
+<input placeholder="name@elfath.dz" className="mt-1 h-11 w-full border border-[var(--hig-border)] bg-transparent px-3 text-[13px] placeholder:text-[var(--apple-muted)] focus:border-[var(--apple-blue)] focus:outline-none" />
+
+</div>
+
+<div className="border-t border-[var(--hig-border)] pt-2.5 text-[12px] leading-5 text-[var(--apple-text)]">
+
+<span className="font-mono text-[11px] text-red-700">!</span>
+<span className="ms-2">E-mail invalide — utilisez name@elfath.dz</span>
+<span className="ms-1 text-[11px] text-[var(--apple-muted)]">(couleur + icône + texte)</span>
+
+</div>
+
+</div>
+
+</div>
+
+<DoDontGrid
+  doItems={[
+    "Chaque champ lié à une étiquette visible — pas seulement un placeholder.",
+    "Messages d'erreur à côté du champ, avec un texte expliquant la correction.",
+    "Hauteur des champs/boutons ≥ 44px.",
+  ]}
+  dontItems={[
+    "Se fier au rouge seul.",
+    "Cacher l'étiquette et s'appuyer sur le placeholder.",
+    "Des petits champs difficiles à toucher.",
+  ]}
+/>

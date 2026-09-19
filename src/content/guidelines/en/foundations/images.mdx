@@ -1,0 +1,153 @@
+---
+title: "Images"
+description: "Real factory photography only — treatments, video rules, text on image, and performance"
+category: "Foundation"
+order: 14
+icon: "Image01Icon"
+---
+
+Photography is evidence. El Fath sells real factories, real lines, real output — so every photo must be a real El Fath site. A picture that could be any factory anywhere says nothing about this group.
+
+<SectionHeading id="real-only" number="01" title="Real Photos Only" />
+
+Only photographs taken on El Fath sites ship in El Fath interfaces. Stock libraries, AI-generated scenes, and renders presented as photographs are forbidden — a reader who recognizes a stock photo stops believing the caption next to it:
+
+<DoDontGrid
+  doItems={[
+    "Real factory floors, lines, and output — shot on site.",
+    "Real staff on real sites over hired models.",
+    "Renders and diagrams labeled as renders and diagrams.",
+  ]}
+  dontItems={[
+    "Stock photography, however industrial it looks.",
+    "AI-generated scenes passed as places.",
+    "A competitor-like site presented as our own.",
+  ]}
+/>
+
+<div className="not-prose mt-3 border-y border-[var(--hig-border)] py-3">
+
+<p className="text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">Alt text lives next door.</span> What a photo must say to a screen reader is governed by accessibility § Images & Alt Text — this page governs which photos exist and how they are treated.</p>
+
+</div>
+
+<SectionHeading id="treatments" number="02" title="Treatments & Crops" />
+
+Three approved slots cover every context. Sharp corners always — the industrial identity has no radius, and neither do its photographs. Fill with cover, never stretch:
+
+<ImageGrid>
+
+<ImageDemo label="Hero — full-bleed cover" ratio="21 / 9" ratioTag="21:9" note="Full-viewport cover on the home hero; focal point kept clear of the caption zone." />
+
+<ImageDemo label="Card — section and listing" ratio="16 / 9" ratioTag="16:9" note="Sector cards, news rows, product tiles; one ratio so grids align." />
+
+<ImageDemo label="Thumb — square detail" ratio="1 / 1" ratioTag="1:1" note="Avatars of product, detail insets, and dense table cells." />
+
+</ImageGrid>
+
+<DoDontGrid
+  doItems={[
+    "object-fit cover with the ratio locked per slot.",
+    "Art-direct the focal point per breakpoint, not per mood.",
+    "0px radius on every photographic surface.",
+  ]}
+  dontItems={[
+    "Stretching or squashing to “make it fit” the slot.",
+    "Filters, duotones, or heavy vignettes over real sites.",
+    "Rounded photo cards borrowed from another brand.",
+  ]}
+/>
+
+<SectionHeading id="video" number="03" title="Video Rules" />
+
+The home hero is ambient video, not decoration with a play button. Remote file, poster always, silent by construction:
+
+<ImageGrid>
+
+<ImageDemo label="Ambient hero video" ratio="21 / 9" ratioTag="21:9" video={true} note="Remote asset, poster underneath, muted loop — atmosphere, never the message." />
+
+</ImageGrid>
+
+<div className="not-prose mt-4 border-y border-[var(--hig-border)] py-4">
+
+<p className="text-[13px] leading-6 text-[var(--apple-text)]">The contract, as shipped in <span className="font-mono">HomeHero</span>:</p>
+
+<pre className="mt-3 overflow-x-auto border border-[var(--hig-border)] bg-[var(--system-100)] p-3 text-left font-mono text-[11px] leading-5 text-[var(--apple-text)]" dir="ltr">
+{`<video autoPlay loop muted playsInline poster={poster}>
+  <source src={remoteUrl} type="video/mp4" />
+</video>`}
+</pre>
+
+<p className="mt-3 text-[12px] leading-5 text-[var(--apple-muted)]">Remote asset on the allowlisted host · poster doubles as the no-motion and no-JS fallback · never commit video files to the repo.</p>
+
+</div>
+
+<DoDontGrid
+  doItems={[
+    "Remote-only files; posters required on every video.",
+    "autoplay muted loop playsInline — silent by construction.",
+    "Respecting prefers-reduced-motion: poster still, no motion.",
+  ]}
+  dontItems={[
+    "Committing video files into the repository.",
+    "Audio on ambient video, ever.",
+    "Information carried by video alone with no text alternative.",
+  ]}
+/>
+
+<SectionHeading id="text-on-image" number="04" title="Text on Image" />
+
+White text sits on photographs only through the production grade below — a black overlay, never blue. The grade guarantees the contrast floor; the thresholds still apply and are still tested:
+
+<ImageGrid>
+
+<ImageDemo label="Graded caption zone" ratio="21 / 9" ratioTag="21:9" overlay={true} caption="Real lines, real output — since 1984" note="The exact hero grade with a white headline; the floor every caption stands on." />
+
+</ImageGrid>
+
+<div className="not-prose mt-4 border-y border-[var(--hig-border)] py-4">
+
+<p className="text-[13px] leading-6 text-[var(--apple-text)]">The exact grade, as shipped in <span className="font-mono">HomeHero</span> — copy it, don't approximate it:</p>
+
+<pre className="mt-3 overflow-x-auto border border-[var(--hig-border)] bg-[var(--system-100)] p-3 text-left font-mono text-[11px] leading-5 text-[var(--apple-text)]" dir="ltr">
+{`background: linear-gradient(180deg,
+  rgba(0, 0, 0, 0.5) 0%,
+  rgba(0, 0, 0, 0.35) 55%,
+  rgba(0, 0, 0, 0.65) 100%);`}
+</pre>
+
+<p className="mt-3 text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">Contrast thresholds hold on photos too.</span> Body text keeps 4.5:1, large text 3:1 (WCAG AA) — measured against the lightest area the text touches, not the darkest.</p>
+
+<p className="mt-3 text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">The logo never sits on a photo.</span> Wordmark placement follows § Branding: official colors on white ground — a photograph is never that ground.</p>
+
+</div>
+
+<DoDontGrid
+  doItems={[
+    "The exact grade above for every text-on-photo moment.",
+    "White headlines; contrast tested per caption, per photo.",
+    "Keeping the focal point clear of the caption zone.",
+  ]}
+  dontItems={[
+    "Blue-tinted overlays or brand washes over photography.",
+    "Raw ungraded photos with body text on top.",
+    "The logo, a chart, or a form field placed over a photo.",
+  ]}
+/>
+
+<SectionHeading id="performance" number="05" title="Performance Rules" />
+
+A hero that arrives late is a blank first impression. Images are delivered, not just placed:
+
+<DoDontGrid
+  doItems={[
+    "next/image everywhere: avif/webp, explicit sizes, lazy below the fold.",
+    "priority on the hero/LCP image — the first paint is the brand.",
+    "Remote imagery only from allowlisted hosts (framerusercontent.com).",
+  ]}
+  dontItems={[
+    "Raw multi-megabyte uploads served as-is.",
+    "Lazy-loading the LCP hero to “save bandwidth”.",
+    "New remote hosts without adding them to next.config.",
+  ]}
+/>

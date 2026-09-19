@@ -1,0 +1,292 @@
+---
+title: "Icons"
+description: "One set, one construction language: HugeIcons at 16/20/24 — stroke, color, and usage rules"
+category: "Foundation"
+order: 13
+icon: "Layers01Icon"
+---
+
+An icon is a word in a shared vocabulary, not a decoration. Every glyph in this guide comes from a single set, drawn on the same grid, with the same stroke — so a settings gear never looks like it was borrowed from another product.
+
+<SectionHeading id="set" number="01" title="The Approved Set" />
+
+The approved set is HugeIcons (free): stroke glyphs on a 24-pixel grid, drawn for interfaces. The seventeen below are the set in use in this guide — each one marks its section, and no other glyph may mark these meanings:
+
+<IconGrid>
+
+<IconCell name="Idea01Icon" usage="Get started — design principles." />
+<IconCell name="AccessibilityIcon" usage="Foundations — accessibility." />
+<IconCell name="PaintBoardIcon" usage="Foundations — branding." />
+<IconCell name="ColorsIcon" usage="Foundations — colors." />
+<IconCell name="Layers01Icon" usage="Foundations — icons (this page)." />
+<IconCell name="Image01Icon" usage="Foundations — images." />
+<IconCell name="Layout01Icon" usage="Foundations — layout." />
+<IconCell name="RightToLeftListTriangleIcon" usage="Foundations — right-to-left." />
+<IconCell name="TextFontIcon" usage="Foundations — typography." />
+<IconCell name="Touch01Icon" usage="Components — buttons." />
+<IconCell name="InputTextIcon" usage="Components — inputs." />
+<IconCell name="ToggleOnIcon" usage="Components — selection controls." />
+<IconCell name="ChatFeedbackIcon" usage="Components — feedback." />
+<IconCell name="GroupLayersIcon" usage="Components — overlayers." />
+<IconCell name="Cards01Icon" usage="Components — cards." />
+<IconCell name="Database01Icon" usage="Components — data." />
+<IconCell name="PlayCircleIcon" usage="Components — media." />
+
+</IconGrid>
+
+<div className="not-prose mt-3 border-y border-[var(--hig-border)] py-3">
+
+<p className="text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">One set, no mixing.</span> New product icons come from <span className="font-mono">HugeIcons</span> (<span className="font-mono">@hugeicons/core-free-icons</span> + <span className="font-mono">@hugeicons/react</span>) — never from a second library, never hand-drawn on the spot to match a mood.</p>
+
+<p className="mt-3 text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">One meaning per glyph.</span> A glyph that marks a section keeps that meaning everywhere. Reassigning a used glyph to a new meaning breaks recognition faster than any redesign.</p>
+
+</div>
+
+<SectionHeading id="sizes" number="02" title="Sizes & Stroke" />
+
+Three sizes cover every context. The glyph itself never changes — only the box it ships in:
+
+<IconGrid>
+
+<IconCell name="Touch01Icon" size={16} usage="16 — inline with text and table rows." />
+<IconCell name="Touch01Icon" size={20} usage="20 — the default for buttons and nav." />
+<IconCell name="Touch01Icon" size={24} usage="24 — feature and empty-state moments." />
+
+</IconGrid>
+
+<div className="not-prose mt-3 border-y border-[var(--hig-border)] py-3">
+
+<p className="text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">Stroke 1.5, always.</span> Every glyph renders at <span className="font-mono">strokeWidth 1.5</span> on its 24-pixel grid — the weight that reads at 16 and stays light at 24.</p>
+
+<p className="mt-3 text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">12 is a separator, not a size.</span> The single exception is dense inline separators such as breadcrumb chevrons at 12 — never an interactive glyph, never a meaning-carrier.</p>
+
+<p className="mt-3 text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">The 44 belongs to the parent.</span> Glyphs stay 16/20/24; the tappable 44×44 minimum lives on the button or row that carries them.</p>
+
+</div>
+
+<SectionHeading id="color" number="03" title="Color & Context" />
+
+Icons have no color of their own. Every glyph renders in <span className="font-mono">currentColor</span> and inherits the text color of its context — the same glyph below, three contexts, zero recoloring:
+
+<IconGrid>
+
+<IconCell name="ColorsIcon" usage="Default text — the glyph takes the body color." />
+
+<div className="text-[var(--apple-muted)]">
+
+<IconCell name="ColorsIcon" usage="Muted text — the glyph quiets with its row." />
+
+</div>
+
+<IconCell name="ChatFeedbackIcon" boxStyle={{ backgroundColor: "rgba(163,192,223,0.30)" }} usage="On a brand tint — still inherited, never hard-coded." />
+
+</IconGrid>
+
+<div className="not-prose mt-3 border-y border-[var(--hig-border)] py-3">
+
+<p className="text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">Inherit, don't paint.</span> Hard-coding a blue into a glyph freezes it to one background; inheriting lets the same icon work on white, on tint, and in dark mode without a variant.</p>
+
+</div>
+
+<DoDontGrid
+  doItems={[
+    "currentColor everywhere — the context decides.",
+    "Letting muted rows quiet their own glyphs.",
+    "Testing the glyph on every background it ships on.",
+  ]}
+  dontItems={[
+    "Baking #1D65AF into a glyph “because it is brand”.",
+    "A different color for the same glyph in two places.",
+    "Fills, gradients, or shadows inside a stroke glyph.",
+  ]}
+/>
+
+<SectionHeading id="usage" number="04" title="Usage Rules" />
+
+A glyph without a label is a guess. Navigation and actions pair the icon with a visible word; the rare icon-only button carries its meaning in code instead:
+
+<div className="not-prose mt-4 border border-[var(--hig-border)] p-4">
+
+<div className="flex items-center gap-4">
+
+<div className="flex h-11 w-11 items-center justify-center border border-[var(--hig-border)]" aria-hidden="true">
+
+<IconCell name="Idea01Icon" bare={true} />
+
+</div>
+
+<div>
+
+<p className="text-[13px] font-semibold text-[var(--apple-text)]">Icon-only buttons</p>
+
+<p className="mt-1 font-mono text-[11px] leading-5 text-[var(--apple-muted)]" dir="ltr">aria-hidden="true" on the svg · aria-label="Search" on the button</p>
+
+</div>
+
+</div>
+
+</div>
+
+<DoDontGrid
+  doItems={[
+    "Icon + visible label for nav items and actions.",
+    "aria-hidden on the glyph, accessible name on the control.",
+    "The 44×44 minimum on the tappable parent, not the glyph.",
+  ]}
+  dontItems={[
+    "An icon alone for a critical action with no name in code.",
+    "Emoji as icons — 🚨 is not a glyph and never scales.",
+    "Two libraries on one screen, however similar they look.",
+  ]}
+/>
+
+<SectionHeading id="misuse" number="05" title="Incorrect Usage" />
+
+The errors below are rejected in review. A stroke glyph is a fixed drawing on a fixed grid; any distortion turns it into another drawing:
+
+<div className="not-prose mt-4 grid gap-4 md:grid-cols-2">
+
+<div className="border border-[var(--hig-border)]">
+
+<div className="flex items-center gap-2 border-b border-[var(--hig-border)] px-3 py-2.5">
+
+<span className="flex h-5 w-5 items-center justify-center rounded-full bg-red-600 text-[11px] font-bold text-white">✕</span>
+<span className="text-[13px] font-semibold text-[var(--apple-text)]">Stretch & squash</span>
+
+</div>
+
+<div className="flex h-24 items-center justify-center overflow-hidden px-6">
+
+<IconCell name="Touch01Icon" size={24} iconStyle={{ transform: "scaleX(1.6)" }} bare={true} />
+
+</div>
+
+<p className="px-3 py-2 text-[12px] leading-5 text-[var(--apple-muted)]">Changing the width/height ratio — wrong even when a space begs to be filled.</p>
+
+</div>
+
+<div className="border border-[var(--hig-border)]">
+
+<div className="flex items-center gap-2 border-b border-[var(--hig-border)] px-3 py-2.5">
+
+<span className="flex h-5 w-5 items-center justify-center rounded-full bg-red-600 text-[11px] font-bold text-white">✕</span>
+<span className="text-[13px] font-semibold text-[var(--apple-text)]">Hard-coded brand color</span>
+
+</div>
+
+<div className="flex h-24 items-center justify-center overflow-hidden px-6 text-[#1D65AF]">
+
+<IconCell name="Touch01Icon" size={24} bare={true} />
+
+</div>
+
+<p className="px-3 py-2 text-[12px] leading-5 text-[var(--apple-muted)]">Baking blue into the glyph instead of inheriting the context color.</p>
+
+</div>
+
+<div className="border border-[var(--hig-border)]">
+
+<div className="flex items-center gap-2 border-b border-[var(--hig-border)] px-3 py-2.5">
+
+<span className="flex h-5 w-5 items-center justify-center rounded-full bg-red-600 text-[11px] font-bold text-white">✕</span>
+<span className="text-[13px] font-semibold text-[var(--apple-text)]">Below the ladder</span>
+
+</div>
+
+<div className="flex h-24 items-center justify-center overflow-hidden px-6">
+
+<IconCell name="Touch01Icon" size={10} bare={true} />
+
+</div>
+
+<p className="px-3 py-2 text-[12px] leading-5 text-[var(--apple-muted)]">10 pixels collapses the 1.5 stroke into a smudge — 16 is the floor for meaning.</p>
+
+</div>
+
+<div className="border border-[var(--hig-border)]">
+
+<div className="flex items-center gap-2 border-b border-[var(--hig-border)] px-3 py-2.5">
+
+<span className="flex h-5 w-5 items-center justify-center rounded-full bg-red-600 text-[11px] font-bold text-white">✕</span>
+<span className="text-[13px] font-semibold text-[var(--apple-text)]">Emoji as icon</span>
+
+</div>
+
+<div className="flex h-24 items-center justify-center overflow-hidden px-6">
+
+<span className="text-[24px]" aria-hidden="true">🚨</span>
+
+</div>
+
+<p className="px-3 py-2 text-[12px] leading-5 text-[var(--apple-muted)]">Emoji render per-platform, carry no stroke language, and fail at small sizes.</p>
+
+</div>
+
+</div>
+
+<DoDontGrid
+  doItems={[
+    "The glyph as shipped: ratio, stroke, and size from the ladder.",
+    "One set across the product — HugeIcons, currentColor, 1.5.",
+  ]}
+  dontItems={[
+    "Stretching, repainting, shrinking, or substituting emoji.",
+    "Redrawing a shipped glyph “slightly better” by hand.",
+  ]}
+/>
+
+<SectionHeading id="mirroring" number="06" title="Mirroring" />
+
+Direction mirrors; everything else stands still. A glyph that points with the reading flow flips in Arabic — a glyph that depicts the world, the brand, or time never does:
+
+<div className="not-prose mt-4 grid gap-4 md:grid-cols-2">
+
+<div className="border border-[var(--hig-border)]">
+
+<div className="flex items-center justify-between border-b border-[var(--hig-border)] px-4 py-2.5">
+
+<span className="text-[13px] font-semibold text-[var(--apple-text)]">Flip</span>
+<span className="font-mono text-[11px] text-[var(--apple-muted)]">directional only</span>
+
+</div>
+
+<div className="flex items-center justify-center gap-6 px-4 py-8" dir="ltr">
+
+<IconCell name="RightToLeftListTriangleIcon" bare={true} />
+
+<span className="font-mono text-[11px] text-[var(--apple-muted)]" dir="ltr">+ rtl: variant</span>
+
+</div>
+
+<p className="px-4 py-3 text-[12px] leading-5 text-[var(--apple-muted)]">Back chevrons, text-direction marks, forward/backward motion — mirrored with the flow.</p>
+
+</div>
+
+<div className="border border-[var(--hig-border)]">
+
+<div className="flex items-center justify-between border-b border-[var(--hig-border)] px-4 py-2.5">
+
+<span className="text-[13px] font-semibold text-[var(--apple-text)]">Never flip</span>
+<span className="font-mono text-[11px] text-[var(--apple-muted)]">fixed always</span>
+
+</div>
+
+<div className="flex items-center justify-center gap-6 px-4 py-8">
+
+<IconCell name="Touch01Icon" bare={true} />
+
+<span className="font-mono text-[11px] text-[var(--apple-muted)]" dir="ltr">logo · clock · ✓</span>
+
+</div>
+
+<p className="px-4 py-3 text-[12px] leading-5 text-[var(--apple-muted)]">Logos, universal marks, clocks, real-world objects — identical in every direction.</p>
+
+</div>
+
+</div>
+
+<div className="not-prose mt-4 border-y border-[var(--hig-border)] py-4">
+
+<p className="text-[13px] leading-6 text-[var(--apple-text)]">Full mirroring law lives on § Right to Left — flip vs never-flip. The glyph rule in one line: mirror motion and direction, never identity and time.</p>
+
+</div>

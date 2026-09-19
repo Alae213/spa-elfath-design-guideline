@@ -1,0 +1,172 @@
+﻿---
+title: "الألوان"
+description: "لوحة الفتح: الأزرق الرسمي، الرماديات الدافئة، وألوان الدلالة — نظام موثّق، لا اختيار حر"
+category: "Foundation"
+order: 12
+icon: "ColorsIcon"
+rtl: true
+---
+
+اللون أسرع ما يقرأه الإنسان في المنتج، ويجب أن يتصرّف كنظام لا كزينة. لكل لون في هذا المرجع اسم ورمز ووظيفة. اللون الذي لا وظيفة له غير موجود.
+
+<SectionHeading id="brand" number="01" title="لوحة الهوية — Brand Palette" />
+
+أربعة أزرقات ثابتة تحمل الهوية. وهي وحدها المسموح لها أن تقول «الفتح»، وقيمها الدقيقة أدناه ملزِمة — لا تعديل عليها أبدًا مهما بدا التطابق قريبًا أو ملائمًا لحملة ما:
+
+<div className="not-prose mt-4 grid gap-4 sm:grid-cols-2">
+
+<ColorSwatch name="الأزرق الأساسي" token="--brand-300" hex="#1D65AF" usage="الأزرار، الروابط، التركيز، الحالات النشطة، اللمسات المفتاحية." />
+
+<ColorSwatch name="الكحلي العميق" token="--brand-400" hex="#193B62" usage="العناوين على الأرضيات الملوّنة، الأسطح الداكنة، التحديد على الأبيض." />
+
+<ColorSwatch name="أزرق التحويم" token="--brand-200" hex="#69A2E5" usage="حالتا التحويم والضغط للأزرق الأساسي." />
+
+<ColorSwatch name="الصبغة الناعمة" token="--brand-100" hex="#A3C0DF" usage="تظليل التحديد، وخلفيات الشرائح والتنبيهات الملوّنة." />
+
+</div>
+
+<div className="not-prose mt-3 border-y border-[var(--hig-border)] py-3">
+
+<p className="text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">الصبغة brand-100 صبغة شفافة لا لون صلب.</span> في مصدر الحقيقة (<span className="font-mono">spa-elfath-website/src/app/globals.css</span>) مُعلَنة كقيمة ألفا: <span className="font-mono">rgba(163, 192, 223, 0.35)</span>. تُركَّب فوق السطح بدل طباعة تقريب ست عشري خشن.</p>
+
+<p className="mt-3 text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">لا تقريب أبدًا.</span> إذا تعذّر — وحصرًا إذا تعذّر — توفير القيمة الست عشرية الدقيقة، استعمل المكافئ اللوني نفسه؛ فتعديل الإضاءة «ليبرز أكثر» يغيّر الهوية.</p>
+
+</div>
+
+<DoDontGrid
+  doItems={[
+    "الأزرق الدقيق #1D65AF لكل لمسة تفاعلية.",
+    "التغميق إلى #193B62 للتباين على الأرضية الملوّنة.",
+    "قراءة الصبغة كما هي مشحونة: rgba(163,192,223,0.35).",
+  ]}
+  dontItems={[
+    "استبدال أزرق «أجمل» من العائلة نفسها.",
+    "مزج الأزرقات الرسمية بعضها ببعض لتوليد درجات جديدة.",
+    "تطبيق اللوحة على الشعار الرسمي (§ الهوية البصرية).",
+  ]}
+/>
+
+<SectionHeading id="neutrals" number="02" title="الرماديات الدافئة والحيادية — Neutrals" />
+
+الحياديات دافئة — تميل إلى البيج قليلًا، ولا تكون رمادية باردة أبدًا — وتحمل الصفحة كلها تقريبًا. الأزرق هو اللمسة؛ وهذه الدرجات الست هي المتن:
+
+<div className="not-prose mt-4 border-y border-[var(--hig-border)] divide-y divide-[var(--hig-border)]">
+
+<ColorRow token="--system-50" hex="#FAF8F6" label="خلفية الصفحة" />
+<ColorRow token="--system-100" hex="#F5F4F3" label="ملء الأقسام الخفيف" />
+<ColorRow token="--system-200" hex="#ECE8E4" label="الحدود والفواصل" />
+<ColorRow token="--system-300" hex="#D9D9D9" label="المعطّل والعناصر النائبة" />
+<ColorRow token="--system-400" hex="#737373" label="النص الثانوي" />
+<ColorRow token="--system-500" hex="#1F1F1F" label="النص الأساسي" />
+
+</div>
+
+<div className="not-prose mt-3 border-y border-[var(--hig-border)] py-3">
+
+<p className="text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">الرمادي هو النظام البنيوي، والأزرق هو اللمسة.</span> إذا بدا التصميم «كثير الأزرق»، فاللوحة تُستعمل زينةً — عُد إلى الرماديات ودَع الأزرق يشير إلى المهم فقط.</p>
+
+<p className="mt-3 text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">كل درجة لها غرض.</span> الدرجات موجودة لتتراجع الحدود، ويتنفس النص، وتنفصل الأسطح. رماديان متجاوران يبدوان متطابقين يعني أن وظيفة أحدهما غير معرّفة.</p>
+
+</div>
+
+<SectionHeading id="semantic" number="03" title="ألوان الدلالة — Semantic Colors" />
+
+لمسات الدلالة محفوظة للحالة — النجاح والتحذير والخطر. لا تُستعمل زينةً أبدًا، ولا تظهر دون كلمة إشارة أو أيقونة بجانبها:
+
+<div className="not-prose mt-4 grid gap-4 sm:grid-cols-3">
+
+<ColorSwatch name="النجاح" token="--color-success" hex="#0A7A42" usage="محفوظ، مؤكَّد، متوفر، القائمة سليمة." />
+
+<ColorSwatch name="التحذير" token="--color-warning" hex="#B45309" usage="بانتظار الموافقة، مخزون منخفض، يحتاج انتباهًا." />
+
+<ColorSwatch name="الخطر" token="--color-danger" hex="#BE123C" usage="فشل، غير صالح، محذوف، تعذّر الوصول." />
+
+</div>
+
+<DoDontGrid
+  doItems={[
+    "لون الحالة + الأيقونة + النص، دائمًا كإشارة واحدة.",
+    "ألوان الدلالة في سياقات الحالة فقط.",
+    "فحص التباين على الخلفيات الملوّنة قبل الشحن.",
+  ]}
+  dontItems={[
+    "الأخضر لعادة «مقبول» حين يمكن أن يكون النظام أحمر.",
+    "تزيين الرسوم البيانية بألوان الدلالة حسب المزاج.",
+    "الاعتماد على اللون وحده — الأحمر/الأخضر ليس رسالة.",
+  ]}
+/>
+
+<SectionHeading id="usage" number="04" title="خريطة الرمز إلى الاستعمال — Token Usage" />
+
+رمز واحد لوظيفة واحدة. النموذج الذهني: <span className="font-mono">--brand-300</span> هو اللون الوحيد الذي يجوز للمستخدم تسميته، والرماديات موجودة ليبقى الأزرق نادرًا:
+
+<div className="not-prose mt-4 border-y border-[var(--hig-border)] divide-y divide-[var(--hig-border)]">
+
+<ColorRow token="--brand-300" hex="#1D65AF" label="التفاعل: الروابط والأزرار وإطار التركيز" />
+<ColorRow token="--brand-400" hex="#193B62" label="ثنائي التباين للأزرق على الأرضية الملوّنة" />
+<ColorRow token="--brand-200" hex="#69A2E5" label="حالة التحويم والضغط للأساسي" />
+<ColorRow token="--brand-100" hex="#A3C0DF" label="التحديد وخلفيات الصبغة الناعمة" />
+<ColorRow token="--system-50" hex="#FAF8F6" label="اللوحة — خلفية الصفحة" />
+<ColorRow token="--system-500" hex="#1F1F1F" label="النص الأساسي والمقدمة" />
+<ColorRow token="--system-200" hex="#ECE8E4" label="الحدود والفواصل البنيوية" />
+
+</div>
+
+<SectionHeading id="gradients" number="05" title="التدرجات — Gradients" />
+
+الهوية مسطّحة عن قصد — صناعية، حادة، صادقة. التدرجات التي تزيّف العمق أسرع طريق لخسارة الهوية، فالقاعدة قصيرة: لا تدرجات متعددة الوقفات، لا خلفيات شبكية، لا نص متدرج.
+
+<div className="not-prose mt-4 grid gap-4 sm:grid-cols-2">
+
+<div className="border border-[var(--hig-border)]">
+
+<div className="flex items-center justify-between border-b border-[var(--hig-border)] px-4 py-2.5">
+
+<span className="text-[13px] font-semibold text-[var(--apple-text)]">مسموح</span>
+<span className="font-mono text-[11px] text-[var(--apple-muted)]">غسلة صبغية</span>
+
+</div>
+
+<div className="flex items-center justify-center px-4 py-8" style={{ backgroundColor: "rgba(163,192,223,0.30)" }}>
+
+<span className="text-[13px] font-medium text-[#193B62]">ملء مسطّح من اللوحة</span>
+
+</div>
+
+<p className="px-4 py-3 text-[12px] leading-5 text-[var(--apple-muted)]">صبغة رسمية مسطّحة فوق الأبيض — كل «الدفء» الذي يُطلَب من التدرج، دون حيلة العمق.</p>
+
+</div>
+
+<div className="border border-[var(--hig-border)]">
+
+<div className="flex items-center gap-2 border-b border-[var(--hig-border)] px-3 py-2.5">
+
+<span className="flex h-5 w-5 items-center justify-center rounded-full bg-red-600 text-[11px] font-bold text-white">✕</span>
+<span className="text-[13px] font-semibold text-[var(--apple-text)]">ممنوع</span>
+
+</div>
+
+<div className="flex items-center justify-center px-4 py-8" style={{ background: "linear-gradient(120deg,#1D65AF,#69A2E5,#0A7A42)" }}>
+
+<span className="text-[13px] font-medium text-white">شبكة متعددة الوقفات</span>
+
+</div>
+
+<p className="px-4 py-3 text-[12px] leading-5 text-[var(--apple-muted)]">التدرجات متعددة الوقفات والخلفيات الشبكية والضبابيات الزجاجية خارج الهوية صراحةً.</p>
+
+</div>
+
+</div>
+
+<DoDontGrid
+  doItems={[
+    "أسطح عادية وملء مسطّح من اللوحة.",
+    "صبغة مسطّحة واحدة من --brand-100 للدفء في الواجهة والبطاقات.",
+    "استعمال الحجم والتباعد والخط للتراتب بدل العمق.",
+  ]}
+  dontItems={[
+    "أي تدرج ثنائي أو ثلاثي الوقفات بين ألوان الهوية.",
+    "النص المتدرج أو الخلفيات الشبكية أو بقع اللون الضبابية.",
+    "شراء تدرجات «فاخرة» تحاكي علامات أخرى.",
+  ]}
+/>

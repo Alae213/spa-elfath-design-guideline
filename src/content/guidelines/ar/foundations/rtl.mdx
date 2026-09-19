@@ -1,0 +1,146 @@
+﻿---
+title: "اليمين إلى اليسار"
+description: "اعكس التخطيط وصفّ حسب اللغة واقلِب ما يتحرك — قواعد العربية أولًا"
+category: "Foundation"
+order: 16
+icon: "RightToLeftListTriangleIcon"
+rtl: true
+---
+
+العربية ليست ترجمة للواجهة — بل اتجاه لها. اللغة الافتراضية لهذا الدليل هي العربية، فقواعدها ليست حالات حدّية: إنها أول عرض يلقاه كل زائر.
+
+<SectionHeading id="mirror" number="01" title="اعكس التخطيط — Mirror the Layout" />
+
+ترميز واحد وقراءتان. الـflex والـgrid يتبعان أقرب <span className="font-mono">dir</span> تلقائيًا — الصف نفسه أدناه، مكتوب مرة واحدة، يُقرَأ صحيحًا في الاتجاهين دون شيفرة شرطية:
+
+<RtlDemo variant="mirror" label="صف واحد باتجاهين" note="السهم والتسمية والبيانات يتبادلون الجوانب تحت dir=rtl. لا ورقة أنماط معكوسة ولا ترميز لكل لغة." />
+
+<p className="mt-4 text-[13px] leading-6 text-[var(--apple-text)]">الثنائية المرجعية من Apple — المحتوى نفسه والمواضع معكوسة:</p>
+
+<div className="not-prose mt-4 grid gap-4 md:grid-cols-2">
+
+<HigFigure src="/hig/image-positions-ltr@2x.png" width={220} height={158} alt="نص وصور مرتبة من اليسار إلى اليمين؛ والمفضلة قلب ودائرة ونجمة ومربع ومثلث." caption="LTR — النص والوسائط والترتيب من اليسار إلى اليمين." credit="الصور: إرشادات Apple HIG · اليمين إلى اليسار" />
+
+<HigFigure src="/hig/image-positions-rtl@2x.png" width={220} height={158} alt="التخطيط نفسه من اليمين إلى اليسار؛ والترتيب محفوظ والجوانب متبادلة." caption="RTL — الترتيب نفسه والمواضع معكوسة للحفاظ على المعنى." credit="الصور: إرشادات Apple HIG · اليمين إلى اليسار" />
+
+</div>
+
+<DoDontGrid
+  doItems={[
+    "سمة dir واحدة لكل صفحة أو جزيرة — والتخطيط يتبعها.",
+    "ترتيب flex وgrid يُقرَأ صحيحًا في الاتجاهين.",
+    "تنقل وأشرطة جانبية ومسارات تنقل معكوسة مع التدفق.",
+  ]}
+  dontItems={[
+    "قالبان LTR وRTL منفصلان للشاشة نفسها.",
+    "تموضع مطلق يمين/يسار لمحتوى التدفق.",
+    "العكس اليدوي بحيل هوامش لكل لغة.",
+  ]}
+/>
+
+<SectionHeading id="alignment" number="02" title="محاذاة النص — Text Alignment" />
+
+صِف النص القصير مع السياق والطويل مع لغته. الكتل من سطر أو سطرين تتبع اتجاه القراءة؛ وفقرة الثلاثة أسطر فأكثر تتبع اللغة المكتوبة بها — فقرة لاتينية بمحاذاة يمين تخفي بداية كل سطر:
+
+<RtlDemo variant="align" label="السياق مقابل اللغة" note="الكتل القصيرة تتبع اتجاه القراءة؛ والفقرات تتبع لغتها." />
+
+<p className="mt-4 text-[13px] leading-6 text-[var(--apple-text)]">ثنائيتا الصحيح والخطأ من Apple — القاعدة مصوَّرة:</p>
+
+<div className="not-prose mt-4 grid gap-4 md:grid-cols-2">
+
+<HigFigure src="/hig/paragraph-alignment-correct@2x.png" width={307} height={171} alt="فقرة عربية بمحاذاة يمين وفقرة إنجليزية بمحاذاة يسار." caption="صحيح — العربية تتبع العربية والإنجليزية تتبع الإنجليزية." credit="الصور: إرشادات Apple HIG · اليمين إلى اليسار" />
+
+<HigFigure src="/hig/paragraph-alignment-wrong@2x.png" width={307} height={171} alt="فقرتان عربية وإنجليزية مدفوعتان معًا إلى اليمين." caption="خطأ — الفقرتان مدفوعتان إلى حافة واحدة." credit="الصور: إرشادات Apple HIG · اليمين إلى اليسار" />
+
+</div>
+
+<div className="not-prose mt-4 grid gap-4 md:grid-cols-2">
+
+<HigFigure src="/hig/mixed-script-list-alignment-correct@2x.png" width={190} height={170} alt="قائمة بمحاذاة يمين؛ وكل شريط يشترك في الحافة." caption="صحيح — كل عنصر يشترك في المحاذاة المعكوسة." credit="الصور: إرشادات Apple HIG · اليمين إلى اليسار" />
+
+<HigFigure src="/hig/mixed-script-list-alignment-wrong@2x.png" width={190} height={170} alt="شريط واحد بمحاذاة يسار خاطئة وسط أشرطة يمين." caption="خطأ — عنصر واحد يكسر الحافة." credit="الصور: إرشادات Apple HIG · اليمين إلى اليسار" />
+
+</div>
+
+<div className="not-prose mt-4 border-y border-[var(--hig-border)] py-4">
+
+<p className="text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">القوائم تصطف كواحد.</span> كل عنصر في القائمة يشترك في محاذاة واحدة تُعكَس معًا — بما فيها العناصر بخط مختلف. قائمة تختلط محاذاتها تتوقف عن المسح.</p>
+
+<p className="mt-3 text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">العناوين قد تلبس الكشيدة.</span> عناوين العرض العربية قد تُمدَّد بالتطويل للاحتفاء، كما هو مشحون في <span className="font-mono">AboutHero</span> — للحروف فقط، لا لمتن النص أبدًا ولا للاتينية:</p>
+
+<p className="mt-3 text-center text-[22px] font-bold leading-9 text-[var(--apple-text)]" dir="rtl">مـــــجموعة الـــــفتح رائـــــدة في الصـــــناعة</p>
+
+<p className="mt-2 text-center font-mono text-[11px] text-[var(--apple-muted)]">kashida — display headlines only</p>
+
+</div>
+
+<DoDontGrid
+  doItems={[
+    "text-start في كل مكان — لا text-left ولا text-right أبدًا.",
+    "فقرات محاذاة للغتها الخاصة.",
+    "الكشيدة محفوظة لعناوين العرض وباعتدال.",
+  ]}
+  dontItems={[
+    "فرض قواعد المحاذاة اللاتينية على الفقرات العربية.",
+    "الكشيدة في المتن أو الأزرار أو تسميات النماذج.",
+    "فقرات متن متمركزة بأي لغة.",
+  ]}
+/>
+
+<SectionHeading id="flip" number="03" title="اقلِب مقابل لا تقلِب — Flip vs Never-Flip" />
+
+الحركة تُقلَب والمعنى لا. كل ما يشير مع تدفق القراءة يعكَس — وكل ما يصوّر العالم أو الهوية أو الزمن يبقى ثابتًا:
+
+<RtlDemo variant="flip" label="سهم الرجوع بالحالتين" note="الحالتان معروضتان جنبًا إلى جنب كما يرسمهما صنف rtl:؛ وشيفرة الإنتاج تستعمل الصنف نفسه (انظر أدناه)." />
+
+<div className="not-prose mt-4 border-y border-[var(--hig-border)] py-4">
+
+<p className="text-[13px] leading-6 text-[var(--apple-text)]">النمط كما هو مشحون في <span className="font-mono">Sidebar</span> — أساس فيزيائي وتجاوز اتجاهي:</p>
+
+<pre className="mt-3 overflow-x-auto border border-[var(--hig-border)] bg-[var(--system-100)] p-3 text-left font-mono text-[11px] leading-5 text-[var(--apple-text)]" dir="ltr">
+{`className="-rotate-90 rtl:rotate-90"`}
+</pre>
+
+</div>
+
+<p className="mt-4 text-[13px] leading-6 text-[var(--apple-text)]">الثنائية المرجعية من Apple — عنصر التحكم ورموزه تنقلب معًا:</p>
+
+<div className="not-prose mt-4 grid gap-4 md:grid-cols-2">
+
+<HigFigure src="/hig/flipped-directional-control-ltr@2x.png" width={368} height={48} alt="منزلق الصوت؛ وتحريك المقبض من اليسار إلى اليمين يرفع الصوت." caption="LTR — الصوت يعلو من اليسار إلى اليمين؛ والرموز تعلّم الطرفين." credit="الصور: إرشادات Apple HIG · اليمين إلى اليسار" />
+
+<HigFigure src="/hig/flipped-directional-control-rtl@2x.png" width={368} height={48} alt="منزلق الصوت؛ وتحريك المقبض من اليمين إلى اليسار يرفع الصوت." caption="RTL — عنصر التحكم والرموز والترتيب تنعكس معًا." credit="الصور: إرشادات Apple HIG · اليمين إلى اليسار" />
+
+</div>
+
+<DoDontGrid
+  doItems={[
+    "اقلِب: أسهم الرجوع والمنزلقات والتقدم والمتتاليات المرتبة.",
+    "أبقِ: الشعارات والساعات وتشغيل الوسائط والهواتف وعلامات الصح.",
+    "أبقِ: الصور والأعمال الفنية — أعِد التصوير ولا تعكس أبدًا.",
+  ]}
+  dontItems={[
+    "شعار معكوس «للاتساق» — يربك ويعرّض لمشاكل قانونية.",
+    "قلب الساعات والمؤقتات التي تعمل بالطريقة نفسها في كل مكان.",
+    "عكس صورة يوحي محتواها باتجاه.",
+  ]}
+/>
+
+<SectionHeading id="code" number="04" title="تقنية الشيفرة — Code Technique" />
+
+الخصائص الفيزيائية تقرير خطأ ثانٍ ينتظر الحدوث. الخصائص المنطقية وصنف <span className="font-mono">rtl:</span> يجعلان الاتجاهية لا قضية وقت التأليف — والعمود المشطوب أدناه ممنوع الظهور في أي شيفرة جديدة:
+
+<RtlDemo variant="tokens" label="خريطة الفيزيائي إلى المنطقي" note="أدوات اليسار/اليمين محظورة في الشيفرة الجديدة؛ وجزر LTR (الشيفرة والأرقام والمضمّنات) تعلن dir=ltr صراحةً." />
+
+<DoDontGrid
+  doItems={[
+    "ms/me وps/pe وstart/end وtext-start في كل شيفرة جديدة.",
+    "صنف rtl: للتجاوز الاتجاهي النادر.",
+    "جزر dir=ltr للشيفرة وأحادي المسافة والمضمّنات.",
+  ]}
+  dontItems={[
+    "ml/mr وpl/pr وleft/right وtext-left في أي ملف جديد.",
+    "افتراض أن dir الصفحة يغطي المحتوى اللاتيني المضمّن.",
+    "أدوات التدوير دون سؤال عن الاتجاه الذي تواجهه.",
+  ]}
+/>

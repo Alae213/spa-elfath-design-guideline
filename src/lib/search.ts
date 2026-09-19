@@ -1,11 +1,12 @@
 import Fuse from "fuse.js";
-import { navigation, type NavItem } from "./navigation";
+import type { Dictionary } from "@/i18n";
+import { getNavigation, type LocalizedNavItem } from "./navigation";
 
-export type SearchDoc = NavItem & { category: string };
+export type SearchDoc = LocalizedNavItem & { category: string };
 
-export function buildSearchIndex(): Fuse<SearchDoc> {
-  const docs: SearchDoc[] = navigation.flatMap((sec) =>
-    sec.items.map((item) => ({ ...item, category: sec.title }))
+export function buildSearchIndex(dict: Dictionary): Fuse<SearchDoc> {
+  const docs: SearchDoc[] = getNavigation(dict).flatMap((sec) =>
+    sec.items.map((item) => ({ ...item, description: item.description ?? "", category: sec.title }))
   );
 
   return new Fuse(docs, {

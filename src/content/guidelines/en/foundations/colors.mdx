@@ -1,0 +1,171 @@
+---
+title: "Colors"
+description: "The El Fath palette: brand blues, warm greys, and semantic accents — a documented system, never free-picked"
+category: "Foundation"
+order: 12
+icon: "ColorsIcon"
+---
+
+Color is the fastest way a person reads the product, and it must behave like a system, not like a decoration. Every color in this reference has a name, a token, and a job. If a color has no job, it doesn't exist.
+
+<SectionHeading id="brand" number="01" title="Brand Palette" />
+
+Four fixed blues carry the identity. They are the only colors allowed to say "El Fath", and their exact values below are binding — never adjust them, however close a match or however well it seems to fit a campaign:
+
+<div className="not-prose mt-4 grid gap-4 sm:grid-cols-2">
+
+<ColorSwatch name="Primary Blue" token="--brand-300" hex="#1D65AF" usage="Buttons, links, focus, active states, key accents." />
+
+<ColorSwatch name="Deep Navy" token="--brand-400" hex="#193B62" usage="Headings on tinted ground, dark surfaces, selection on white." />
+
+<ColorSwatch name="Hover Blue" token="--brand-200" hex="#69A2E5" usage="Hover and pressed states of the primary blue." />
+
+<ColorSwatch name="Soft Tint" token="--brand-100" hex="#A3C0DF" usage="Selection highlight, tinted chip and callout backgrounds." />
+
+</div>
+
+<div className="not-prose mt-3 border-y border-[var(--hig-border)] py-3">
+
+<p className="text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">Brand-100 is a tint, not a solid.</span> In the source of truth (<span className="font-mono">spa-elfath-website/src/app/globals.css</span>) it is declared as an alpha: <span className="font-mono">rgba(163, 192, 223, 0.35)</span>. Overlay it on a surface rather than printing a rough hex approximation.</p>
+
+<p className="mt-3 text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">Never approximate.</span> If — and only if — the exact hex is unavailable, use the hsl equivalent of the same value; adjusting lightness to "make it pop" changes the brand.</p>
+
+</div>
+
+<DoDontGrid
+  doItems={[
+    "The exact #1D65AF primary for every interactive accent.",
+    "Darkening to #193B62 for contrast on tinted ground.",
+    "Reading the tint as rgba(163,192,223,0.35), as shipped.",
+  ]}
+  dontItems={[
+    "Substituting a “nicer” blue that matches the same family.",
+    "Mixing brand blues between themselves into new blends.",
+    "Applying the palette to the official logo (§ Branding).",
+  ]}
+/>
+
+<SectionHeading id="neutrals" number="02" title="Warm Greys & Neutrals" />
+
+The neutrals are warm — slightly beige, never cold grey — and carry almost the entire page. Blue is the accent; these six steps are the body:
+
+<div className="not-prose mt-4 border-y border-[var(--hig-border)] divide-y divide-[var(--hig-border)]">
+
+<ColorRow token="--system-50" hex="#FAF8F6" label="Page background" />
+<ColorRow token="--system-100" hex="#F5F4F3" label="Section / subtle fill" />
+<ColorRow token="--system-200" hex="#ECE8E4" label="Borders & dividers" />
+<ColorRow token="--system-300" hex="#D9D9D9" label="Disabled & placeholder" />
+<ColorRow token="--system-400" hex="#737373" label="Secondary text" />
+<ColorRow token="--system-500" hex="#1F1F1F" label="Primary text" />
+
+</div>
+
+<div className="not-prose mt-3 border-y border-[var(--hig-border)] py-3">
+
+<p className="text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">Grey is the structural system, blue is the accent.</span> If a design reads as "lots of blue", the palette is being used as decoration — step back to the greys and let the blue point at what matters.</p>
+
+<p className="mt-3 text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">Every step has a purpose.</span> Steps exist to make borders recede, text breathe, and surfaces separate. Two greys pressed side by side that look identical have an undefined job.</p>
+
+</div>
+
+<SectionHeading id="semantic" number="03" title="Semantic Colors" />
+
+Semantic accents are reserved for status — success, warning, and danger. They are never decorative, and they never appear without a signal word or icon next to them:
+
+<div className="not-prose mt-4 grid gap-4 sm:grid-cols-3">
+
+<ColorSwatch name="Success" token="--color-success" hex="#0A7A42" usage="Saved, confirmed, in stock, list correct." />
+
+<ColorSwatch name="Warning" token="--color-warning" hex="#B45309" usage="Pending approval, low stock, needs attention." />
+
+<ColorSwatch name="Danger" token="--color-danger" hex="#BE123C" usage="Failed, invalid, deleted, unreachable." />
+
+</div>
+
+<DoDontGrid
+  doItems={[
+    "Status color + icon + text, always as one signal.",
+    "Semantic colors only in status contexts.",
+    "Checking contrast on tinted backgrounds before shipping.",
+  ]}
+  dontItems={[
+    "Green for “approved” habit when the system could be red.",
+    "Decorating charts in semantic colors by mood.",
+    "Relying on the color alone — red/green is not a message.",
+  ]}
+/>
+
+<SectionHeading id="usage" number="04" title="Token to Usage Map" />
+
+One token, one job. The mental model: <span className="font-mono">--brand-300</span> is the only color a user should be able to name, and the greys exist so the blues stay rare:
+
+<div className="not-prose mt-4 border-y border-[var(--hig-border)] divide-y divide-[var(--hig-border)]">
+
+<ColorRow token="--brand-300" hex="#1D65AF" label="Interactive: links, buttons, focus outline" />
+<ColorRow token="--brand-400" hex="#193B62" label="Contrast pair for blue on tinted ground" />
+<ColorRow token="--brand-200" hex="#69A2E5" label="Hover / pressed state of primary" />
+<ColorRow token="--brand-100" hex="#A3C0DF" label="Selection and soft tint backgrounds" />
+<ColorRow token="--system-50" hex="#FAF8F6" label="Canvas — the page background" />
+<ColorRow token="--system-500" hex="#1F1F1F" label="Primary text & foreground" />
+<ColorRow token="--system-200" hex="#ECE8E4" label="Borders and structural dividers" />
+
+</div>
+
+<SectionHeading id="gradients" number="05" title="Gradients" />
+
+The brand is flat on purpose — industrial, sharp, honest. Gradients that fake depth are the fastest way to lose the identity, so the rule is short: no multi-stop gradients, no mesh backgrounds, no text gradients.
+
+<div className="not-prose mt-4 grid gap-4 sm:grid-cols-2">
+
+<div className="border border-[var(--hig-border)]">
+
+<div className="flex items-center justify-between border-b border-[var(--hig-border)] px-4 py-2.5">
+
+<span className="text-[13px] font-semibold text-[var(--apple-text)]">Allowed</span>
+<span className="font-mono text-[11px] text-[var(--apple-muted)]">Tint wash</span>
+
+</div>
+
+<div className="flex items-center justify-center px-4 py-8" style={{ backgroundColor: "rgba(163,192,223,0.30)" }}>
+
+<span className="text-[13px] font-medium text-[#193B62]">Flat fill from the palette</span>
+
+</div>
+
+<p className="px-4 py-3 text-[12px] leading-5 text-[var(--apple-muted)]">A single flat brand tint over white — all the "warmth" a gradient is asked to add, without the depth trick.</p>
+
+</div>
+
+<div className="border border-[var(--hig-border)]">
+
+<div className="flex items-center gap-2 border-b border-[var(--hig-border)] px-3 py-2.5">
+
+<span className="flex h-5 w-5 items-center justify-center rounded-full bg-red-600 text-[11px] font-bold text-white">✕</span>
+<span className="text-[13px] font-semibold text-[var(--apple-text)]">Forbidden</span>
+
+</div>
+
+<div className="flex items-center justify-center px-4 py-8" style={{ background: "linear-gradient(120deg,#1D65AF,#69A2E5,#0A7A42)" }}>
+
+<span className="text-[13px] font-medium text-white">Multi-stop mesh</span>
+
+</div>
+
+<p className="px-4 py-3 text-[12px] leading-5 text-[var(--apple-muted)]">Multi-stop gradients, mesh backgrounds, and glassy blurs are explicitly out of the identity.</p>
+
+</div>
+
+</div>
+
+<DoDontGrid
+  doItems={[
+    "Plain surfaces and flat palette fills.",
+    "One flat tint of --brand-100 for warmth on hero and cards.",
+    "Using scale, spacing, and type for hierarchy instead of depth.",
+  ]}
+  dontItems={[
+    "Any two-step or three-step gradient between brand colors.",
+    "Gradient text, mesh backgrounds, or blurred blobs of color.",
+    "Buying “premium” gradients that mimic other brands.",
+  ]}
+/>

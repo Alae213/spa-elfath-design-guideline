@@ -1,0 +1,65 @@
+﻿---
+title: "Typographie"
+description: "Une famille pour chaque locale — IBM Plex Sans Arabic, 300 à 700, et l'échelle 52/28/18"
+category: "Foundation"
+order: 17
+icon: "TextFontIcon"
+---
+
+Une seule voix a besoin d'un seul caractère. Chaque locale — arabe, français, anglais — parle en IBM Plex Sans Arabic, pour qu'un titre garde sa posture quand la langue change sous lui.
+
+<SectionHeading id="family" number="01" title="Famille et graisses" />
+
+Plex Arabic pour toutes les locales, chargé une fois, jamais substitué. La plage approuvée va de 300 à 700 — le Light y vit parce que la production l'emploie pour les sous-titres héros, pas par accident :
+
+<TypeDemo variant="weights" label="La plage approuvée" note="De 300 Light à 700 Bold, tel que chargé. Ni condensé, ni italique, ni seconde famille." />
+
+<div className="not-prose mt-3 border-y border-[var(--hig-border)] py-3">
+
+<p className="text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">Jamais de substitution sans accord du propriétaire.</span> Une famille « assez proche » compatible arabe est une voix différente — chasse, mesure et chiffres bougent avec elle.</p>
+
+<p className="mt-3 text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">Chiffres occidentaux partout.</span> Années, prix, téléphones et stats en chiffres occidentaux dans toutes les locales — pas de chiffres arabes orientaux, et un nombre ne réordonne jamais ses chiffres :</p>
+
+</div>
+
+<TypeDemo variant="numerals" label="Les chiffres maison" note="0123456789 · années, téléphones et pourcents se lisent de gauche à droite dans chaque locale." />
+
+<DoDontGrid
+  doItems={[
+    "IBM Plex Sans Arabic pour AR, FR et EN ensemble.",
+    "Graisses 300–700 telles que chargées ; Light réservé aux grands sous-titres.",
+    "Chiffres occidentaux pour chaque nombre dans chaque locale.",
+  ]}
+  dontItems={[
+    "La pile système de repli comme voix « temporaire ».",
+    "Tout graisser — 700 est une graisse de titres, pas un défaut.",
+    "Chiffres orientaux ou chaînes de chiffres réordonnées.",
+  ]}
+/>
+
+<SectionHeading id="ladder" number="02" title="Échelle des tailles" />
+
+Trois barreaux portent tout le produit, plus l'eyebrow qui les annonce. Rendus ci-dessous en taille et caractère réels :
+
+<TypeDemo variant="ladder" label="L'échelle en taille réelle" h1="Lignes réelles, production réelle" h2="Sept secteurs intégrés" body="Des solutions certifiées pour l'industrie et la construction." eyebrow="SECTEURS" note="H1 52/700, H2 28/700, Corps 18/600 — l'échelle officielle, mot à mot." />
+
+<div className="not-prose mt-3 border-y border-[var(--hig-border)] py-3">
+
+<p className="text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">FR et EN peuvent réduire, jamais grossir.</span> Là où une traduction déborde de sa mise en page, français et anglais composent légèrement plus petit pour tenir — l'arabe ne rétrécit jamais pour suivre, et rien ne grossit jamais au-delà du barreau.</p>
+
+<p className="mt-3 text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">L'eyebrow est un verrou, pas un libellé.</span> <span className="font-mono">text-xs font-bold tracking-widest</span> en brand-300, précédé du tiret de marque <span className="font-mono">h-1 w-6</span> — toujours appariés, jamais restylés par section.</p>
+
+</div>
+
+<DoDontGrid
+  doItems={[
+    "H1 pour la promesse de page, H2 pour les titres de sections, Corps 18/600 pour lire.",
+    "Interlignage serré sur l'affiche, généreux sur le corps.",
+    "Débordement corrigé en réduisant FR/EN — jamais en étirant la mise en page.",
+  ]}
+  dontItems={[
+    "Tailles intermédiaires (« 24px sonne mieux ici ») entre barreaux.",
+    "Corps tout-capitales ou paragraphes chassés.",
+    "Eyebrows sans tiret, ou tirets sans eyebrow.",
+  ]}
+/>

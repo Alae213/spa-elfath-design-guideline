@@ -1,0 +1,293 @@
+﻿---
+title: "الأيقونات"
+description: "مجموعة واحدة ولغة بناء واحدة: HugeIcons بمقاسات 16/20/24 — السماكة واللون وقواعد الاستعمال"
+category: "Foundation"
+order: 13
+icon: "Layers01Icon"
+rtl: true
+---
+
+الأيقونة كلمة في مفردات مشتركة، لا زينة. كل رمز في هذا الدليل يأتي من مجموعة واحدة، مرسوم على الشبكة نفسها بالسماكة نفسها — فلا يبدو ترس الإعدادات مستعارًا من منتج آخر.
+
+<SectionHeading id="set" number="01" title="المجموعة المعتمدة — Approved Set" />
+
+المجموعة المعتمدة هي HugeIcons (المجانية): رموز خطّية على شبكة 24 بكسل، مرسومة للواجهات. السبعة عشر أدناه هي المجموعة المستعملة في هذا الدليل — كل واحد يعلّم قسمه، ولا يجوز لرمز آخر أن يحمل هذه المعاني:
+
+<IconGrid>
+
+<IconCell name="Idea01Icon" usage="البداية — مبادئ التصميم." />
+<IconCell name="AccessibilityIcon" usage="الأسس — إمكانية الوصول." />
+<IconCell name="PaintBoardIcon" usage="الأسس — الهوية البصرية." />
+<IconCell name="ColorsIcon" usage="الأسس — الألوان." />
+<IconCell name="Layers01Icon" usage="الأسس — الأيقونات (هذه الصفحة)." />
+<IconCell name="Image01Icon" usage="الأسس — الصور." />
+<IconCell name="Layout01Icon" usage="الأسس — التخطيط." />
+<IconCell name="RightToLeftListTriangleIcon" usage="الأسس — اليمين إلى اليسار." />
+<IconCell name="TextFontIcon" usage="الأسس — الخطوط." />
+<IconCell name="Touch01Icon" usage="المكونات — الأزرار." />
+<IconCell name="InputTextIcon" usage="المكونات — الحقول." />
+<IconCell name="ToggleOnIcon" usage="المكونات — عناصر الاختيار." />
+<IconCell name="ChatFeedbackIcon" usage="المكونات — التغذية الراجعة." />
+<IconCell name="GroupLayersIcon" usage="المكونات — الطبقات العلوية." />
+<IconCell name="Cards01Icon" usage="المكونات — البطاقات." />
+<IconCell name="Database01Icon" usage="المكونات — البيانات." />
+<IconCell name="PlayCircleIcon" usage="المكونات — الوسائط." />
+
+</IconGrid>
+
+<div className="not-prose mt-3 border-y border-[var(--hig-border)] py-3">
+
+<p className="text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">مجموعة واحدة دون خلط.</span> الأيقونات الجديدة للمنتج تأتي من <span className="font-mono">HugeIcons</span> (<span className="font-mono">@hugeicons/core-free-icons</span> + <span className="font-mono">@hugeicons/react</span>) — لا من مكتبة ثانية أبدًا، ولا مرسومة يدويًا على عجل لتناسب مزاجًا.</p>
+
+<p className="mt-3 text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">معنى واحد لكل رمز.</span> الرمز الذي يعلّم قسمًا يحافظ على معناه في كل مكان. إعادة توظيف رمز مستعمل لمعنى جديد تكسر التعرّف أسرع من أي إعادة تصميم.</p>
+
+</div>
+
+<SectionHeading id="sizes" number="02" title="المقاسات والسماكة — Sizes & Stroke" />
+
+ثلاثة مقاسات تغطي كل سياق. الرمز نفسه لا يتغير أبدًا — فقط الصندوق الذي يُشحَن فيه:
+
+<IconGrid>
+
+<IconCell name="Touch01Icon" size={16} usage="16 — مدمج مع النص وصفوف الجداول." />
+<IconCell name="Touch01Icon" size={20} usage="20 — الافتراضي للأزرار والتنقل." />
+<IconCell name="Touch01Icon" size={24} usage="24 — لحظات إبراز الحالات الفارغة." />
+
+</IconGrid>
+
+<div className="not-prose mt-3 border-y border-[var(--hig-border)] py-3">
+
+<p className="text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">السماكة 1.5 دائمًا.</span> كل رمز يُرسَم بـ<span className="font-mono">strokeWidth 1.5</span> على شبكته من 24 بكسل — السماكة التي تُقرَأ عند 16 وتبقى خفيفة عند 24.</p>
+
+<p className="mt-3 text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">الـ12 فاصل لا مقاس.</span> الاستثناء الوحيد هو الفواصل المدمجة الكثيفة مثل أسهم مسار التنقل عند 12 — لا رمز تفاعلي أبدًا، ولا حامل معنى أبدًا.</p>
+
+<p className="mt-3 text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">الـ44 للأب.</span> تبقى الرموز عند 16/20/24؛ وحدّ اللمس الأدنى 44×44 يعيش على الزر أو الصف الذي يحملها.</p>
+
+</div>
+
+<SectionHeading id="color" number="03" title="اللون والسياق — Color & Context" />
+
+لا لون خاص للأيقونات. كل رمز يُرسَم بـ<span className="font-mono">currentColor</span> ويرث لون نص سياقه — الرمز نفسه أدناه، في ثلاثة سياقات، دون إعادة تلوين:
+
+<IconGrid>
+
+<IconCell name="ColorsIcon" usage="النص الافتراضي — يأخذ الرمز لون المتن." />
+
+<div className="text-[var(--apple-muted)]">
+
+<IconCell name="ColorsIcon" usage="النص الخافت — يهدأ الرمز مع صفّه." />
+
+</div>
+
+<IconCell name="ChatFeedbackIcon" boxStyle={{ backgroundColor: "rgba(163,192,223,0.30)" }} usage="على صبغة الهوية — موروث أيضًا، لا مطلي." />
+
+</IconGrid>
+
+<div className="not-prose mt-3 border-y border-[var(--hig-border)] py-3">
+
+<p className="text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">وراثة لا طلاء.</span> خبز الأزرق داخل الرمز يجمّده على خلفية واحدة؛ والوراثة تدع الرمز نفسه يعمل على الأبيض والصبغة والوضع الداكن دون صنف بديل.</p>
+
+</div>
+
+<DoDontGrid
+  doItems={[
+    "currentColor في كل مكان — السياق هو من يقرر.",
+    "ترك الصفوف الخافتة تُهدئ رموزها بنفسها.",
+    "اختبار الرمز على كل خلفية يُشحَن عليها.",
+  ]}
+  dontItems={[
+    "خبز #1D65AF داخل رمز «لأنه من الهوية».",
+    "لون مختلف للرمز نفسه في مكانين.",
+    "الملء أو التدرجات أو الظلال داخل رمز خطّي.",
+  ]}
+/>
+
+<SectionHeading id="usage" number="04" title="قواعد الاستعمال — Usage Rules" />
+
+الرمز دون تسمية تخمين. التنقل والإجراءات يقرنان الأيقونة بكلمة ظاهرة؛ وزر الأيقونة الوحيدة النادر يحمل معناه في الشيفرة بدلًا من ذلك:
+
+<div className="not-prose mt-4 border border-[var(--hig-border)] p-4">
+
+<div className="flex items-center gap-4">
+
+<div className="flex h-11 w-11 items-center justify-center border border-[var(--hig-border)]" aria-hidden="true">
+
+<IconCell name="Idea01Icon" bare={true} />
+
+</div>
+
+<div>
+
+<p className="text-[13px] font-semibold text-[var(--apple-text)]">أزرار الأيقونة الوحيدة</p>
+
+<p className="mt-1 font-mono text-[11px] leading-5 text-[var(--apple-muted)]" dir="ltr">aria-hidden="true" on the svg · aria-label="Search" on the button</p>
+
+</div>
+
+</div>
+
+</div>
+
+<DoDontGrid
+  doItems={[
+    "أيقونة + تسمية ظاهرة لعناصر التنقل والإجراءات.",
+    "aria-hidden على الرمز، والاسم المُتاح على عنصر التحكم.",
+    "الحد الأدنى 44×44 على الأب القابل للمس لا على الرمز.",
+  ]}
+  dontItems={[
+    "رمز وحيد لإجراء حرج دون اسم في الشيفرة.",
+    "الإيموجي كأيقونات — 🚨 ليس رمزًا ولا يتمدد.",
+    "مكتبتان في شاشة واحدة مهما بدتا متشابهتين.",
+  ]}
+/>
+
+<SectionHeading id="misuse" number="05" title="الاستعمالات الخاطئة — Incorrect Usage" />
+
+الأخطاء أدناه مرفوضة في المراجعة. الرمز الخطّي رسم ثابت على شبكة ثابتة؛ وأي تشويه يحوّله إلى رسم آخر:
+
+<div className="not-prose mt-4 grid gap-4 md:grid-cols-2">
+
+<div className="border border-[var(--hig-border)]">
+
+<div className="flex items-center gap-2 border-b border-[var(--hig-border)] px-3 py-2.5">
+
+<span className="flex h-5 w-5 items-center justify-center rounded-full bg-red-600 text-[11px] font-bold text-white">✕</span>
+<span className="text-[13px] font-semibold text-[var(--apple-text)]">المدّ والسحق</span>
+
+</div>
+
+<div className="flex h-24 items-center justify-center overflow-hidden px-6">
+
+<IconCell name="Touch01Icon" size={24} iconStyle={{ transform: "scaleX(1.6)" }} bare={true} />
+
+</div>
+
+<p className="px-3 py-2 text-[12px] leading-5 text-[var(--apple-muted)]">تغيير نسبة العرض إلى الارتفاع — خطأ حتى حين تتوسل المساحة أن تُملأ.</p>
+
+</div>
+
+<div className="border border-[var(--hig-border)]">
+
+<div className="flex items-center gap-2 border-b border-[var(--hig-border)] px-3 py-2.5">
+
+<span className="flex h-5 w-5 items-center justify-center rounded-full bg-red-600 text-[11px] font-bold text-white">✕</span>
+<span className="text-[13px] font-semibold text-[var(--apple-text)]">لون هوية مخبوز</span>
+
+</div>
+
+<div className="flex h-24 items-center justify-center overflow-hidden px-6 text-[#1D65AF]">
+
+<IconCell name="Touch01Icon" size={24} bare={true} />
+
+</div>
+
+<p className="px-3 py-2 text-[12px] leading-5 text-[var(--apple-muted)]">خبز الأزرق داخل الرمز بدل وراثة لون السياق.</p>
+
+</div>
+
+<div className="border border-[var(--hig-border)]">
+
+<div className="flex items-center gap-2 border-b border-[var(--hig-border)] px-3 py-2.5">
+
+<span className="flex h-5 w-5 items-center justify-center rounded-full bg-red-600 text-[11px] font-bold text-white">✕</span>
+<span className="text-[13px] font-semibold text-[var(--apple-text)]">تحت السلّم</span>
+
+</div>
+
+<div className="flex h-24 items-center justify-center overflow-hidden px-6">
+
+<IconCell name="Touch01Icon" size={10} bare={true} />
+
+</div>
+
+<p className="px-3 py-2 text-[12px] leading-5 text-[var(--apple-muted)]">العشرة بكسلات تسحق سماكة 1.5 إلى لطخة — الـ16 هي أرضية المعنى.</p>
+
+</div>
+
+<div className="border border-[var(--hig-border)]">
+
+<div className="flex items-center gap-2 border-b border-[var(--hig-border)] px-3 py-2.5">
+
+<span className="flex h-5 w-5 items-center justify-center rounded-full bg-red-600 text-[11px] font-bold text-white">✕</span>
+<span className="text-[13px] font-semibold text-[var(--apple-text)]">الإيموجي كأيقونة</span>
+
+</div>
+
+<div className="flex h-24 items-center justify-center overflow-hidden px-6">
+
+<span className="text-[24px]" aria-hidden="true">🚨</span>
+
+</div>
+
+<p className="px-3 py-2 text-[12px] leading-5 text-[var(--apple-muted)]">الإيموجي يُرسَم حسب المنصة، ولا يحمل لغة الخطوط، ويفشل عند الأحجام الصغيرة.</p>
+
+</div>
+
+</div>
+
+<DoDontGrid
+  doItems={[
+    "الرمز كما شُحِن: النسبة والسماكة والمقاس من السلّم.",
+    "مجموعة واحدة عبر المنتج — HugeIcons وcurrentColor و1.5.",
+  ]}
+  dontItems={[
+    "المدّ أو إعادة الطلاء أو التصغير أو استبدال الإيموجي.",
+    "إعادة رسم رمز مشحون «بشكل أفضل قليلًا» باليد.",
+  ]}
+/>
+
+<SectionHeading id="mirroring" number="06" title="العكس المرآتي — Mirroring" />
+
+الاتجاه يعكَس وكل ما عداه يثبت. الرمز الذي يشير مع تدفق القراءة ينقلب في العربية — والرمز الذي يصوّر العالم أو الهوية أو الزمن لا يفعل أبدًا:
+
+<div className="not-prose mt-4 grid gap-4 md:grid-cols-2">
+
+<div className="border border-[var(--hig-border)]">
+
+<div className="flex items-center justify-between border-b border-[var(--hig-border)] px-4 py-2.5">
+
+<span className="text-[13px] font-semibold text-[var(--apple-text)]">اقلِب</span>
+<span className="font-mono text-[11px] text-[var(--apple-muted)]">الاتجاهي فقط</span>
+
+</div>
+
+<div className="flex items-center justify-center gap-6 px-4 py-8" dir="ltr">
+
+<IconCell name="RightToLeftListTriangleIcon" bare={true} />
+
+<span className="font-mono text-[11px] text-[var(--apple-muted)]" dir="ltr">+ rtl: variant</span>
+
+</div>
+
+<p className="px-4 py-3 text-[12px] leading-5 text-[var(--apple-muted)]">أسهم الرجوع وعلامات اتجاه النص وحركة الأمام/الخلف — معكوسة مع التدفق.</p>
+
+</div>
+
+<div className="border border-[var(--hig-border)]">
+
+<div className="flex items-center justify-between border-b border-[var(--hig-border)] px-4 py-2.5">
+
+<span className="text-[13px] font-semibold text-[var(--apple-text)]">لا تقلِب أبدًا</span>
+<span className="font-mono text-[11px] text-[var(--apple-muted)]">ثابت دائمًا</span>
+
+</div>
+
+<div className="flex items-center justify-center gap-6 px-4 py-8">
+
+<IconCell name="Touch01Icon" bare={true} />
+
+<span className="font-mono text-[11px] text-[var(--apple-muted)]" dir="ltr">logo · clock · ✓</span>
+
+</div>
+
+<p className="px-4 py-3 text-[12px] leading-5 text-[var(--apple-muted)]">الشعارات والعلامات الكونية والساعات وأشياء العالم الحقيقي — متطابقة في كل اتجاه.</p>
+
+</div>
+
+</div>
+
+<div className="not-prose mt-4 border-y border-[var(--hig-border)] py-4">
+
+<p className="text-[13px] leading-6 text-[var(--apple-text)]">قانون العكس الكامل يعيش في § اليمين إلى اليسار — اقلِب مقابل لا تقلِب. وقاعدة الرمز في سطر واحد: اعكس الحركة والاتجاه ولا تعكس الهوية والزمن أبدًا.</p>
+
+</div>

@@ -1,0 +1,223 @@
+---
+title: "Branding"
+description: "Official logo reference: presentation, variants, black & white, and incorrect usage — El Fath group since 1984"
+category: "Foundation"
+order: 11
+icon: "PaintBoardIcon"
+---
+
+The logo is the face of the group: a designed wordmark that merges the Arabic name «الفتح» and the Latin «SPA elFath» in a single lockup in two fixed blues. The rules in this reference are binding on every medium, and the logo is always shown in its official colors on a white ground — the theme (dark/light) never changes it on any page of this guide.
+
+<SectionHeading id="present" number="01" title="The Logo" />
+
+The horizontal lockup is the default for web, apps, and correspondence. It is pulled only from the official master file, never redrawn in typeset:
+
+<div className="not-prose mt-4 flex items-center justify-center border border-[var(--hig-border)] bg-[#ffffff] px-4 py-10">
+
+<img src="/elfath-logo.svg" alt="Horizontal lockup — El Fath SPA elFath" className="h-12 w-auto" />
+
+</div>
+
+<p className="mt-3 text-[12px] leading-5 text-[var(--apple-muted)]">Approved file: <span className="font-mono">public/elfath-logo.svg</span> — exact logo colors <span className="font-mono">#326AAA</span> and <span className="font-mono">#A3C0DF</span>.</p>
+
+<div className="not-prose mt-4 border-y border-[var(--hig-border)] py-3">
+
+<p className="text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">Logo colors are locked.</span> Buttons, links, and interfaces use the digital identity colors from <span className="font-mono">--apple-blue</span> and <span className="font-mono">--brand-400</span>, but the logo itself is artwork and is never recolored via CSS.</p>
+
+<p className="mt-3 text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">The theme never touches the logo.</span> Don't apply lighten/darken filters when switching appearance — the logo stays colored on a white ground at all times (see § Black & White for the neutral alternative).</p>
+
+</div>
+
+<SectionHeading id="variants" number="02" title="Logo Variants" />
+
+Only two approved variants, each for a specific purpose. No intermediate variants or new composites:
+
+<div className="not-prose mt-4 grid gap-4 md:grid-cols-2">
+
+<div className="border border-[var(--hig-border)]">
+
+<div className="flex items-center justify-between border-b border-[var(--hig-border)] px-4 py-2.5">
+
+<span className="text-[13px] font-semibold text-[var(--apple-text)]">Horizontal</span>
+<span className="font-mono text-[11px] text-[var(--apple-muted)]">Primary</span>
+
+</div>
+
+<div className="flex items-center justify-center bg-[#ffffff] px-4 py-8">
+
+<img src="/elfath-logo.svg" alt="Horizontal lockup" className="h-10 w-auto" />
+
+</div>
+
+<p className="px-4 py-3 text-[12px] leading-5 text-[var(--apple-muted)]">Default definition: page headers, email signatures, wide spaces, signage.</p>
+
+</div>
+
+<div className="border border-[var(--hig-border)]">
+
+<div className="flex items-center justify-between border-b border-[var(--hig-border)] px-4 py-2.5">
+
+<span className="text-[13px] font-semibold text-[var(--apple-text)]">Vertical</span>
+<span className="font-mono text-[11px] text-[var(--apple-muted)]">Narrow</span>
+
+</div>
+
+<div className="flex items-center justify-center bg-[#ffffff] px-4 py-8">
+
+<img src="/elfath-logo-vertical.svg" alt="Vertical lockup" className="h-24 w-auto" />
+
+</div>
+
+<p className="px-4 py-3 text-[12px] leading-5 text-[var(--apple-muted)]">For narrow, vertical spaces: footers, stamps, badges, app buttons.</p>
+
+</div>
+
+</div>
+
+<SectionHeading id="mono" number="03" title="Black & White" />
+
+The two neutral versions are for media that don't support color or require it (fax, stamp, engraving, one-color print). Not a visual shortcut inside the colored interfaces:
+
+<div className="not-prose mt-4 grid gap-4 md:grid-cols-2">
+
+<div className="border border-[var(--hig-border)]">
+
+<div className="flex items-center justify-between border-b border-[var(--hig-border)] px-4 py-2.5">
+
+<span className="text-[13px] font-semibold text-[var(--apple-text)]">Black</span>
+<span className="font-mono text-[11px] text-[var(--apple-muted)]">One-color print</span>
+
+</div>
+
+<div className="flex items-center justify-center bg-[#ffffff] px-4 py-8">
+
+<img src="/elfath-logo.svg" alt="Logo in black on white" className="h-10 w-auto brightness-0" />
+
+</div>
+
+</div>
+
+<div className="border border-[var(--hig-border)]">
+
+<div className="flex items-center justify-between border-b border-[var(--hig-border)] px-4 py-2.5">
+
+<span className="text-[13px] font-semibold text-[var(--apple-text)]">White</span>
+<span className="font-mono text-[11px] text-[var(--apple-muted)]">Dark backgrounds</span>
+
+</div>
+
+<div className="flex items-center justify-center bg-[#000000] px-4 py-8">
+
+<img src="/elfath-logo.svg" alt="Logo in white on black" className="h-10 w-auto brightness-0 invert" />
+
+</div>
+
+</div>
+
+</div>
+
+<DoDontGrid
+  doItems={[
+    "One-color print or colorless medium: use black or white as shown above.",
+    "Choosing white on the navy and dark areas of paper documents.",
+  ]}
+  dontItems={[
+    "Turning the logo white inside a dark interface to match the theme — that's a color change, not implementation.",
+    "Grayscale gradients or intermediate forms between color and black.",
+  ]}
+/>
+
+<SectionHeading id="misuse" number="04" title="Incorrect Usage" />
+
+The errors below are rejected in review no matter how urgent the context. The designed logo is a complete wordmark with fixed proportions; any distortion turns it into another logo:
+
+<div className="not-prose mt-4 grid gap-4 md:grid-cols-2">
+
+<div className="border border-[var(--hig-border)]">
+
+<div className="flex items-center gap-2 border-b border-[var(--hig-border)] px-3 py-2.5">
+
+<span className="flex h-5 w-5 items-center justify-center rounded-full bg-red-600 text-[11px] font-bold text-white">✕</span>
+<span className="text-[13px] font-semibold text-[var(--apple-text)]">Stretch & squash</span>
+
+</div>
+
+<div className="flex items-center justify-center overflow-hidden bg-[#ffffff] px-6 py-8">
+
+<img src="/elfath-logo.svg" alt="" aria-hidden="true" className="h-10 w-auto" style={{ transform: "scaleX(1.55)" }} />
+
+</div>
+
+<p className="px-3 py-2 text-[12px] leading-5 text-[var(--apple-muted)]">Changing the original width/height ratio — wrong even when filling a space requires it.</p>
+
+</div>
+
+<div className="border border-[var(--hig-border)]">
+
+<div className="flex items-center gap-2 border-b border-[var(--hig-border)] px-3 py-2.5">
+
+<span className="flex h-5 w-5 items-center justify-center rounded-full bg-red-600 text-[11px] font-bold text-white">✕</span>
+<span className="text-[13px] font-semibold text-[var(--apple-text)]">Recoloring</span>
+
+</div>
+
+<div className="flex items-center justify-center overflow-hidden bg-[#ffffff] px-6 py-8">
+
+<img src="/elfath-logo.svg" alt="" aria-hidden="true" className="h-10 w-auto" style={{ filter: "brightness(0) sepia(1) hue-rotate(90deg) saturate(3)" }} />
+
+</div>
+
+<p className="px-3 py-2 text-[12px] leading-5 text-[var(--apple-muted)]">Any color outside #326AAA and #A3C0DF — however well it seems to match a campaign.</p>
+
+</div>
+
+<div className="border border-[var(--hig-border)]">
+
+<div className="flex items-center gap-2 border-b border-[var(--hig-border)] px-3 py-2.5">
+
+<span className="flex h-5 w-5 items-center justify-center rounded-full bg-red-600 text-[11px] font-bold text-white">✕</span>
+<span className="text-[13px] font-semibold text-[var(--apple-text)]">Tilt & rotation</span>
+
+</div>
+
+<div className="flex items-center justify-center overflow-hidden bg-[#ffffff] px-6 py-8">
+
+<img src="/elfath-logo.svg" alt="" aria-hidden="true" className="h-10 w-auto" style={{ transform: "rotate(-12deg)" }} />
+
+</div>
+
+<p className="px-3 py-2 text-[12px] leading-5 text-[var(--apple-muted)]">Dynamic tilt or rotation angles — the logo is always level.</p>
+
+</div>
+
+<div className="border border-[var(--hig-border)]">
+
+<div className="flex items-center gap-2 border-b border-[var(--hig-border)] px-3 py-2.5">
+
+<span className="flex h-5 w-5 items-center justify-center rounded-full bg-red-600 text-[11px] font-bold text-white">✕</span>
+<span className="text-[13px] font-semibold text-[var(--apple-text)]">Shadow & busy background</span>
+
+</div>
+
+<div className="flex items-center justify-center overflow-hidden bg-[linear-gradient(135deg,#0082c8,#667db6)] px-6 py-8">
+
+<img src="/elfath-logo.svg" alt="" aria-hidden="true" className="h-10 w-auto" style={{ filter: "drop-shadow(0 4px 6px rgba(0,0,0,0.45))" }} />
+
+</div>
+
+<p className="px-3 py-2 text-[12px] leading-5 text-[var(--apple-muted)]">Shadows or busy, gradient backgrounds blur clarity — clean white is the rule.</p>
+
+</div>
+
+</div>
+
+<DoDontGrid
+  doItems={[
+    "The master file as-is, with its proportions and colors, on a white ground.",
+    "Choosing horizontal or vertical according to the shape of the available space.",
+  ]}
+  dontItems={[
+    "Stretching, coloring, tilting, shadows, or any effect outside the correct presentation.",
+    "Redrawing the logo with type or building a version from hand-drawn parts.",
+  ]}
+/>

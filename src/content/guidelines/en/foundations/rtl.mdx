@@ -1,0 +1,145 @@
+---
+title: "Right to Left"
+description: "Mirror the layout, align by language, flip what moves — the Arabic-first rules"
+category: "Foundation"
+order: 16
+icon: "RightToLeftListTriangleIcon"
+---
+
+Arabic is not a translation of the interface — it is a direction of it. The default locale of this guide is Arabic, so these rules are not edge cases: they are the first render every visitor meets.
+
+<SectionHeading id="mirror" number="01" title="Mirror the Layout" />
+
+One markup, two readings. Flex and grid follow the nearest <span className="font-mono">dir</span> automatically — the same row below, laid out once, reading correctly in both directions with zero conditional code:
+
+<RtlDemo variant="mirror" label="One row, both directions" note="Chevron, label, and meta exchange sides under dir=rtl. No mirrored stylesheet, no per-locale markup." />
+
+<p className="mt-4 text-[13px] leading-6 text-[var(--apple-text)]">Apple's reference pair — the same content, mirrored positions:</p>
+
+<div className="not-prose mt-4 grid gap-4 md:grid-cols-2">
+
+<HigFigure src="/hig/image-positions-ltr@2x.png" width={220} height={158} alt="Text and images laid out left to right; favorites run heart, circle, star, square, triangle." caption="LTR — text, media, and favorites order left to right." credit="Figures: Apple HIG · Right to left" />
+
+<HigFigure src="/hig/image-positions-rtl@2x.png" width={220} height={158} alt="Same layout right to left; order preserved, sides exchanged." caption="RTL — same order, positions reversed to preserve meaning." credit="Figures: Apple HIG · Right to left" />
+
+</div>
+
+<DoDontGrid
+  doItems={[
+    "A single dir attribute per page or island — layout follows it.",
+    "Flex and grid ordering that reads correctly both ways.",
+    "Mirrored navigation, sidebars, and breadcrumbs with the flow.",
+  ]}
+  dontItems={[
+    "Separate LTR and RTL templates for the same screen.",
+    "Absolute left/right positioning for flow content.",
+    "Mirroring by hand with per-locale margin hacks.",
+  ]}
+/>
+
+<SectionHeading id="alignment" number="02" title="Text Alignment" />
+
+Align short text with the context, long text with its language. One- and two-line blocks follow reading direction; a paragraph of three lines or more follows the language it is written in — a right-aligned Latin paragraph hides every line start:
+
+<RtlDemo variant="align" label="Context vs language" note="Short blocks track the reading direction; paragraphs track their own language." />
+
+<p className="mt-4 text-[13px] leading-6 text-[var(--apple-text)]">Apple's correct/wrong pairs — the rule, visualized:</p>
+
+<div className="not-prose mt-4 grid gap-4 md:grid-cols-2">
+
+<HigFigure src="/hig/paragraph-alignment-correct@2x.png" width={307} height={171} alt="Arabic paragraph right-aligned, English paragraph left-aligned." caption="Correct — each paragraph follows its language." credit="Figures: Apple HIG · Right to left" />
+
+<HigFigure src="/hig/paragraph-alignment-wrong@2x.png" width={307} height={171} alt="Arabic and English paragraphs both forced right." caption="Wrong — both paragraphs forced to one edge." credit="Figures: Apple HIG · Right to left" />
+
+</div>
+
+<div className="not-prose mt-4 grid gap-4 md:grid-cols-2">
+
+<HigFigure src="/hig/mixed-script-list-alignment-correct@2x.png" width={190} height={170} alt="Right-aligned list; every bar shares the edge." caption="Correct — every item shares the reversed alignment." credit="Figures: Apple HIG · Right to left" />
+
+<HigFigure src="/hig/mixed-script-list-alignment-wrong@2x.png" width={190} height={170} alt="One bar wrongly left-aligned among right-aligned bars." caption="Wrong — one item breaks the edge." credit="Figures: Apple HIG · Right to left" />
+
+</div>
+
+<div className="not-prose mt-4 border-y border-[var(--hig-border)] py-4">
+
+<p className="text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">Lists align as one.</span> Every item in a list shares a single alignment, reversed together — including items set in a different script. A list that mixes alignments stops scanning.</p>
+
+<p className="mt-3 text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">Headlines may wear kashida.</span> Display Arabic headlines may stretch with tatweel for ceremony, as shipped in <span className="font-mono">AboutHero</span> — letterforms only, never for body text, never for Latin:</p>
+
+<p className="mt-3 text-center text-[22px] font-bold leading-9 text-[var(--apple-text)]" dir="rtl">مـــــجموعة الـــــفتح رائـــــدة في الصـــــناعة</p>
+
+<p className="mt-2 text-center font-mono text-[11px] text-[var(--apple-muted)]">kashida — display headlines only</p>
+
+</div>
+
+<DoDontGrid
+  doItems={[
+    "text-start everywhere — never text-left or text-right.",
+    "Paragraphs aligned to their own language.",
+    "Tatweel reserved for display headlines, sparingly.",
+  ]}
+  dontItems={[
+    "Forcing Latin alignment rules onto Arabic paragraphs.",
+    "Kashida in body copy, buttons, or form labels.",
+    "Centered paragraphs of running text in any language.",
+  ]}
+/>
+
+<SectionHeading id="flip" number="03" title="Flip vs Never-Flip" />
+
+Motion flips; meaning doesn't. Anything that points with the reading flow mirrors — anything that depicts the world, the brand, or time stays fixed:
+
+<RtlDemo variant="flip" label="The back chevron, both states" note="Both states rendered side by side as the rtl: variant renders them; production code uses the variant itself (see below)." />
+
+<div className="not-prose mt-4 border-y border-[var(--hig-border)] py-4">
+
+<p className="text-[13px] leading-6 text-[var(--apple-text)]">The pattern, as shipped in the <span className="font-mono">Sidebar</span> — physical base, directional override:</p>
+
+<pre className="mt-3 overflow-x-auto border border-[var(--hig-border)] bg-[var(--system-100)] p-3 text-left font-mono text-[11px] leading-5 text-[var(--apple-text)]" dir="ltr">
+{`className="-rotate-90 rtl:rotate-90"`}
+</pre>
+
+</div>
+
+<p className="mt-4 text-[13px] leading-6 text-[var(--apple-text)]">Apple's reference pair — the control and its glyphs flip as one:</p>
+
+<div className="not-prose mt-4 grid gap-4 md:grid-cols-2">
+
+<HigFigure src="/hig/flipped-directional-control-ltr@2x.png" width={368} height={48} alt="Volume slider; moving the thumb left to right makes it louder." caption="LTR — volume grows left to right; glyphs mark the ends." credit="Figures: Apple HIG · Right to left" />
+
+<HigFigure src="/hig/flipped-directional-control-rtl@2x.png" width={368} height={48} alt="Volume slider; moving the thumb right to left makes it louder." caption="RTL — control, glyphs, and order reverse together." credit="Figures: Apple HIG · Right to left" />
+
+</div>
+
+<DoDontGrid
+  doItems={[
+    "Flip: back chevrons, sliders, progress, and ordered sequences.",
+    "Keep: logos, clocks, media playback, phone glyphs, checkmarks.",
+    "Keep: photographs and artwork — re-shoot, never mirror.",
+  ]}
+  dontItems={[
+    "A mirrored logo “for consistency” — it confuses and risks legal trouble.",
+    "Flipping clocks and timers that work the same everywhere.",
+    "Mirroring a photo whose content implies a direction.",
+  ]}
+/>
+
+<SectionHeading id="code" number="04" title="Code Technique" />
+
+Physical properties are a second bug report waiting to happen. Logical properties and the <span className="font-mono">rtl:</span> variant make directionality a non-issue at authorship time — the struck column below must never appear in new code:
+
+<RtlDemo variant="tokens" label="Physical → logical map" note="Left/right utilities are banned in new code; islands of LTR (code, numerals, embeds) declare dir=ltr explicitly." />
+
+<DoDontGrid
+  doItems={[
+    "ms/me, ps/pe, start/end, text-start in all new code.",
+    "rtl: variant for the rare directional override.",
+    "dir=ltr islands for code, mono, and embeds.",
+  ]}
+  dontItems={[
+    "ml/mr, pl/pr, left/right, text-left in any new file.",
+    "Assuming the page dir covers embedded LTR content.",
+    "rotate utilities without asking which direction they face.",
+  ]}
+/>

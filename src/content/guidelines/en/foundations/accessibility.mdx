@@ -1,0 +1,185 @@
+---
+title: "Accessibility"
+description: "A guide for design and engineering teams — accessibility is part of the first decision, not a later fix"
+category: "Foundation"
+order: 10
+icon: "AccessibilityIcon"
+---
+
+Comfortable reading comes from graded weights, sufficient size, and thoughtful spacing. Never rely on color alone to distinguish elements.
+
+<SectionHeading id="text-weight" number="01" title="Text Weight & Typography" />
+
+<DoDontGrid
+  doItems={[
+    "Clear weight hierarchy: headings 700+, subheads 600, body 400.",
+    "Base size ≥ 16px (1rem); down to 15px is acceptable with 1.4–1.6 line spacing.",
+    "Contrast by size and weight together, never color alone.",
+    "Line length 45–75 characters and line-height 1.4–1.6.",
+  ]}
+  dontItems={[
+    "Thin/Light weights for body text or buttons — they strain at small sizes.",
+    "Distinguishing a heading or text by color alone, without a size/weight difference.",
+    "Sizes below 12px for content that is actually read.",
+    "An overlong line without spacing — it tires the eye.",
+  ]}
+/>
+
+<div className="mt-4 divide-y divide-[var(--hig-border)] border-y border-[var(--hig-border)]">
+
+<div className="flex items-baseline justify-between py-3">
+
+<span className="text-[22px] font-bold text-[var(--apple-text)]">Heading 700 — 32px</span>
+<span className="font-mono text-[11px] text-[var(--apple-muted)]">Bold</span>
+
+</div>
+
+<div className="flex items-baseline justify-between py-3">
+
+<span className="text-[17px] font-semibold text-[var(--apple-text)]">Subheading 600 — 17px</span>
+<span className="font-mono text-[11px] text-[var(--apple-muted)]">Semibold</span>
+
+</div>
+
+<div className="flex items-baseline justify-between py-3">
+
+<span className="text-[14px] leading-7 text-[var(--apple-text)]">Body 400 — 14–16px / 1.6 — stays readable at 200%</span>
+<span className="font-mono text-[11px] text-[var(--apple-muted)]">Regular</span>
+
+</div>
+
+</div>
+
+<SectionHeading id="color-contrast" number="02" title="Color & Contrast" />
+
+Color alone is never enough. Every text/background pair must pass a documented contrast check.
+
+<ContrastTable />
+
+<SemanticTokens />
+
+<DoDontGrid
+  doItems={[
+    "Test every new color with the WebAIM Contrast Checker and record the result.",
+    "Use semantic tokens: --color-text-primary / secondary / bg / accent / error / success.",
+    "For error/warning/success cases: color + icon + text together.",
+    "Hold 4.5:1 for body text and 3:1 for large text and boundaries.",
+  ]}
+  dontItems={[
+    'Picking a color because it "looks nice", without checking it.',
+    "Red/green only with no symbol — color blindness can't tell them apart.",
+    "Light text on light or dark on dark for stylistic purity.",
+    "Raw HEX scattered everywhere instead of a semantic system.",
+  ]}
+/>
+
+<SectionHeading id="spacing-layout" number="03" title="Spacing & Layout" />
+
+A unified spacing system creates visual rhythm and helps zoom users and older readers.
+
+<SpacingRuler />
+
+<TouchTargetDemo />
+
+<DoDontGrid
+  doItems={[
+    "Fixed multiple system: 8·16·24·32·48.",
+    "Breathing room around every block; crowding makes it harder for everyone.",
+    "Layout must stay readable at 200% zoom.",
+    "Line-height 1.4–1.6 and a comfortable line length.",
+  ]}
+  dontItems={[
+    "Pressing consecutive buttons together with no clear separator.",
+    "Random spacing that breaks the visual rhythm.",
+    "Buttons smaller than 44px tappable on mobile.",
+    "A layout that collapses when zoomed.",
+  ]}
+/>
+
+<SectionHeading id="images-alt" number="04" title="Images & Alt Text" />
+
+An image that carries information without alt text is information lost to a screen reader.
+
+<AltChecklist />
+
+<div className="mt-4 border-y border-[var(--hig-border)] py-3">
+
+<p className="font-mono text-[11px] leading-5 text-[var(--apple-muted)]" dir="ltr">alt="El Fath steel factory facade — Annaba, 2024 production line"</p>
+
+<p className="font-mono text-[11px] leading-5 text-[var(--apple-muted)]" dir="ltr">alt="Sales growth chart 2019–2024 — 42%"</p>
+
+<p className="font-mono text-[11px] leading-5 text-[var(--apple-muted)]" dir="ltr">alt="" — decorative only</p>
+
+</div>
+
+<DoDontGrid
+  doItems={[
+    "A descriptive alt for every image that carries meaning.",
+    'Empty alt="" only for decorative images.',
+    "Provide a text alternative for background video.",
+  ]}
+  dontItems={[
+    "Leaving alt empty for an informative image.",
+    'Repeating a useless "image1.jpg".',
+    "Relying on an image alone for core information.",
+  ]}
+/>
+
+<SectionHeading id="motion" number="05" title="Motion" />
+
+Motion explains a relationship; it doesn't decorate.
+
+<MotionDemo />
+
+<DoDontGrid
+  doItems={[
+    "Functional motion 200–300ms that clarifies a relationship.",
+    "Respect prefers-reduced-motion and provide a simple fade.",
+    "Make content available immediately.",
+  ]}
+  dontItems={[
+    "Continuous automatic motion with no way to stop.",
+    "Making reading depend on an animation finishing.",
+    "Large decorative-only motion.",
+  ]}
+/>
+
+<SectionHeading id="forms" number="06" title="Forms & Inputs" />
+
+For the web ahead: apps and dashboards.
+
+<div className="mt-4 border border-[var(--hig-border)] p-4">
+
+<div className="space-y-3">
+
+<div>
+
+<label className="text-[12px] text-[var(--apple-text)]">Email</label>
+<input placeholder="name@elfath.dz" className="mt-1 h-11 w-full border border-[var(--hig-border)] bg-transparent px-3 text-[13px] placeholder:text-[var(--apple-muted)] focus:border-[var(--apple-blue)] focus:outline-none" />
+
+</div>
+
+<div className="border-t border-[var(--hig-border)] pt-2.5 text-[12px] leading-5 text-[var(--apple-text)]">
+
+<span className="font-mono text-[11px] text-red-700">!</span>
+<span className="ms-2">Invalid email — use name@elfath.dz</span>
+<span className="ms-1 text-[11px] text-[var(--apple-muted)]">(color + icon + text)</span>
+
+</div>
+
+</div>
+
+</div>
+
+<DoDontGrid
+  doItems={[
+    "Every field is linked to a visible label — not placeholder only.",
+    "Error messages next to the field, with text explaining the fix.",
+    "Field/button heights ≥ 44px.",
+  ]}
+  dontItems={[
+    "Relying on red alone.",
+    "Hiding the label and relying on the placeholder.",
+    "Small fields that are hard to tap.",
+  ]}
+/>

@@ -1,0 +1,117 @@
+---
+title: "Buttons"
+description: "Primary, secondary, ghost — verbatim from production, plus the invented destructive and icon rules"
+category: "Core UI"
+order: 20
+icon: "Touch01Icon"
+---
+
+Buttons are the only voice that asks for something. Three variants ship in production — every class below is verbatim from `Button.tsx` — and this page adds the two rules production never wrote: a destructive treatment and icons in buttons. Rows tagged invented are guideline additions for future projects; everything else ships today.
+
+<SectionHeading id="variants" number="01" title="Variants" />
+
+One job each. Primary closes — hero CTAs, the quote form submit. Secondary offers — the alternative beside a primary. Ghost retreats — quiet actions inside dense layouts. All three share the base: `inline-flex items-center justify-center tracking-wide transition-colors duration-150`, sharp corners, Plex voice:
+
+<ButtonDemo variant="variants" label="The three that ship, plus the one we add" tAction="Request a quote" tDelete="Delete record" note="Primary, secondary, ghost: Button.tsx verbatim. Destructive: INVENTED — red outline mirroring secondary's logic, error #BE123C from the color semantics." />
+
+<div className="not-prose mt-3 border-y border-[var(--hig-border)] py-3">
+
+<p className="text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">Primary is singular.</span> One primary per view — the single thing the page wants. A second primary is a second promise; demote it to secondary.</p>
+
+<p className="mt-3 text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">Destructive is always the red outline — never solid red as a default.</span> Destruction must look reversible until committed: outline at rest, solid fill only on hover. Destructive never shares a row with primary; it sits apart, last, alone.</p>
+
+</div>
+
+<DoDontGrid
+  doItems={[
+    "Primary for the one closing action per view.",
+    "Secondary for the safe alternative beside it.",
+    "Destructive outline for irreversible acts — apart, last.",
+  ]}
+  dontItems={[
+    "Two primaries competing in one view.",
+    "Ghost as the only action on a page — it has no presence.",
+    "Solid red buttons as a resting state.",
+  ]}
+/>
+
+<SectionHeading id="sizes" number="02" title="Sizes" />
+
+Three heights ship — `sm h-8 px-4 text-xs`, `md h-10 px-5 text-sm`, `lg h-12 px-7 text-base` — and `md` is the default the component itself falls back to. The square icon-only companions are invented, one square per height:
+
+<ButtonDemo variant="sizes" label="Heights at true size" tAction="Request a quote" note="sm / md / lg: Button.tsx verbatim, rendered at true height. Squares 32/40/48: INVENTED companions — same heights, zero horizontal padding, 20px glyph." />
+
+<div className="not-prose mt-3 border-y border-[var(--hig-border)] py-3">
+
+<p className="text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">lg is earned, not decorative.</span> Hero promises and form submits take `lg`; everything inline — table rows, card footers, nav bars — stays `md` or `sm`. A large button never decorates, it closes.</p>
+
+<p className="mt-3 text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">Touch never drops below 32.</span> The `sm` 32px height is the floor — anything smaller stops being a button and becomes a link. Icon-only squares keep the full 32/40/48 hit area; the glyph shrinks, the target never does.</p>
+
+</div>
+
+<DoDontGrid
+  doItems={[
+    "md everywhere unless the action closes the page.",
+    "lg for hero CTAs and form submits only.",
+    "Icon-only squares at full height — 20px glyph inside.",
+  ]}
+  dontItems={[
+    "sm buttons for primary page actions.",
+    "Heights between rungs (36px, 44px “feels better”).",
+    "Icon-only buttons smaller than 32px.",
+  ]}
+/>
+
+<SectionHeading id="states" number="03" title="States" />
+
+Four states, no surprises. Hover lightens primary to brand-200; disabled locks at `opacity-40` with `cursor-not-allowed`; focus-visible draws the global ring — `2px solid brand-300` with `2px offset`, straight from `globals.css`:
+
+<ButtonDemo variant="states" label="One button, four moments" tAction="Request a quote" note="Hover, disabled, and focus are live — tab through the specimens. The focus row pins the ring statically for reference." />
+
+<div className="not-prose mt-3 border-y border-[var(--hig-border)] py-3">
+
+<p className="text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">Disabled explains itself.</span> A disabled button never stands alone — it keeps its label visible at 40% and the surrounding copy says why and what unlocks it. No tooltips-as-excuses, no disappearing act.</p>
+
+<p className="mt-3 text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">Focus is never removed.</span> The 2px ring with 2px offset is the keyboard user's cursor — restyling it is allowed, removing it is not. Every variant, including ghost and destructive, takes the same ring.</p>
+
+</div>
+
+<DoDontGrid
+  doItems={[
+    "Hover states that preview the click — lighter, never darker, for primary.",
+    "Disabled at opacity-40 with the reason in nearby copy.",
+    "The 2px + 2px focus ring on every variant.",
+  ]}
+  dontItems={[
+    "Disabled buttons with no explanation anywhere.",
+    "outline-none without a replacement ring.",
+    "Loading spinners inside the button — see Feedback.",
+  ]}
+/>
+
+<SectionHeading id="icons" number="04" title="Icons in Buttons" />
+
+Production ships no icon rule — so this section is invented whole, from the icon and RTL foundations. Leading icons act (`Add01` + “Request a quote”); trailing directionals move (“Learn more” + arrow); squares stand alone. One glyph per button, always 20px, always `strokeWidth 1.5`, always `currentColor`:
+
+<ButtonDemo variant="icons" label="Glyphs with passports" tAction="Request a quote" tMore="Learn more" note="INVENTED section. Directional glyphs mirror in RTL; the plus stays put. The RTL strip shows both rules live." />
+
+<div className="not-prose mt-3 border-y border-[var(--hig-border)] py-3">
+
+<p className="text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">Directional mirrors, functional stays.</span> Arrows, chevrons, and “more” glyphs flip in RTL — they point where the reader goes. Plus, download, close, and status glyphs never flip — they mean, they don't point.</p>
+
+<p className="mt-3 text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">Icon-only is a last resort with a first-class label.</span> A square button always carries an `aria-label` in the reader's language — the glyph is seen, the label is spoken. Two icons in one button is a sentence; rewrite the label instead.</p>
+
+</div>
+
+<DoDontGrid
+  doItems={[
+    "One 20px HugeIcon per button, currentColor.",
+    "Mirror directional glyphs in RTL; freeze functional ones.",
+    "aria-label on every icon-only square.",
+  ]}
+  dontItems={[
+    "Two glyphs in one button.",
+    "Mirrored plus/download/close icons.",
+    "Icon-only squares with no accessible name.",
+  ]}
+/>

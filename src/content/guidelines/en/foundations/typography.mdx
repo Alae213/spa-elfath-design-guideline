@@ -1,0 +1,65 @@
+---
+title: "Typography"
+description: "One family for every locale — IBM Plex Sans Arabic, 300 to 700, and the 52/28/18 ladder"
+category: "Foundation"
+order: 17
+icon: "TextFontIcon"
+---
+
+One voice needs one typeface. Every locale — Arabic, French, English — speaks in IBM Plex Sans Arabic, so a headline keeps its posture when the language changes underneath it.
+
+<SectionHeading id="family" number="01" title="Family & Weights" />
+
+Plex Arabic for all locales, loaded once, substituted never. The approved range runs 300 to 700 — Light lives in the range because production uses it for hero subtitles, not by accident:
+
+<TypeDemo variant="weights" label="The approved range" note="300 Light through 700 Bold, as loaded. No Condensed, no Italic, no second family." />
+
+<div className="not-prose mt-3 border-y border-[var(--hig-border)] py-3">
+
+<p className="text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">Never substitute without owner approval.</span> A “close enough” Arabic-capable family is a different voice — the lockup, the measure, and the numerals all shift with it.</p>
+
+<p className="mt-3 text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">Western digits everywhere.</span> Years, prices, phones, and stats set in Western numerals in all locales — no Arabic-Indic digits, and a number never reorders its digits:</p>
+
+</div>
+
+<TypeDemo variant="numerals" label="The house numerals" note="0123456789 · years, phones, and percents read left to right in every locale." />
+
+<DoDontGrid
+  doItems={[
+    "IBM Plex Sans Arabic for AR, FR, and EN alike.",
+    "Weights 300–700 as loaded; Light reserved for large subtitles.",
+    "Western digits for every number in every locale.",
+  ]}
+  dontItems={[
+    "A system fallback stack as a “temporary” voice.",
+    "Bold everything — 700 is a headline weight, not a default.",
+    "Arabic-Indic digits or reordered digit strings.",
+  ]}
+/>
+
+<SectionHeading id="ladder" number="02" title="Scale Ladder" />
+
+Three rungs carry the whole product, plus the eyebrow that introduces them. Rendered below at true size in the true face:
+
+<TypeDemo variant="ladder" label="The ladder at true size" h1="Real lines, real output" h2="Seven integrated sectors" body="Certified solutions for industry and construction nationwide." eyebrow="SECTORS" note="H1 52/700, H2 28/700, Body 18/600 — the official scale, verbatim." />
+
+<div className="not-prose mt-3 border-y border-[var(--hig-border)] py-3">
+
+<p className="text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">FR and EN may scale down, never up.</span> Where a translation overflows its layout, French and English set slightly smaller to fit — Arabic never shrinks to match, and nothing ever scales up past the rung.</p>
+
+<p className="mt-3 text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">The eyebrow is a lockup, not a label.</span> <span className="font-mono">text-xs font-bold tracking-widest</span> in brand-300, preceded by the <span className="font-mono">h-1 w-6</span> brand dash — always paired, never restyled per section.</p>
+
+</div>
+
+<DoDontGrid
+  doItems={[
+    "H1 for the page promise, H2 for section titles, Body 18/600 for reading.",
+    "Tight leading on display, generous leading on body.",
+    "Overflow fixed by scaling FR/EN down — layout never stretches.",
+  ]}
+  dontItems={[
+    "Intermediate sizes (“24px feels better here”) between rungs.",
+    "All-caps body copy or letterspaced paragraphs.",
+    "Eyebrows without the dash, or dashes without the eyebrow.",
+  ]}
+/>

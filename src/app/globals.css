@@ -105,10 +105,19 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-/* Arabic — IBM Plex Sans Arabic only for RTL/Arabic */
+/* Arabic — IBM Plex Sans Arabic everywhere for Arabic (dir, lang, data-locale) */
 [dir="rtl"],
 [lang="ar"],
+html[data-locale="ar"],
 .font-arabic {
+  font-family: var(--font-plex-arabic), "IBM Plex Sans Arabic", Tahoma, sans-serif;
+}
+
+html[data-locale="ar"] body,
+html[data-locale="ar"] button,
+html[data-locale="ar"] input,
+html[data-locale="ar"] select,
+html[data-locale="ar"] textarea {
   font-family: var(--font-plex-arabic), "IBM Plex Sans Arabic", Tahoma, sans-serif;
 }
 

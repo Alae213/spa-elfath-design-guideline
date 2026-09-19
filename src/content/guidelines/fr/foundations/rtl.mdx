@@ -1,0 +1,145 @@
+﻿---
+title: "Droite à gauche"
+description: "Miroir de mise en page, alignement par langue, inversion de ce qui bouge — les règles arabes d'abord"
+category: "Foundation"
+order: 16
+icon: "RightToLeftListTriangleIcon"
+---
+
+L'arabe n'est pas une traduction de l'interface — c'en est une direction. La locale par défaut de ce guide est l'arabe, donc ces règles ne sont pas des cas limites : elles sont le premier rendu que chaque visiteur rencontre.
+
+<SectionHeading id="mirror" number="01" title="Miroir de mise en page" />
+
+Un seul balisage, deux lectures. Flex et grid suivent le <span className="font-mono">dir</span> le plus proche automatiquement — la même rangée ci-dessous, écrite une fois, se lit correctement dans les deux directions sans code conditionnel :
+
+<RtlDemo variant="mirror" label="Une rangée, deux directions" note="Chevron, libellé et méta échangent leurs côtés sous dir=rtl. Ni feuille miroir, ni balisage par locale." />
+
+<p className="mt-4 text-[13px] leading-6 text-[var(--apple-text)]">La paire de référence Apple — même contenu, positions miroir :</p>
+
+<div className="not-prose mt-4 grid gap-4 md:grid-cols-2">
+
+<HigFigure src="/hig/image-positions-ltr@2x.png" width={220} height={158} alt="Texte et images disposés de gauche à droite ; favoris cœur, cercle, étoile, carré, triangle." caption="LTR — texte, médias et ordre de gauche à droite." credit="Figures : Apple HIG · Right to left" />
+
+<HigFigure src="/hig/image-positions-rtl@2x.png" width={220} height={158} alt="Même disposition de droite à gauche ; ordre préservé, côtés échangés." caption="RTL — même ordre, positions inversées pour préserver le sens." credit="Figures : Apple HIG · Right to left" />
+
+</div>
+
+<DoDontGrid
+  doItems={[
+    "Un seul attribut dir par page ou îlot — la mise en page le suit.",
+    "Ordre flex et grid lisible dans les deux sens.",
+    "Navigation, barres latérales et fils d'Ariane miroirs avec le flux.",
+  ]}
+  dontItems={[
+    "Gabarits LTR et RTL séparés pour le même écran.",
+    "Positionnement absolu gauche/droite pour du contenu de flux.",
+    "Miroir manuel avec astuces de marges par locale.",
+  ]}
+/>
+
+<SectionHeading id="alignment" number="02" title="Alignement du texte" />
+
+Alignez le texte court sur le contexte, le long sur sa langue. Les blocs d'une ou deux lignes suivent le sens de lecture ; un paragraphe de trois lignes ou plus suit la langue dans laquelle il est écrit — un paragraphe latin aligné à droite cache chaque début de ligne :
+
+<RtlDemo variant="align" label="Contexte contre langue" note="Les blocs courts suivent le sens de lecture ; les paragraphes suivent leur langue." />
+
+<p className="mt-4 text-[13px] leading-6 text-[var(--apple-text)]">Les paires correct/faux d'Apple — la règle visualisée :</p>
+
+<div className="not-prose mt-4 grid gap-4 md:grid-cols-2">
+
+<HigFigure src="/hig/paragraph-alignment-correct@2x.png" width={307} height={171} alt="Paragraphe arabe aligné à droite, paragraphe anglais aligné à gauche." caption="Correct — l'arabe suit l'arabe, l'anglais suit l'anglais." credit="Figures : Apple HIG · Right to left" />
+
+<HigFigure src="/hig/paragraph-alignment-wrong@2x.png" width={307} height={171} alt="Paragraphes arabe et anglais tous deux forcés à droite." caption="Faux — deux paragraphes forcés sur un seul bord." credit="Figures : Apple HIG · Right to left" />
+
+</div>
+
+<div className="not-prose mt-4 grid gap-4 md:grid-cols-2">
+
+<HigFigure src="/hig/mixed-script-list-alignment-correct@2x.png" width={190} height={170} alt="Liste alignée à droite ; chaque barre partage le bord." caption="Correct — chaque élément partage l'alignement inversé." credit="Figures : Apple HIG · Right to left" />
+
+<HigFigure src="/hig/mixed-script-list-alignment-wrong@2x.png" width={190} height={170} alt="Une barre faussement alignée à gauche parmi des barres à droite." caption="Faux — un élément brise le bord." credit="Figures : Apple HIG · Right to left" />
+
+</div>
+
+<div className="not-prose mt-4 border-y border-[var(--hig-border)] py-4">
+
+<p className="text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">Les listes s'alignent d'un bloc.</span> Chaque élément d'une liste partage un seul alignement, inversé ensemble — y compris les éléments dans une autre écriture. Une liste aux alignements mélangés cesse de se balayer.</p>
+
+<p className="mt-3 text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">Les titres peuvent porter le kashida.</span> Les titres arabes d'apparat peuvent s'étirer en tatweel pour la cérémonie, comme livré dans <span className="font-mono">AboutHero</span> — lettres seulement, jamais pour le corps, jamais pour le latin :</p>
+
+<p className="mt-3 text-center text-[22px] font-bold leading-9 text-[var(--apple-text)]" dir="rtl">مـــــجموعة الـــــفتح رائـــــدة في الصـــــناعة</p>
+
+<p className="mt-2 text-center font-mono text-[11px] text-[var(--apple-muted)]">kashida — display headlines only</p>
+
+</div>
+
+<DoDontGrid
+  doItems={[
+    "text-start partout — jamais text-left ni text-right.",
+    "Paragraphes alignés sur leur propre langue.",
+    "Kashida réservé aux titres d'apparat, avec mesure.",
+  ]}
+  dontItems={[
+    "Imposer les règles d'alignement latines aux paragraphes arabes.",
+    "Kashida dans le corps, les boutons ou les libellés de formulaires.",
+    "Paragraphes courants centrés dans quelque langue que ce soit.",
+  ]}
+/>
+
+<SectionHeading id="flip" number="03" title="Inverser contre jamais-inverser" />
+
+Le mouvement s'inverse ; le sens non. Tout ce qui pointe avec le flux de lecture se miroir — tout ce qui dépeint le monde, la marque ou le temps reste fixe :
+
+<RtlDemo variant="flip" label="Le chevron retour, deux états" note="Les deux états rendus côte à côte tels que la variante rtl: les rend ; le code de production utilise la variante elle-même (voir ci-dessous)." />
+
+<div className="not-prose mt-4 border-y border-[var(--hig-border)] py-4">
+
+<p className="text-[13px] leading-6 text-[var(--apple-text)]">Le motif, tel que livré dans la <span className="font-mono">Sidebar</span> — base physique, surcharge directionnelle :</p>
+
+<pre className="mt-3 overflow-x-auto border border-[var(--hig-border)] bg-[var(--system-100)] p-3 text-left font-mono text-[11px] leading-5 text-[var(--apple-text)]" dir="ltr">
+{`className="-rotate-90 rtl:rotate-90"`}
+</pre>
+
+</div>
+
+<p className="mt-4 text-[13px] leading-6 text-[var(--apple-text)]">La paire de référence Apple — le contrôle et ses glyphes basculent d'un bloc :</p>
+
+<div className="not-prose mt-4 grid gap-4 md:grid-cols-2">
+
+<HigFigure src="/hig/flipped-directional-control-ltr@2x.png" width={368} height={48} alt="Curseur de volume ; pousser vers la droite rend plus fort." caption="LTR — le volume croît de gauche à droite ; les glyphes marquent les bouts." credit="Figures : Apple HIG · Right to left" />
+
+<HigFigure src="/hig/flipped-directional-control-rtl@2x.png" width={368} height={48} alt="Curseur de volume ; pousser vers la gauche rend plus fort." caption="RTL — contrôle, glyphes et ordre s'inversent ensemble." credit="Figures : Apple HIG · Right to left" />
+
+</div>
+
+<DoDontGrid
+  doItems={[
+    "Inverser : chevrons retour, curseurs, progressions, séquences ordonnées.",
+    "Garder : logos, horloges, lecture média, glyphes téléphone, coches.",
+    "Garder : photographies et œuvres — refilmer, jamais miroir.",
+  ]}
+  dontItems={[
+    "Un logo miroir « pour la cohérence » — il égare et risque gros juridiquement.",
+    "Inverser horloges et minuteurs identiques partout.",
+    "Miroir d'une photo dont le contenu implique une direction.",
+  ]}
+/>
+
+<SectionHeading id="code" number="04" title="Technique de code" />
+
+Les propriétés physiques sont un second rapport de bug en attente. Propriétés logiques et variante <span className="font-mono">rtl:</span> font de la directionnalité un non-sujet à l'écriture — la colonne barrée ci-dessous ne doit jamais paraître dans du code neuf :
+
+<RtlDemo variant="tokens" label="Table physique → logique" note="Utilitaires gauche/droite bannis du code neuf ; îlots LTR (code, chiffres, embarqués) déclarent dir=ltr explicitement." />
+
+<DoDontGrid
+  doItems={[
+    "ms/me, ps/pe, start/end, text-start dans tout code neuf.",
+    "Variante rtl: pour la rare surcharge directionnelle.",
+    "Îlots dir=ltr pour code, mono et embarqués.",
+  ]}
+  dontItems={[
+    "ml/mr, pl/pr, left/right, text-left dans tout fichier neuf.",
+    "Supposer que le dir de page couvre le contenu latin embarqué.",
+    "Utilitaires de rotation sans demander où ils regardent.",
+  ]}
+/>
