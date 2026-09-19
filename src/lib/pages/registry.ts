@@ -9,6 +9,7 @@ import { layout } from "./data/layout";
 import { rtl } from "./data/rtl";
 import { branding } from "./data/branding";
 import { accessibility } from "./data/accessibility";
+import { buttons } from "./data/buttons";
 import { skeletons } from "./data/skeletons";
 
 const registry: Record<string, Record<Locale, PageData>> = {
@@ -21,6 +22,7 @@ const registry: Record<string, Record<Locale, PageData>> = {
   "foundations/rtl": rtl,
   "foundations/branding": branding,
   "foundations/accessibility": accessibility,
+  "components/core-ui/buttons": buttons,
   ...skeletons,
 };
 

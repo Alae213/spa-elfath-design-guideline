@@ -32,16 +32,6 @@ function sk(slug: string, accent: string, titles: Localized<string>, intros: Loc
 }
 
 export const skeletons: Record<string, Localized<PageData>> = {
-  "components/core-ui/buttons": sk(
-    "components/core-ui/buttons",
-    "#0071e3",
-    { ar: "الأزرار", en: "Buttons", fr: "Boutons" },
-    {
-      ar: "الأزرار هي نقاط القرار الأساسية — أساسي وثانوي وشبح، بثلاثة أحجام وحالة تركيز واضحة.",
-      en: "Buttons are the primary decision points — primary, secondary and ghost, in three sizes with a clear focus state.",
-      fr: "Les boutons sont les points de décision principaux — primaire, secondaire et fantôme, en trois tailles avec un état de focus clair.",
-    },
-  ),
   "components/core-ui/inputs": sk(
     "components/core-ui/inputs",
     "#5ac8fa",

@@ -13,6 +13,7 @@ import { ImageGrid, ImageDemo } from "@/components/mdx/ImageDemo";
 import { LayoutDemo } from "@/components/mdx/LayoutDemo";
 import { RtlDemo, HigFigure } from "@/components/mdx/RtlDemo";
 import { TypeDemo } from "@/components/mdx/TypeDemo";
+import { ButtonDemo } from "@/components/mdx/ButtonDemo";
 import {
   SectionHeading,
   Accordion,
@@ -135,6 +136,7 @@ export default async function GuidelinePage({ params }: { params: Promise<{ slug
                 RtlDemo,
                 HigFigure,
                 TypeDemo,
+                ButtonDemo,
               }}
             />
           </div>
