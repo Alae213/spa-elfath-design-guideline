@@ -1,16 +1,16 @@
-// CardDemo — live specimens for the Cards guideline page.
+﻿// CardDemo â€” live specimens for the Cards guideline page.
 // Server Component: zero hooks, zero handlers. Hover states are shown as a
 // static "hover" twin, not simulated.
 //
-// Production truth (verbatim, from context/design/DESIGN_SYSTEM.md — the SPA
+// Production truth (verbatim, from context/design/DESIGN_SYSTEM.md â€” the SPA
 // Website's own card spec):
-//   · Card (category grid): border border-system-200 bg-white p-5
+//   Â· Card (category grid): border border-system-200 bg-white p-5
 //     hover:shadow-md transition, sharp 0px corners per SPA masonry override
 //     (0 radius, flush), hover:border-brand-200.
-//   · Interaction: hover = lighter blue #69A2E5 (brand-200), 150ms.
-//   · Skeleton intros: cards group image + title + description in one
-//     container — sharp corners, thin borders, no shadows at rest.
-//   · FORBIDDEN (anti-patterns): rounded-2xl cards, generic gradients.
+//   Â· Interaction: hover = lighter blue #69A2E5 (brand-200), 150ms.
+//   Â· Skeleton intros: cards group image + title + description in one
+//     container â€” sharp corners, thin borders, no shadows at rest.
+//   Â· FORBIDDEN (anti-patterns): rounded-2xl cards, generic gradients.
 // INVENTED, tagged: the image placeholder block (production spec names the
 // image slot but ships no placeholder in this repo), the 2-col grid gap, and
 // the title/caption type sizes (from the documented scale: h3 17/24 600,
@@ -48,9 +48,9 @@ function CardAnatomy({ tImage, tTitle, tBody, tAction, tags }: { tImage: string;
   return (
     <div className="divide-y divide-[var(--hig-border)]">
       <Row tag={tags[0]}>
-        {/* The card itself — verbatim: border-system-200, bg-white, p-5, 0 radius */}
+        {/* The card itself â€” verbatim: border-system-200, bg-white, p-5, 0 radius */}
         <div className="w-full max-w-[320px] border bg-white p-5" style={{ borderColor: SYS_200 }}>
-          {/* Image slot — INVENTED placeholder: production names the image, ships no fallback */}
+          {/* Image slot â€” INVENTED placeholder: production names the image, ships no fallback */}
           <div className="flex aspect-[16/9] items-center justify-center bg-[#f5f4f3] text-[11px] font-medium text-[#737373]">
             {tImage}
           </div>
@@ -66,10 +66,10 @@ function CardAnatomy({ tImage, tTitle, tBody, tAction, tags }: { tImage: string;
         </div>
       </Row>
       <Row tag={tags[1]}>
-        <span className="text-[13px]" style={{ color: SYS_500 }}>border-system-200 #ECE8E4 · bg-white · p-5</span>
+        <span className="text-[13px]" style={{ color: SYS_500 }}>border-system-200 #ECE8E4 Â· bg-white Â· p-5</span>
       </Row>
       <Row tag={tags[2]}>
-        <span className="text-[13px]" style={{ color: SYS_500 }}>radius 0 · no shadow at rest · hover 150ms</span>
+        <span className="text-[13px]" style={{ color: SYS_500 }}>radius 0 Â· no shadow at rest Â· hover 150ms</span>
       </Row>
     </div>
   );
@@ -88,7 +88,7 @@ function CardStates({ tRest, tHover, tags }: { tRest: string; tHover: string; ta
         <div className="border bg-white p-5" style={{ borderColor: SYS_200 }}>
           <div className="aspect-[16/9] bg-[#f5f4f3]" />
           <span className="mt-4 block text-[17px] font-semibold leading-6" style={{ color: SYS_500 }}>{tRest}</span>
-          <p className="mt-2 text-[13px] leading-5" style={{ color: SYS_400 }}>border-system-200 · no shadow</p>
+          <p className="mt-2 text-[13px] leading-5" style={{ color: SYS_400 }}>border-system-200 Â· no shadow</p>
         </div>
       </div>
       <div>
@@ -99,14 +99,14 @@ function CardStates({ tRest, tHover, tags }: { tRest: string; tHover: string; ta
         <div className="border p-5 shadow-md" style={{ borderColor: BRAND_200 }}>
           <div className="aspect-[16/9] bg-[#f5f4f3]" />
           <span className="mt-4 block text-[17px] font-semibold leading-6" style={{ color: BRAND_300 }}>{tHover}</span>
-          <p className="mt-2 text-[13px] leading-5" style={{ color: SYS_400 }}>border-brand-200 #69A2E5 · shadow-md</p>
+          <p className="mt-2 text-[13px] leading-5" style={{ color: SYS_400 }}>border-brand-200 #69A2E5 Â· shadow-md</p>
         </div>
       </div>
     </div>
   );
 }
 
-// 2-col grid rhythm — sharp corners flush, gap only. Third card spans full
+// 2-col grid rhythm â€” sharp corners flush, gap only. Third card spans full
 // width to show the masonry override: cards tile, they never stretch radius.
 function CardGrid({ tA, tB, tC, tags }: { tA: string; tB: string; tC: string; tags: string[] }) {
   return (
@@ -129,12 +129,12 @@ function CardGrid({ tA, tB, tC, tags }: { tA: string; tB: string; tC: string; ta
 
 const DEFAULT_TAGS: Record<CardDemoVariant, string[]> = {
   anatomy: [
-    "image 16:9 slot · INVENTED placeholder",
-    "border-system-200 · bg-white · p-5",
-    "radius 0 · hover 150ms",
+    "image 16:9 slot Â· INVENTED placeholder",
+    "border-system-200 Â· bg-white Â· p-5",
+    "radius 0 Â· hover 150ms",
   ],
-  states: ["rest · no shadow", "hover · shadow-md + brand-200"],
-  grid: ["gap-3 · sm:grid-cols-2 · flush 0-radius"],
+  states: ["rest Â· no shadow", "hover Â· shadow-md + brand-200"],
+  grid: ["gap-3 Â· sm:grid-cols-2 Â· flush 0-radius"],
 };
 
 export function CardDemo({
