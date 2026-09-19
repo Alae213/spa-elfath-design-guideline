@@ -7,6 +7,7 @@ import { ImageGrid, ImageDemo } from "@/components/mdx/ImageDemo";
 import { LayoutDemo } from "@/components/mdx/LayoutDemo";
 import { RtlDemo, HigFigure } from "@/components/mdx/RtlDemo";
 import { TypeDemo } from "@/components/mdx/TypeDemo";
+import { ButtonDemo } from "@/components/mdx/ButtonDemo";
 import {
   ContrastTable,
   SemanticTokens,
@@ -110,6 +111,20 @@ function renderSection(sec: Section, accent: string, isRtl: boolean, idx: number
       return null;
     case "typeDemo":
       return <TypeDemo key={idx} variant={sec.variant} label={sec.label} note={sec.note} h1={sec.h1} h2={sec.h2} body={sec.body} eyebrow={sec.eyebrow} />;
+    case "buttonDemo":
+      return (
+        <ButtonDemo
+          key={idx}
+          variant={sec.variant}
+          label={sec.label}
+          note={sec.note}
+          tags={sec.tags}
+          tAction={sec.tAction}
+          tMore={sec.tMore}
+          tDelete={sec.tDelete}
+          tAdd={sec.tAdd}
+        />
+      );
     case "iconGrid":
       return (
         <IconGrid key={idx}>

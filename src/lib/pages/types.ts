@@ -23,6 +23,7 @@ export type Section =
   | { kind: "tokenRows"; items: { name: string; val: string; use: string }[] }
   | { kind: "demo"; variant: "contrast" | "semantic" | "spacing" | "touch" | "motion" | "alt" | "pageGoal" }
   | { kind: "typeDemo"; variant: "weights" | "ladder" | "numerals"; label: string; note?: string; h1?: string; h2?: string; body?: string; eyebrow?: string }
+  | { kind: "buttonDemo"; variant: "variants" | "sizes" | "states" | "icons"; label: string; note?: string; tags?: string[]; tAction?: string; tMore?: string; tDelete?: string; tAdd?: string }
   | { kind: "iconGrid"; cells: { name: string; usage?: string; size?: number; boxStyle?: React.CSSProperties; iconStyle?: React.CSSProperties; bare?: boolean }[] }
   | { kind: "imageGrid"; demos: { label: string; ratio?: string; ratioTag?: string; overlay?: boolean; video?: boolean; caption?: string; note?: string }[] }
   | { kind: "layoutDemo"; variant: "container" | "breakpoints" | "bricks" | "hero"; label: string; note?: string }
