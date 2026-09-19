@@ -1,0 +1,29 @@
+
+> spa-elfath-design-guideline@0.1.0 build
+> next build --webpack
+
+▲ Next.js 16.3.5 (webpack)
+✓ Running next.config.ts took 45ms
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 7.6s
+  Running TypeScript ...
+  Finished TypeScript in 1747ms ...
+  Collecting page data using 6 workers ...
+  Generating static pages using 6 workers (0/21) ...
+  Generating static pages using 6 workers (5/21) 
+  Generating static pages using 6 workers (10/21) 
+  Generating static pages using 6 workers (15/21) 
+✓ Generating static pages using 6 workers (21/21) in 1174ms
+  Finalizing page optimization ...
+  Collecting build traces ...
+
+Route (app)
+┌ ƒ /
+├ ƒ /_not-found
+├ ƒ /guidelines
+└ ƒ /guidelines/[...slug]
+
+
+ƒ  (Dynamic)  server-rendered on demand
+

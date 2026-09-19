@@ -1,9 +1,117 @@
 ﻿---
 title: "Contrôles de sélection"
-description: "Cases, boutons radio, interrupteurs"
+description: "Cases et interrupteurs — la norme du premier ; chaque spécimen inventé et étiqueté"
 category: "Core UI"
 order: 22
 icon: "ToggleOnIcon"
 ---
 
-Empty foundation - content coming soon.
+Cases à cocher et interrupteurs — les contrôles qui répondent par un état, pas par une navigation. Le site de production n'en livre aucun encore, donc cette page est la norme du premier : chaque spécimen y est inventé, étiqueté comme tel, et construit strictement avec les jetons déjà documentés — la peau des champs au repos, brand-300 allumé, l'anneau marque 2px au focus, des cibles 44×44 partout. Quand la première vraie case sera livrée, ces étiquettes prendront leur retraite et ses classes deviendront le spécimen canonique.
+
+<SectionHeading id="anatomy" number="01" title="Anatomie" />
+
+Deux contrôles, une voix. La case à cocher est un carré de 20×20 aux coins vifs, habillé de la peau des champs — bordure system-200 #ECE8E4 au repos, brand-300 #1D65AF cochée, coche blanche à bouts carrés. L'interrupteur est une piste de 44×28 avec un pouce circulaire de 24px — gris au repos, brand-300 avec pouce blanc allumé. Les deux flottent dans une cible de 44×44. Les glyphes coche et tiret sont des SVG en ligne, pas du pipeline d'icônes, pour un rendu déterministe à 20px:
+
+<SelectionDemo variant="anatomy" label="Deux contrôles, une voix" tOption="S'abonner aux actualités" tParent="Tous les produits" tSetting="Infolettre" tags={["case · off · 20×20", "case · on · brand-300 #1D65AF", "indéterminée · tiret · INVENTÉ", "interrupteur · off · piste 44×28", "interrupteur · on · pouce 24px blanc"]} note="CHAQUE spécimen de cette page est INVENTÉ — le site de production ne livre aujourd'hui aucun contrôle de sélection. La peau, elle, ne l'est pas : bordure #ECE8E4 et fond system-50 repris verbatim de la peau des champs, brand-300 #1D65AF des boutons/champs, glyphes blancs de la règle des boutons. Indeterminate : une propriété DOM sans attribut HTML — à définir en JS pour un parent aux enfants mixtes." />
+
+<div className="not-prose mt-3 border-y border-[var(--hig-border)] py-3">
+
+<p className="text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">Champ vierge, mais enraciné.</span> La production n'a ni case ni interrupteur — cette page définit donc le premier. Rien ici n'est une nouvelle couleur ni un nouveau rayon : le repos porte la peau des champs, l'état actif le bleu des boutons, le glyphe la règle blanc-sur-remplissage. Quand la première case sera livrée, elle devra sembler avoir toujours vécu ici.</p>
+
+<p className="mt-3 text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">Une seule couleur d'état, partout.</span> Case cochée, piste activée, anneau de focus, lien, bouton primaire — tous brand-300 #1D65AF. Une page ne discute jamais pour savoir quel bleu signifie « actif ». Si un futur contrôle exige un second accent, c'est une décision de design system, pas de composant.</p>
+
+</div>
+
+<DoDontGrid
+  doItems={[
+    "Case 20×20, interrupteur 44×28, tous deux en cible 44×44.",
+    "Brand-300 #1D65AF comme unique couleur d'état actif.",
+    "Indeterminate pour un parent aux enfants mixtes.",
+  ]}
+  dontItems={[
+    "Nouvelles couleurs d'accent par composant.",
+    "Cases arrondies — les coins restent vifs.",
+    "Glyphes inférieurs à 12px ou plus fins que 2px.",
+  ]}
+/>
+
+<SectionHeading id="states" number="02" title="États" />
+
+Quatre moments par contrôle, comme chaque composant de ce guide. Le repos porte la peau des champs ; le focus associe l'anneau marque 2px global de globals.css au contrôle ; le désactivé suit la règle des boutons — opacity-50, not-allowed, et le fond system-50 #FAF8F6 pour la case décochée:
+
+<SelectionDemo variant="states" label="Une case, quatre moments" tOption="S'abonner aux actualités" tags={["repos · bordure system-200", "focus · anneau marque 2px — écart 2", "désactivé · off · fond system-50", "désactivé · on · brand-300 · opacity-50"]} note="TOUT EST INVENTÉ, selon la règle du champ vierge — et construit uniquement avec des jetons documentés. Focus : l'anneau marque 2px global avec un écart blanc de 2px sur fond clair (box-shadow), le même appariement que les champs. Désactivé : opacity-50 et not-allowed comme tout contrôle désactivé ; une case cochée désactivée garde son remplissage brand-300." />
+
+<div className="not-prose mt-3 border-y border-[var(--hig-border)] py-3">
+
+<p className="text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">Le focus est un anneau, pas une lueur.</span> Les claviers obtiennent le même anneau marque de 2px avec un écart de 2px que tout contrôle de ce système — l'appariement documenté dans Champs, appliqué ici. Pas de lueurs, pas de doubles bordures, pas de surprise quand Tab atteint la première case du site.</p>
+
+<p className="mt-3 text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">Le désactivé énonce toujours son état.</span> Une case désactivée garde son remplissage ; seule l'opacité et le curseur changent. Un contrôle qui pâlit au point de devenir illisible échoue au même test que les erreurs par couleur seule — l'état doit survivre au passage au gris.</p>
+
+</div>
+
+<DoDontGrid
+  doItems={[
+    "L'anneau de focus marque 2px partagé, écart 2.",
+    "Désactivé à opacity-50, état on/off restant lisible.",
+    "Anneau de focus sur le contrôle, pas sur l'étiquette 44×44.",
+  ]}
+  dontItems={[
+    "Lueurs, doubles bordures ou couleurs de focus maison.",
+    "États désactivés effaçant la différence on/off.",
+    "États hover substitués au focus pour les claviers.",
+  ]}
+/>
+
+<SectionHeading id="targets" number="03" title="Cibles & RTL" />
+
+La cible est l'étiquette, pas le dessin. Un carré de 20×20 ou une piste de 44×28 flotte dans une zone de 44×44 — le plancher Apple et le défaut d'accessibilité de ce guide — pour qu'un pouce ne manque jamais. Les lignes s'empilent sans écart et l'étiquette prend la largeur restante, le rythme des listes des Cartes. En RTL, le pouce voyage dans l'autre sens via une seule variable logique:
+
+<SelectionDemo variant="targets" label="Le voyage du pouce se reflète avec la page" tOption="S'abonner aux actualités" tags={["cible 44×44 · lignes empilées", "reflet RTL · variable --thumb-dx"]} note="Cibles et empilement : INVENTÉS selon la règle du champ vierge, à partir du défaut 44×44 documenté et du rythme des listes des Cartes. Le pouce voyage de +8px en LTR et −8px en RTL via la propriété personnalisée --thumb-dx — le reflet est une variable, pas un second composant." />
+
+<div className="not-prose mt-3 border-y border-[var(--hig-border)] py-3">
+
+<p className="text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">La cible fait 44, le dessin non.</span> 20px de dessin dans 44px de zone tactile. Le visuel reste délicat, le toucher indulgent. Ne dessinez jamais la cible — un carré gris de 44px se lit comme un bouton, pas comme une case.</p>
+
+<p className="mt-3 text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">La direction est une donnée, pas une variante.</span> L'interrupteur suit la page : le pouce part du bord de tête et avance quand il s'allume. Une variable CSS porte le voyage, exactement comme ps/start le font pour les champs. Aucun composant spécial dir="rtl", jamais.</p>
+
+</div>
+
+<DoDontGrid
+  doItems={[
+    "Étiquette 44×44 comme zone tactile ; le contrôle flotte dedans.",
+    "Lignes empilées sans écart, étiquette remplissant la ligne.",
+    "Voyage du pouce via une variable logique (--thumb-dx).",
+  ]}
+  dontItems={[
+    "Carrés cliquables de 20×20 sur écrans tactiles.",
+    "Dessiner la cible de 44px en carré visible.",
+    "Un composant interrupteur séparé pour RTL.",
+  ]}
+/>
+
+<SectionHeading id="choosing" number="04" title="Choisir le contrôle" />
+
+Le choix est sémantique, pas esthétique. Les cases répondent à « lesquels ? » — multi-sélection, actions groupées, consentement. L'interrupteur répond à « est-ce actif ? » — réglages instantanés sans étape d'envoi. Les radios sont exclues du système par définition : elles doublonnent ce que fait le select natif, avec une ergonomie tactile pire. Les tâches en attente sont déjà visibles en production — trois boîtes de recherche qui attendent des lignes de filtres, et un divulgateur de carte qui attend un interrupteur:
+
+<SelectionDemo variant="choosing" label="Quel contrôle, quel travail" tItems="Choix exclusif mutuel" tags={["multi-sélection · cases", "choix binaire · PAS de cases", "effet instantané · interrupteur"]} note="INVENTÉ, selon la règle du champ vierge. Cases pour les lignes de filtres produits/projets/actualités qu'impliquent les trois boîtes de recherche. Jamais de cases pour des choix exclusifs mutuels — c'est le travail du select natif. Les interrupteurs agissent immédiatement, sans envoi ; si le changement exige une sauvegarde, utilisez une case." />
+
+<div className="not-prose mt-3 border-y border-[var(--hig-border)] py-3">
+
+<p className="text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">Les cases comptent ; les interrupteurs agissent.</span> Si l'utilisateur attend un récapitulatif — « 3 sélectionnés » — des cases. S'il attend un effet — « actif maintenant » — un interrupteur, qui s'applique dès qu'il bascule, jamais derrière un bouton Enregistrer.</p>
+
+<p className="mt-3 text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">Livré d'abord, standardisé ensuite.</span> Cette page est écrite avant que le premier composant existe — exprès. La première vraie case devra être extraite vers ce système, pas réinventée à côté. Quand elle atterrit, ses classes deviennent le spécimen canonique et les étiquettes INVENTÉ de cette page prennent leur retraite.</p>
+
+</div>
+
+<DoDontGrid
+  doItems={[
+    "Cases pour la multi-sélection et le consentement.",
+    "Interrupteurs pour les réglages binaires instantanés.",
+    "Select natif pour les choix exclusifs mutuels.",
+  ]}
+  dontItems={[
+    "Cases jouant les radios.",
+    "Interrupteurs derrière un bouton Enregistrer.",
+    "Radios — exclues de ce système par définition.",
+  ]}
+/>

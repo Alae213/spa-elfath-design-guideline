@@ -6,4 +6,73 @@ order: 23
 icon: "ChatFeedbackIcon"
 ---
 
-Empty foundation - content coming soon.
+Feedback is the site keeping its promises. Production speaks it in exactly three moments — the error banner after a failed submit, the success panel that replaces the form, the pending label swap while the request flies — plus the mount skeleton. All four are documented verbatim here, with the WhatsApp fallback in green as the standing escape hatch. What production has not written — warnings, icons, live-region announcements — is invented here, tagged as such, and written as the standard for the next implementation.
+
+<SectionHeading id="banners" number="01" title="Banners" />
+
+The banner is the production error voice, verbatim from QuoteForm.tsx: red-200 #FECACA border on red-50 #FEF2F2 ground, a bold red-700 #B91C1C title, a red-600 #DC2626 description — and no icon. It sits at the top of the form; the form stays put. The WhatsApp CTA inside it is green-600 #16A34A, h-9, text-xs — the fallback channel, not a style experiment:
+
+<FeedbackDemo
+  variant="banner"
+  label="Error verbatim, warning proposed"
+  tErrTitle="Failed to send"
+  tErrDesc="Something went wrong while sending your request. Please try again."
+  tWa="Continue on WhatsApp"
+  tWarnTitle="Connection is slow"
+  tWarnDesc="Your request has not been sent yet. You can keep waiting or continue on WhatsApp."
+  tags={["error · VERBATIM · red-200/50 · no icon", "warning · INVENTED · amber pairing"]}
+  note="Error banner: QuoteForm.tsx verbatim — red-200 border, red-50 ground, bold red-700 title, red-600 description, green-600 WhatsApp CTA. No icon ships in production. Warning: INVENTED — the same anatomy in the amber pairing from Colors (#B45309 on amber-50/amber-200), for slow-network and partial-failure moments."
+/>
+
+<div className="not-prose mt-3 border-y border-[var(--hig-border)] py-3">
+  <p className="text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">One banner per moment.</span> Production never stacks feedback. An error banner appears only after a failed submit and stays until the next attempt — the submit handler resets the status before sending, so the banner clears when the user tries again, not when they edit. The invented warning follows the same discipline: one message, one moment, one channel — never a feed.</p>
+  <p className="mt-3 text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">The fallback is always WhatsApp.</span> When the site cannot keep its promise, it hands the user to the school's real channel — wa.me/213560065422 with a prefilled greeting. Green marks that escape hatch in both the error banner and the success panel. It is a deliberate second voice: brand blue speaks the system, green speaks the human.</p>
+</div>
+
+<DoDontGrid
+  doItems={[
+    "Banner at the top of the form; the form stays.",
+    "Bold title + description, tinted ground, thin border.",
+    "WhatsApp CTA in green as the escape hatch.",
+  ]}
+  dontItems={[
+    "Toast stacks or auto-dismissing messages.",
+    "Error banners without an actionable next step.",
+    "Red text on white — the tinted ground is part of the voice.",
+  ]}
+/>
+
+<SectionHeading id="success" number="02" title="Success" />
+
+Success is not a message on the form — it replaces the form. QuoteForm.tsx swaps the whole panel for a centered confirmation: a brand-300 #1D65AF tile with a white check, a bold title reading the dictionary string «Request sent successfully», a muted description, and the WhatsApp CTA in brand-400 #193B62 (hover brand-300) so the conversation can continue immediately:
+
+<FeedbackDemo
+  variant="success"
+  label="The form becomes the receipt"
+  tTitle="Request sent successfully"
+  tDesc="We will get back to you within 48 hours."
+  tWa="Continue on WhatsApp"
+  tags={["VERBATIM · replacement panel · brand-300 ✓"]}
+  note="QuoteForm.tsx verbatim: the form unmounts and this panel mounts in its place — 56px brand-300 tile, white 24px check, text-lg bold title, system-400 description, brand-400 CTA hovering to brand-300. No banner, no toast: the receipt IS the screen."
+/>
+
+<div className="not-prose mt-3 border-y border-[var(--hig-border)] py-3">
+  <p className="text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">Success clears the stage.</span> A submitted form has one job left: prove the promise landed. The replacement panel removes every field, every label, every hint — what remains is the check, the confirmation, and the next step. Nothing invites a second submit by accident.</p>
+  <p className="mt-3 text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">Confirmation is copy, not color.</span> The dictionary carries the words in all three languages — «Demande envoyée avec succès», «تم إرسال طلبك بنجاح». The tile and the check carry the feeling. Neither works alone: a green check with no words is a mood, words with no mark are an email.</p>
+</div>
+
+<DoDontGrid
+  doItems={[
+    "Replace the form with the confirmation panel.",
+    "Brand-300 tile with a white check as the mark.",
+    "Offer the WhatsApp continuation right there.",
+  ]}
+  dontItems={[
+    "Success banners floating over a live form.",
+    "Timed auto-dismiss of the confirmation.",
+    "Leaving the submit button enabled after success.",
+  ]}
+/>
+
+<!-- __NEXT_EN_2__ -->
+

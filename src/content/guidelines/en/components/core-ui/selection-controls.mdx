@@ -1,9 +1,119 @@
 ---
 title: "Selection Controls"
-description: "Checkboxes, radios, switches"
+description: "Checkboxes and switches — the standard for the first one; every specimen invented and tagged"
 category: "Core UI"
 order: 22
 icon: "ToggleOnIcon"
 ---
 
-Empty foundation - content coming soon.
+Checkboxes and switches — the controls that answer with a state, not a navigation. The production site ships none yet, so this page is the standard for the first one: every specimen is invented here, tagged as such, and built strictly from tokens the guide already documents — the field skin at rest, brand-300 when on, the 2px brand ring for focus, 44×44 targets throughout. When the first real checkbox ships, these tags retire and its classes become the canonical specimen.
+
+<SectionHeading id="anatomy" number="01" title="Anatomy" />
+
+Two controls, one voice. The checkbox is a 20×20 sharp-cornered square wearing the field skin — border-system-200 #ECE8E4 at rest, brand-300 #1D65AF when checked, white square-cap check glyph. The switch is a 44×28 track with a 24px circular thumb — grey at rest, brand-300 with a white thumb when on. Both sit inside a 44×44 target. The check and dash glyphs are inline SVG, not the icon pipeline, so they render deterministically at 20px:
+
+<SelectionDemo variant="anatomy" label="Two controls, one voice" tOption="Subscribe to news" tParent="All products" tSetting="Newsletter" note="EVERY specimen on this page is INVENTED — the production site ships zero selection controls today. The skin is not: border #ECE8E4 and system-50 floor come verbatim from the field skin, brand-300 #1D65AF from buttons/inputs, white glyphs from the button rule. Indeterminate: a DOM property with no HTML attribute — set it in JS for a parent row of mixed children." />
+
+<div className="not-prose mt-3 border-y border-[var(--hig-border)] py-3">
+
+<p className="text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">Greenfield, but not unrooted.</span> Production has no checkboxes or switches yet — so this page defines the first one. Nothing here is a new color or a new radius: the rest state wears the field skin, the on state wears the button blue, the glyph wears the button's white-on-fill rule. When the first checkbox ships, it must look like it always lived here.</p>
+
+<p className="mt-3 text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">One state color for every control.</span> Checked box, on-track switch, focus ring, link, primary button — all brand-300 #1D65AF. A page never argues about which blue means "on". If a future control needs a second accent, that is a design-system decision, not a component decision.</p>
+
+</div>
+
+<DoDontGrid
+  doItems={[
+    "20×20 checkbox, 44×28 switch, both in 44×44 targets.",
+    "Brand-300 #1D65AF as the single on-state color.",
+    "Indeterminate for a parent of mixed children.",
+  ]}
+  dontItems={[
+    "New accent colors per component.",
+    "Rounded checkboxes — corners stay sharp.",
+    "Glyphs smaller than 12px or lighter than 2px stroke.",
+  ]}
+/>
+
+<SectionHeading id="states" number="02" title="States" />
+
+Four moments per control, same as every other component in this guide. Rest wears the field skin; focus pairs the global 2px brand ring from globals.css with the control; disabled follows the button rule — opacity-50, not-allowed, and the resting floor system-50 #FAF8F6 for the unchecked box:
+
+<SelectionDemo variant="states" label="One checkbox, four moments" tOption="Subscribe to news" note="ALL INVENTED, per the greenfield rule — and built only from documented tokens. Focus: the global 2px brand ring with a 2px white gap on light ground (box-shadow ring), the same pairing inputs use. Disabled: opacity-50 and not-allowed like every other disabled control; a disabled ON box keeps its brand-300 fill." />
+
+<div className="not-prose mt-3 border-y border-[var(--hig-border)] py-3">
+
+<p className="text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">Focus is a ring, not a glow.</span> Keyboard users get the same 2px brand ring with a 2px gap that every control in this system gets — the pairing documented in Inputs, applied here. No glows, no double borders, no surprises when Tab reaches the first checkbox the site ever ships.</p>
+
+<p className="mt-3 text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">Disabled still speaks its state.</span> A disabled checkbox keeps its checked fill; only the opacity and cursor change. A control that goes pale grey and unreadable when disabled fails the same test as color-only errors — state must survive the greyscale.</p>
+
+</div>
+
+<DoDontGrid
+  doItems={[
+    "The shared 2px brand focus ring, offset 2.",
+    "Disabled at opacity-50, keeping its on/off state readable.",
+    "Focus ring on the control, not the 44×44 label.",
+  ]}
+  dontItems={[
+    "Glows, double borders or custom focus colors.",
+    "Disabled states that erase the on/off difference.",
+    "Hover states replacing focus for keyboard users.",
+  ]}
+/>
+
+<SectionHeading id="targets" number="03" title="Targets & RTL" />
+
+The target is the label, not the glyph. A 20×20 box or a 44×28 track floats inside a 44×44 hit area — Apple's floor and this guide's a11y default — so a thumb never misses. Rows stack with zero gap and the label takes the remaining line width, the list rhythm from Cards. In RTL the switch travels the other way through one logical variable:
+
+<SelectionDemo variant="targets" label="Thumb travel mirrors with the page" tOption="Subscribe to news" note="Targets and row stacking: INVENTED per the greenfield rule, from the documented 44×44 default and the Cards list rhythm. The switch thumb travels +8px LTR and −8px RTL through the --thumb-dx custom property — mirroring is one variable, not a second component." />
+
+<div className="not-prose mt-3 border-y border-[var(--hig-border)] py-3">
+
+<p className="text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">The target is 44, the drawing is not.</span> 20px of drawing inside 44px of hit area. The visual stays delicate; the touch stays forgiving. Never draw the target — a 44px grey square reads as a button, not a checkbox.</p>
+
+<p className="mt-3 text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">Direction is data, not a variant.</span> The switch tracks the page: the thumb starts at the leading edge and travels forward when on. One CSS variable carries the travel, exactly like ps/start do for the field. No dir="rtl" special-case components, ever.</p>
+
+</div>
+
+<DoDontGrid
+  doItems={[
+    "44×44 label as the hit area; the control floats inside.",
+    "Rows stacked with no gap, label filling the line.",
+    "Switch travel via a logical variable (--thumb-dx).",
+  ]}
+  dontItems={[
+    "20×20 clickable boxes on touch screens.",
+    "Drawing the 44px target as a visible box.",
+    "A separate RTL switch component.",
+  ]}
+/>
+
+<SectionHeading id="choosing" number="04" title="Choosing the control" />
+
+The choice is semantic, not aesthetic. Checkboxes answer "which of these?" — multi-select, batch actions, consent. A switch answers "is this active?" — instant settings with no submit step. Radios are excluded from this system by scope: they duplicate what a native select does, with worse touch ergonomics. The pending jobs are already visible in production — three search boxes waiting for filter rows, and a map disclosure waiting for an on/off switch:
+
+<SelectionDemo variant="choosing" label="Which control, which job" tItems="Mutually exclusive choice" note="INVENTED, per the greenfield rule. Checkboxes for the product/project/news filter rows the three search boxes imply. Never checkboxes for mutually-exclusive choices — that is the native select's job. Switches act instantly with no submit; if the change needs a save step, use a checkbox." />
+
+<div className="not-prose mt-3 border-y border-[var(--hig-border)] py-3">
+
+<p className="text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">Checkboxes count; switches act.</span> If the user expects a summary — "3 selected" — checkboxes. If the user expects an effect — "now on" — a switch, and it takes effect the moment it flips, never behind a Save button.</p>
+
+<p className="mt-3 text-[13px] leading-6 text-[var(--apple-text)]"><span className="font-semibold">First shipped, then standardized.</span> This page is written before the first component exists — on purpose. The first real checkbox should be extracted into this system, not reinvented beside it. When it lands, its classes become the canonical specimen and the INVENTED tags on this page retire.</p>
+
+</div>
+
+<DoDontGrid
+  doItems={[
+    "Checkboxes for multi-select and consent.",
+    "Switches for instant, binary settings.",
+    "Native select for mutually-exclusive choices.",
+  ]}
+  dontItems={[
+    "Checkboxes posing as radios.",
+    "Switches behind a Save button.",
+    "Radios — excluded from this system by scope.",
+  ]}
+/>
+
+

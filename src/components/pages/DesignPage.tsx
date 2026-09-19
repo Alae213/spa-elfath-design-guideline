@@ -8,6 +8,11 @@ import { LayoutDemo } from "@/components/mdx/LayoutDemo";
 import { RtlDemo, HigFigure } from "@/components/mdx/RtlDemo";
 import { TypeDemo } from "@/components/mdx/TypeDemo";
 import { ButtonDemo } from "@/components/mdx/ButtonDemo";
+import { InputDemo } from "@/components/mdx/InputDemo";
+import { SelectionDemo } from "@/components/mdx/SelectionDemo";
+import { OverlayerDemo } from "@/components/mdx/OverlayerDemo";
+import { CardDemo } from "@/components/mdx/CardDemo";
+import { FeedbackDemo } from "@/components/mdx/FeedbackDemo";
 import {
   ContrastTable,
   SemanticTokens,
@@ -123,6 +128,106 @@ function renderSection(sec: Section, accent: string, isRtl: boolean, idx: number
           tMore={sec.tMore}
           tDelete={sec.tDelete}
           tAdd={sec.tAdd}
+        />
+      );
+    case "inputDemo":
+      return (
+        <InputDemo
+          key={idx}
+          variant={sec.variant}
+          label={sec.label}
+          note={sec.note}
+          tags={sec.tags}
+          tLabel={sec.tLabel}
+          tPlaceholder={sec.tPlaceholder}
+          tError={sec.tError}
+          tSearch={sec.tSearch}
+          tOptional={sec.tOptional}
+          tOptionalWord={sec.tOptionalWord}
+          tMessage={sec.tMessage}
+          tAreaPlaceholder={sec.tAreaPlaceholder}
+          tWilaya={sec.tWilaya}
+          tSelectPlaceholder={sec.tSelectPlaceholder}
+          tPhone={sec.tPhone}
+        />
+      );
+    case "selectionDemo":
+      return (
+        <SelectionDemo
+          key={idx}
+          variant={sec.variant}
+          label={sec.label}
+          note={sec.note}
+          tags={sec.tags}
+          tOption={sec.tOption}
+          tParent={sec.tParent}
+          tSetting={sec.tSetting}
+          tItems={sec.tItems}
+        />
+      );
+    case "overlayerDemo":
+      return (
+        <OverlayerDemo
+          key={idx}
+          variant={sec.variant}
+          label={sec.label}
+          note={sec.note}
+          tags={sec.tags}
+          tTitle={sec.tTitle}
+          tLinks={sec.tLinks}
+          tCta={sec.tCta}
+          tToggle={sec.tToggle}
+          tTrigger={sec.tTrigger}
+          tOptions={sec.tOptions}
+          tSelected={sec.tSelected}
+          tCard={sec.tCard}
+          tBody={sec.tBody}
+          tDirs={sec.tDirs}
+          tShow={sec.tShow}
+          tHide={sec.tHide}
+          tBand={sec.tBand}
+        />
+      );
+    case "cardDemo":
+      return (
+        <CardDemo
+          key={idx}
+          variant={sec.variant}
+          label={sec.label}
+          note={sec.note}
+          tags={sec.tags}
+          tImage={sec.tImage}
+          tTitle={sec.tTitle}
+          tBody={sec.tBody}
+          tAction={sec.tAction}
+          tRest={sec.tRest}
+          tHover={sec.tHover}
+          tA={sec.tA}
+          tB={sec.tB}
+          tC={sec.tC}
+        />
+      );
+    case "feedbackDemo":
+      return (
+        <FeedbackDemo
+          key={idx}
+          variant={sec.variant}
+          label={sec.label}
+          note={sec.note}
+          tags={sec.tags}
+          tErrTitle={sec.tErrTitle}
+          tErrDesc={sec.tErrDesc}
+          tWa={sec.tWa}
+          tWarnTitle={sec.tWarnTitle}
+          tWarnDesc={sec.tWarnDesc}
+          tTitle={sec.tTitle}
+          tDesc={sec.tDesc}
+          tSubmit={sec.tSubmit}
+          tSubmitting={sec.tSubmitting}
+          tNote={sec.tNote}
+          tErr={sec.tErr}
+          tOk={sec.tOk}
+          tLoading={sec.tLoading}
         />
       );
     case "iconGrid":

@@ -14,6 +14,11 @@ import { LayoutDemo } from "@/components/mdx/LayoutDemo";
 import { RtlDemo, HigFigure } from "@/components/mdx/RtlDemo";
 import { TypeDemo } from "@/components/mdx/TypeDemo";
 import { ButtonDemo } from "@/components/mdx/ButtonDemo";
+import { InputDemo } from "@/components/mdx/InputDemo";
+import { SelectionDemo } from "@/components/mdx/SelectionDemo";
+import { FeedbackDemo } from "@/components/mdx/FeedbackDemo";
+import { OverlayerDemo } from "@/components/mdx/OverlayerDemo";
+import { CardDemo } from "@/components/mdx/CardDemo";
 import {
   SectionHeading,
   Accordion,
@@ -137,6 +142,11 @@ export default async function GuidelinePage({ params }: { params: Promise<{ slug
                 HigFigure,
                 TypeDemo,
                 ButtonDemo,
+                InputDemo,
+                SelectionDemo,
+                FeedbackDemo,
+                OverlayerDemo,
+                CardDemo,
               }}
             />
           </div>

@@ -24,6 +24,91 @@ export type Section =
   | { kind: "demo"; variant: "contrast" | "semantic" | "spacing" | "touch" | "motion" | "alt" | "pageGoal" }
   | { kind: "typeDemo"; variant: "weights" | "ladder" | "numerals"; label: string; note?: string; h1?: string; h2?: string; body?: string; eyebrow?: string }
   | { kind: "buttonDemo"; variant: "variants" | "sizes" | "states" | "icons"; label: string; note?: string; tags?: string[]; tAction?: string; tMore?: string; tDelete?: string; tAdd?: string }
+  | {
+      kind: "inputDemo";
+      variant: "anatomy" | "types" | "states" | "rtl";
+      label: string;
+      note?: string;
+      tags?: string[];
+      tLabel?: string;
+      tPlaceholder?: string;
+      tError?: string;
+      tSearch?: string;
+      tOptional?: string;
+      tOptionalWord?: string;
+      tMessage?: string;
+      tAreaPlaceholder?: string;
+      tWilaya?: string;
+      tSelectPlaceholder?: string;
+      tPhone?: string;
+    }
+  | {
+      kind: "selectionDemo";
+      variant: "anatomy" | "states" | "targets" | "choosing";
+      label: string;
+      note?: string;
+      tags?: string[];
+      tOption?: string;
+      tParent?: string;
+      tSetting?: string;
+      tItems?: string;
+    }
+  | {
+      kind: "overlayerDemo";
+      variant: "drawer" | "dropdown" | "pins" | "motion";
+      label: string;
+      note?: string;
+      tags?: string[];
+      tTitle?: string;
+      tLinks?: string[];
+      tCta?: string;
+      tToggle?: string;
+      tTrigger?: string;
+      tOptions?: string[];
+      tSelected?: string;
+      tCard?: string;
+      tBody?: string;
+      tDirs?: string;
+      tShow?: string;
+      tHide?: string;
+      tBand?: string;
+    }
+  | {
+      kind: "cardDemo";
+      variant: "anatomy" | "states" | "grid";
+      label: string;
+      note?: string;
+      tags?: string[];
+      tImage?: string;
+      tTitle?: string;
+      tBody?: string;
+      tAction?: string;
+      tRest?: string;
+      tHover?: string;
+      tA?: string;
+      tB?: string;
+      tC?: string;
+    }
+  | {
+      kind: "feedbackDemo";
+      variant: "banner" | "success" | "pending" | "a11y";
+      label: string;
+      note?: string;
+      tags?: string[];
+      tErrTitle?: string;
+      tErrDesc?: string;
+      tWa?: string;
+      tWarnTitle?: string;
+      tWarnDesc?: string;
+      tTitle?: string;
+      tDesc?: string;
+      tSubmit?: string;
+      tSubmitting?: string;
+      tNote?: string;
+      tErr?: string;
+      tOk?: string;
+      tLoading?: string;
+    }
   | { kind: "iconGrid"; cells: { name: string; usage?: string; size?: number; boxStyle?: React.CSSProperties; iconStyle?: React.CSSProperties; bare?: boolean }[] }
   | { kind: "imageGrid"; demos: { label: string; ratio?: string; ratioTag?: string; overlay?: boolean; video?: boolean; caption?: string; note?: string }[] }
   | { kind: "layoutDemo"; variant: "container" | "breakpoints" | "bricks" | "hero"; label: string; note?: string }

@@ -54,7 +54,7 @@ export function SearchDialog() {
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder={t.search.placeholder}
-                className="flex-1 bg-transparent outline-none text-sm placeholder:text-[var(--apple-muted)]"
+                className="flex-1 bg-transparent outline-none text-sm placeholder:text-[var(--apple-muted)] rounded-lg px-2"
               />
               <button onClick={() => setOpen(false)} className="h-8 w-8 inline-flex items-center justify-center rounded-full hover:bg-[var(--apple-hover)]" aria-label={t.search.close}>
                 <CloseIcon size={16} />
